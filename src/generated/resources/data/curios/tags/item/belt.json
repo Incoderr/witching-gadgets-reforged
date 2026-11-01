@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "witchinggadgets:kama",
+      "required": false
+    },
+    {
+      "id": "witchinggadgets:spectral_kama",
+      "required": false
+    },
+    {
+      "id": "witchinggadgets:storage_kama",
+      "required": false
+    },
+    {
+      "id": "witchinggadgets:wolf_kama",
+      "required": false
+    }
+  ]
+}

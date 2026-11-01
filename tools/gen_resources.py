@@ -8,6 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import mcformat
+import gen_curios
 
 profile = mcformat.init()
 OUT = mcformat.out_root
@@ -405,6 +406,7 @@ def main():
     ctx = sys.modules[__name__]
     for feature in FEATURES:
         importlib.import_module(f"gen_{feature}").generate(ctx)
+    gen_curios.generate(ctx)
     write_tags()
     if profile.pack_mcmeta:
         write(OUT / "pack.mcmeta", profile.pack_mcmeta)

@@ -9,6 +9,7 @@ import net.neoforged.fml.config.ModConfig;
 import org.slf4j.Logger;
 import thaumcraft.aspect.AspectSync;
 import witchinggadgets.network.ModPayloads;
+import witchinggadgets.platform.gear.GearSetup;
 import witchinggadgets.registry.ModBlockEntities;
 import witchinggadgets.registry.ModBlocks;
 import witchinggadgets.registry.ModCreativeTabs;
@@ -20,6 +21,7 @@ import witchinggadgets.registry.ModSounds;
 import witchinggadgets.research.BaseResearchLinks;
 import witchinggadgets.research.WgResearch;
 import witchinggadgets.test.CoreGameTests;
+import witchinggadgets.test.GearGameTests;
 import witchinggadgets.test.ResearchTableGameTests;
 import witchinggadgets.test.SmokeGameTests;
 
@@ -40,6 +42,7 @@ public class WitchingGadgets {
         ModSounds.register(modEventBus);
         ModMenus.register(modEventBus);
         ModPayloads.register();
+        GearSetup.register(modEventBus);
         WgResearch.init();
         Features.recipes();
         BaseResearchLinks.register();
@@ -47,6 +50,7 @@ public class WitchingGadgets {
         AspectSync.addRegistrar(Features::aspects);
         SmokeGameTests.register(modEventBus);
         CoreGameTests.register(modEventBus);
+        GearGameTests.register(modEventBus);
         ResearchTableGameTests.register(modEventBus);
         Features.tests(modEventBus);
     }

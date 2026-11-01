@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "witchinggadgets:luck_ring",
+      "required": false
+    },
+    {
+      "id": "witchinggadgets:sniper_ring",
+      "required": false
+    }
+  ]
+}

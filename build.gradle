@@ -91,6 +91,7 @@ dependencies {
     implementation "com.github.glitchfiend:TerraBlender-neoforge:${terrablender_version}"
     compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
+    compileOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}:api"
     localRuntime "top.theillusivec4.curios:curios-neoforge:${curios_version}"
     if (!providers.gradleProperty("withoutJei").isPresent()) {
         localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
