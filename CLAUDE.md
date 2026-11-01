@@ -8,7 +8,7 @@ This file describes how to develop and port the mod. Phase status, test counts, 
 
 - Source of truth for behavior: the WG 1.1.10 sources in `reference/wg-src` (branch `master`, `tools/fetch_wg.py`). WG code is read as data, nothing from it is executed.
 - Integrations with other mods (TConstruct, Twilight Forest, Mystcraft, Magic Bees, ForgeMultipart, MineTweaker) are excluded, except JEI.
-- Travellers' Gear does not exist on modern versions: its items move to the base's bauble slots (`thaumcraft.platform.Baubles`).
+- Travellers' Gear does not exist on modern versions. By decision of the user WG brings its own four TG slots (cloak, pauldron, vambrace, title, `gear/GearSlot` in TG order) behind `platform/Gear`; items implement `gear/GearItem`. Kama and rings keep the base bauble slots (`thaumcraft.platform.Baubles`, belt and ring) like WG.
 - The WG coremod (`witchinggadgets/asm`) is not ported as ASM, the required behavior is done with NeoForge events or mixins.
 - WG bugs are fixed only if they break the game (dupes, item loss, NPE, desync, server crash). Gameplay quirks stay.
 - The server validates what WG trusted from the client. Client classes never leak to the server, everything must work on a dedicated server.
@@ -60,6 +60,8 @@ This file describes how to develop and port the mod. Phase status, test counts, 
 - Base ids of TC4 references come from `tools/tc4_refs.json` (copied from Thaumic Tinkerer, built by `tools/tc4_ref.py --all` from the base `reference/decompiled`): `ConfigItems.itemResource` meta 7 is `thaumcraft:enchanted_fabric`, `ConfigBlocks.blockCosmeticSolid` meta 6 `thaumcraft:arcane_stone`.
 
 ## Content notes
+
+- Gear slots on 26.3 mirror the base bauble implementation in `platform/gear` (attachment `gear` with sync and copy on death, drops on death without keepInventory, menu with armor and 2x2 crafting on the base `expanded_inventory.png` with plain frames over the bauble ghosts, `OpenGearPayload`) and `client/platform/gear` (key `G`, a button at (66, 20) of the inventory and the base baubles screen, back button at (66, 9), the WG `wg.desc.gearSlot.tg.N` text as the empty slot tooltip). On 1.21.1 the same API sits on Curios slot types.
 
 - `materials/MaterialsFeature` registers all 14 `WG_Material` metas and the void metal block. Their behaviour (abacus, iconographic plate and photo, guiding string, gemcutting tools) arrives with the features that use them. The three cloths share `mat_cloth` tinted with the aspect colour like WG `getColorFromItemStack` (Vacuos `0x888888`, Lucrum `0xE6BE44`, Praecantatio `0x9700C0`). Item aspects follow WG `postInitThaumcraft`.
 - Spinning wheel: the WG TESR is static (the `animation` counter is never used), so `tools/gen_spinning.py` turns the 17 `ModelRenderer` boxes into a block model without a BER. The model is in the WG facing 5 (east) orientation, the blockstate rotates it with `y` 0/90/180/270 for east/south/west/north; WG renders without the usual entity flip, so side faces are upside down and the UVs keep that. The facing is opposite to the player's look like WG `onBlockPlacedBy`.
