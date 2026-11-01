@@ -76,6 +76,8 @@ reference/              original mod source (git ignored)
 | `tools/features.txt`      | List of per-feature resource generators                                                       |
 | `tools/inventory.py`      | Checks `tools/id_map.json` against registrations, models and lang                             |
 | `tools/id_map.json`       | Maps every original block and item (with metadata) to a modern id                             |
+| `tools/extract_wg_research.py` | Builds `tools/wg_research.json` from the WG research code, the game tests compare the registry with it |
+| `tools/tc4_refs.json`     | TC4 item and block references mapped to base ids                                              |
 | `tools/check_seams.py`    | Checks version-specific API boundaries                                                        |
 
 ## Localization

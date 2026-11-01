@@ -1,0 +1,3102 @@
+[
+  {
+    "aspectTriggers": [],
+    "aspects": [],
+    "autoUnlock": true,
+    "category": "WITCHGADG",
+    "column": 8,
+    "complexity": 0,
+    "complexityClamped": 1,
+    "concealed": false,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ResourceLocation(\"witchinggadgets:textures/gui/research/icon_potioneffects.png\")",
+    "itemTriggers": [],
+    "key": "WGPOTIONS",
+    "lost": false,
+    "pages": [
+      {
+        "text": "WGPOTIONS.1",
+        "type": "text"
+      },
+      {
+        "text": "WGPOTIONS.2",
+        "type": "text"
+      }
+    ],
+    "parents": [],
+    "parentsHidden": [],
+    "round": true,
+    "row": 0,
+    "secondary": false,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [],
+    "autoUnlock": true,
+    "category": "WITCHGADG",
+    "column": 8,
+    "complexity": 0,
+    "complexityClamped": 1,
+    "concealed": false,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(WGContent.BlockWoodenDevice,1,0)",
+    "itemTriggers": [],
+    "key": "SPINNINGWHEEL",
+    "lost": false,
+    "pages": [
+      {
+        "text": "SPINNINGWHEEL.1",
+        "type": "text"
+      },
+      {
+        "text": "SPINNINGWHEEL.2",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "SPINNINGWHEEL"
+        ],
+        "type": "arcane"
+      },
+      {
+        "text": "SPINNINGWHEEL.r1",
+        "type": "text"
+      },
+      {
+        "text": "SPINNINGWHEEL.r2",
+        "type": "text"
+      },
+      {
+        "text": "SPINNINGWHEEL.r3",
+        "type": "text"
+      }
+    ],
+    "parents": [],
+    "parentsHidden": [],
+    "round": true,
+    "row": 4,
+    "secondary": false,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "pannus",
+        2
+      ],
+      [
+        "vacuos",
+        2
+      ],
+      [
+        "fames",
+        2
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 7,
+    "complexity": 1,
+    "complexityClamped": 1,
+    "concealed": true,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(WGContent.ItemBag,1,0)",
+    "itemTriggers": [],
+    "key": "BAGOFTRICKS",
+    "lost": false,
+    "pages": [
+      {
+        "text": "BAGOFTRICKS.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "BAGOFTRICKS_CLOTH"
+        ],
+        "type": "arcane"
+      },
+      {
+        "recipes": [
+          "BAGOFTRICKS_BAG"
+        ],
+        "type": "arcane"
+      }
+    ],
+    "parents": [
+      "SPINNINGWHEEL"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": 2,
+    "secondary": false,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 10,
+    "complexity": 1,
+    "complexityClamped": 1,
+    "concealed": false,
+    "fake": {
+      "category": "ARTIFICE",
+      "original": "ENCHFABRIC"
+    },
+    "hidden": true,
+    "icon": "new ItemStack(ConfigItems.itemResource, 1, 7)",
+    "itemTriggers": [],
+    "key": "WGFAKEENCHFABRIC",
+    "lost": false,
+    "pages": [],
+    "parents": [],
+    "parentsHidden": [],
+    "round": false,
+    "row": 1,
+    "secondary": false,
+    "siblings": [],
+    "special": false,
+    "stub": true,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "pannus",
+        3
+      ],
+      [
+        "praecantatio",
+        4
+      ],
+      [
+        "vitium",
+        1
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 9,
+    "complexity": 3,
+    "complexityClamped": 3,
+    "concealed": true,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(WGContent.ItemMaterial,1,5)",
+    "itemTriggers": [],
+    "key": "ADVANCEDROBES",
+    "lost": false,
+    "pages": [
+      {
+        "text": "ADVANCEDROBES.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "ADVANCEDROBES_CLOTH"
+        ],
+        "type": "arcane"
+      },
+      {
+        "recipes": [
+          "ADVANCEDROBES_CHEST"
+        ],
+        "type": "arcane"
+      },
+      {
+        "recipes": [
+          "ADVANCEDROBES_LEGS"
+        ],
+        "type": "arcane"
+      }
+    ],
+    "parents": [
+      "WGFAKEENCHFABRIC",
+      "SPINNINGWHEEL"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": 2,
+    "secondary": true,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "pannus",
+        2
+      ],
+      [
+        "fames",
+        3
+      ],
+      [
+        "vacuos",
+        3
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 6,
+    "complexity": 1,
+    "complexityClamped": 1,
+    "concealed": true,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(WGContent.ItemBag,1,3)",
+    "itemTriggers": [],
+    "key": "HUNGERBAG",
+    "lost": false,
+    "pages": [
+      {
+        "text": "HUNGERBAG.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "HUNGERBAG"
+        ],
+        "type": "arcane"
+      }
+    ],
+    "parents": [
+      "BAGOFTRICKS",
+      "HUNGRYCHEST"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": 1,
+    "secondary": true,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [
+      "alienis"
+    ],
+    "aspects": [
+      [
+        "pannus",
+        2
+      ],
+      [
+        "alienis",
+        3
+      ],
+      [
+        "vacuos",
+        3
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 7,
+    "complexity": 1,
+    "complexityClamped": 1,
+    "concealed": false,
+    "fake": null,
+    "hidden": true,
+    "icon": "new ItemStack(WGContent.ItemBag,1,2)",
+    "itemTriggers": [
+      "new ItemStack(Blocks.ender_chest,1,32767)"
+    ],
+    "key": "ENDERBAG",
+    "lost": false,
+    "pages": [
+      {
+        "text": "ENDERBAG.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "ENDERBAG"
+        ],
+        "type": "infusion"
+      }
+    ],
+    "parents": [
+      "BAGOFTRICKS",
+      "INFUSION"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": 4,
+    "secondary": true,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "pannus",
+        1
+      ],
+      [
+        "aer",
+        1
+      ],
+      [
+        "tutamen",
+        1
+      ],
+      [
+        "praecantatio",
+        1
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 8,
+    "complexity": 2,
+    "complexityClamped": 2,
+    "concealed": true,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(WGContent.ItemCloak,1,0)",
+    "itemTriggers": [],
+    "key": "CLOAK",
+    "lost": false,
+    "pages": [
+      {
+        "text": "CLOAK.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "CLOAK"
+        ],
+        "type": "arcane"
+      }
+    ],
+    "parents": [],
+    "parentsHidden": [
+      "ENCHFABRIC"
+    ],
+    "round": false,
+    "row": -2,
+    "secondary": false,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "pannus",
+        4
+      ],
+      [
+        "iter",
+        2
+      ],
+      [
+        "spiritus",
+        2
+      ],
+      [
+        "tenebrae",
+        4
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 10,
+    "complexity": 3,
+    "complexityClamped": 3,
+    "concealed": true,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(WGContent.ItemCloak,1,1)",
+    "itemTriggers": [],
+    "key": "CLOAK_SPECTRAL",
+    "lost": false,
+    "pages": [
+      {
+        "text": "CLOAK_SPECTRAL.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "CLOAK_SPECTRAL"
+        ],
+        "type": "infusion"
+      },
+      {
+        "text": "CLOAK_SPECTRAL.2",
+        "type": "text"
+      }
+    ],
+    "parents": [
+      "CLOAK"
+    ],
+    "parentsHidden": [
+      "INFUSION"
+    ],
+    "round": false,
+    "row": -1,
+    "secondary": true,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "pannus",
+        4
+      ],
+      [
+        "vacuos",
+        6
+      ],
+      [
+        "fames",
+        4
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 10,
+    "complexity": 3,
+    "complexityClamped": 3,
+    "concealed": true,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(WGContent.ItemCloak,1,2)",
+    "itemTriggers": [],
+    "key": "CLOAK_STORAGE",
+    "lost": false,
+    "pages": [
+      {
+        "text": "CLOAK_STORAGE.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "CLOAK_STORAGE"
+        ],
+        "type": "arcane"
+      }
+    ],
+    "parents": [
+      "CLOAK"
+    ],
+    "parentsHidden": [
+      "BAGOFTRICKS"
+    ],
+    "round": false,
+    "row": -3,
+    "secondary": true,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "pannus",
+        4
+      ],
+      [
+        "bestia",
+        4
+      ],
+      [
+        "fames",
+        4
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 6,
+    "complexity": 3,
+    "complexityClamped": 3,
+    "concealed": true,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(WGContent.ItemCloak,1,3)",
+    "itemTriggers": [],
+    "key": "CLOAK_WOLF",
+    "lost": false,
+    "pages": [
+      {
+        "text": "CLOAK_WOLF.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "CLOAK_WOLF"
+        ],
+        "type": "arcane"
+      }
+    ],
+    "parents": [
+      "CLOAK"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": -1,
+    "secondary": true,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "pannus",
+        1
+      ],
+      [
+        "praecantatio",
+        1
+      ],
+      [
+        "tutamen",
+        1
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 7,
+    "complexity": 1,
+    "complexityClamped": 1,
+    "concealed": false,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(WGContent.ItemMagicalBaubles,1,2)",
+    "itemTriggers": [],
+    "key": "WGBAUBLES",
+    "lost": false,
+    "pages": [
+      {
+        "text": "WGBAUBLES.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "WGBAUBLES_KNOCKBACKSHOULDERS"
+        ],
+        "type": "arcane"
+      },
+      {
+        "text": "WGBAUBLES.2",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "WGBAUBLES_WOLFVAMBRACES"
+        ],
+        "type": "arcane"
+      },
+      {
+        "text": "WGBAUBLES.3",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "WGBAUBLES_HASTEVAMBRACES"
+        ],
+        "type": "infusion"
+      },
+      {
+        "text": "WGBAUBLES.4",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "WGBAUBLES_DOUBLEJUMPSHOULDERS"
+        ],
+        "type": "infusion"
+      },
+      {
+        "text": "WGBAUBLES.5",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "WGBAUBLES_SNIPERRING"
+        ],
+        "type": "infusion"
+      },
+      {
+        "text": "WGBAUBLES.6",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "WGBAUBLES_LUCKRING"
+        ],
+        "type": "infusion"
+      },
+      {
+        "recipes": [
+          "WGBAUBLES_COIN"
+        ],
+        "type": "arcane"
+      }
+    ],
+    "parents": [
+      "THAUMIUM"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": -5,
+    "secondary": false,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "pannus",
+        2
+      ],
+      [
+        "tutamen",
+        2
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 9,
+    "complexity": 1,
+    "complexityClamped": 1,
+    "concealed": true,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(WGContent.ItemKama,1,0)",
+    "itemTriggers": [],
+    "key": "CLOAKKAMA",
+    "lost": false,
+    "pages": [
+      {
+        "text": "CLOAKKAMA.1",
+        "type": "text"
+      }
+    ],
+    "parents": [
+      "WGBAUBLES",
+      "CLOAK"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": -5,
+    "secondary": true,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": -3,
+    "complexity": 1,
+    "complexityClamped": 1,
+    "concealed": false,
+    "fake": {
+      "category": "ARTIFICE",
+      "original": "ARCANESTONE"
+    },
+    "hidden": true,
+    "icon": "new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 6)",
+    "itemTriggers": [],
+    "key": "WGFAKEARCANESTONE",
+    "lost": false,
+    "pages": [],
+    "parents": [],
+    "parentsHidden": [],
+    "round": false,
+    "row": -5,
+    "secondary": false,
+    "siblings": [],
+    "special": false,
+    "stub": true,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "terra",
+        1
+      ],
+      [
+        "machina",
+        1
+      ],
+      [
+        "instrumentum",
+        1
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": -1,
+    "complexity": 1,
+    "complexityClamped": 1,
+    "concealed": false,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(WGContent.BlockWoodenDevice,1,2)",
+    "itemTriggers": [],
+    "key": "STONEEXTRUDER",
+    "lost": false,
+    "pages": [
+      {
+        "text": "STONEEXTRUDER.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "STONEEXTRUDER"
+        ],
+        "type": "arcane"
+      }
+    ],
+    "parents": [
+      "WGFAKEARCANESTONE",
+      "THAUMIUM"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": -5,
+    "secondary": false,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "victus",
+        3
+      ],
+      [
+        "machina",
+        3
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": -1,
+    "complexity": 2,
+    "complexityClamped": 2,
+    "concealed": false,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(WGContent.BlockStoneDevice,1,7)",
+    "itemTriggers": [],
+    "key": "AGEINGSTONE",
+    "lost": false,
+    "pages": [
+      {
+        "text": "AGEINGSTONE.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "AGEINGSTONE"
+        ],
+        "type": "arcane"
+      }
+    ],
+    "parents": [
+      "WGFAKEARCANESTONE"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": -7,
+    "secondary": true,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 1
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "alienis",
+        2
+      ],
+      [
+        "machina",
+        2
+      ],
+      [
+        "terra",
+        4
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": -1,
+    "complexity": 2,
+    "complexityClamped": 2,
+    "concealed": false,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(WGContent.BlockStoneDevice,1,0)",
+    "itemTriggers": [],
+    "key": "ETHEREALWALL",
+    "lost": false,
+    "pages": [
+      {
+        "text": "ETHEREALWALL.1",
+        "type": "text"
+      },
+      {
+        "text": "ETHEREALWALL.2",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "ETHEREALWALL"
+        ],
+        "type": "arcane"
+      }
+    ],
+    "parents": [
+      "WGFAKEARCANESTONE"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": -6,
+    "secondary": true,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": -1,
+    "complexity": 1,
+    "complexityClamped": 1,
+    "concealed": false,
+    "fake": {
+      "category": "ALCHEMY",
+      "original": "BATHSALTS"
+    },
+    "hidden": true,
+    "icon": "new ItemStack(ConfigItems.itemBathSalts)",
+    "itemTriggers": [],
+    "key": "WGFAKEBATHSALTS",
+    "lost": false,
+    "pages": [],
+    "parents": [],
+    "parentsHidden": [],
+    "round": false,
+    "row": -3,
+    "secondary": false,
+    "siblings": [],
+    "special": false,
+    "stub": true,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "aqua",
+        3
+      ],
+      [
+        "ignis",
+        3
+      ],
+      [
+        "machina",
+        1
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": -1,
+    "complexity": 1,
+    "complexityClamped": 1,
+    "concealed": true,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(WGContent.BlockWoodenDevice,1,4)",
+    "itemTriggers": [],
+    "key": "SAUNASTOVE",
+    "lost": false,
+    "pages": [
+      {
+        "text": "SAUNASTOVE.1",
+        "type": "text"
+      },
+      {
+        "text": "SAUNASTOVE.2",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "SAUNASTOVE"
+        ],
+        "type": "arcane"
+      }
+    ],
+    "parents": [
+      "WGFAKEBATHSALTS"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": -1,
+    "secondary": true,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 4,
+    "complexity": 1,
+    "complexityClamped": 1,
+    "concealed": false,
+    "fake": {
+      "category": "ALCHEMY",
+      "original": "JARLABEL"
+    },
+    "hidden": true,
+    "icon": "new ItemStack(ConfigBlocks.blockJar)",
+    "itemTriggers": [],
+    "key": "WGFAKEJARLABEL",
+    "lost": false,
+    "pages": [],
+    "parents": [],
+    "parentsHidden": [],
+    "round": false,
+    "row": -1,
+    "secondary": false,
+    "siblings": [],
+    "special": false,
+    "stub": true,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "sensus",
+        4
+      ],
+      [
+        "cognitio",
+        4
+      ],
+      [
+        "instrumentum",
+        2
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 4,
+    "complexity": 2,
+    "complexityClamped": 2,
+    "concealed": false,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(WGContent.BlockWoodenDevice,1,5)",
+    "itemTriggers": [],
+    "key": "LABELLIB",
+    "lost": false,
+    "pages": [
+      {
+        "text": "LABELLIB.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "LABELLIB"
+        ],
+        "type": "arcane"
+      }
+    ],
+    "parents": [
+      "WGFAKEJARLABEL"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": -3,
+    "secondary": true,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 1,
+    "complexity": 1,
+    "complexityClamped": 1,
+    "concealed": false,
+    "fake": {
+      "category": "ARTIFICE",
+      "original": "MIRRORESSENTIA"
+    },
+    "hidden": true,
+    "icon": "new ItemStack(ConfigBlocks.blockMirror,1,6)",
+    "itemTriggers": [],
+    "key": "WGFAKEMIRRORESSENTIA",
+    "lost": false,
+    "pages": [],
+    "parents": [],
+    "parentsHidden": [],
+    "round": false,
+    "row": -7,
+    "secondary": false,
+    "siblings": [],
+    "special": false,
+    "stub": true,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "instrumentum",
+        1
+      ],
+      [
+        "aqua",
+        1
+      ],
+      [
+        "iter",
+        1
+      ],
+      [
+        "limus",
+        1
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 2,
+    "complexity": 2,
+    "complexityClamped": 2,
+    "concealed": false,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(WGContent.BlockMetalDevice,1,0)",
+    "itemTriggers": [],
+    "key": "MIRRORPUMP",
+    "lost": false,
+    "pages": [
+      {
+        "text": "MIRRORPUMP.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "MIRRORPUMP"
+        ],
+        "type": "arcane"
+      }
+    ],
+    "parents": [
+      "WGFAKEMIRRORESSENTIA"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": -8,
+    "secondary": false,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "sensus",
+        1
+      ],
+      [
+        "cognitio",
+        1
+      ],
+      [
+        "spiritus",
+        1
+      ],
+      [
+        "vitreus",
+        1
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 2,
+    "complexity": 2,
+    "complexityClamped": 2,
+    "concealed": false,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(WGContent.ItemScanCamera)",
+    "itemTriggers": [],
+    "key": "SCANCAMERA",
+    "lost": false,
+    "pages": [
+      {
+        "text": "SCANCAMERA.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "SCANCAMERA"
+        ],
+        "type": "arcane"
+      },
+      {
+        "text": "SCANCAMERA.2",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "SCANCAMERA_DEVELOP"
+        ],
+        "type": "arcane"
+      },
+      {
+        "recipes": [
+          "SCANCAMERA_CLEARPLATE"
+        ],
+        "type": "crafting"
+      }
+    ],
+    "parents": [],
+    "parentsHidden": [],
+    "round": false,
+    "row": -4,
+    "secondary": false,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "instrumentum",
+        1
+      ],
+      [
+        "cognitio",
+        1
+      ],
+      [
+        "machina",
+        1
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 1,
+    "complexity": 1,
+    "complexityClamped": 1,
+    "concealed": false,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(WGContent.ItemMaterial,1,7)",
+    "itemTriggers": [],
+    "key": "CALCULATOR",
+    "lost": false,
+    "pages": [
+      {
+        "text": "CALCULATOR.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "CALCULATOR"
+        ],
+        "type": "arcane"
+      }
+    ],
+    "parents": [
+      "INFUSION"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": -5,
+    "secondary": false,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "instrumentum",
+        1
+      ],
+      [
+        "cognitio",
+        1
+      ],
+      [
+        "iter",
+        1
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 2,
+    "complexity": 1,
+    "complexityClamped": 1,
+    "concealed": false,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(WGContent.ItemMaterial,1,11)",
+    "itemTriggers": [],
+    "key": "LABYRINTHSTRING",
+    "lost": false,
+    "pages": [
+      {
+        "text": "LABYRINTHSTRING.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "LABYRINTHSTRING"
+        ],
+        "type": "infusion"
+      }
+    ],
+    "parents": [
+      "INFUSION"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": -6,
+    "secondary": false,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": -4,
+    "complexity": 1,
+    "complexityClamped": 1,
+    "concealed": false,
+    "fake": {
+      "category": "ALCHEMY",
+      "original": "ALCHEMICALMANUFACTURE"
+    },
+    "hidden": true,
+    "icon": "new ResourceLocation(\"thaumcraft\", \"textures/misc/r_alchman.png\")",
+    "itemTriggers": [],
+    "key": "WGFAKEALCHEMICALMANUFACTURE",
+    "lost": false,
+    "pages": [],
+    "parents": [],
+    "parentsHidden": [],
+    "round": false,
+    "row": -4,
+    "secondary": false,
+    "siblings": [],
+    "special": false,
+    "stub": true,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "herba",
+        4
+      ],
+      [
+        "victus",
+        2
+      ],
+      [
+        "aqua",
+        2
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": -6,
+    "complexity": 1,
+    "complexityClamped": 1,
+    "concealed": true,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(Blocks.grass)",
+    "itemTriggers": [],
+    "key": "ALCHEMICALTRANSMOGRIFY",
+    "lost": false,
+    "pages": [
+      {
+        "text": "ALCHEMICALTRANSMOGRIFY.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "ALCHEMICALTRANSMOGRIFY_GRASS"
+        ],
+        "type": "crucible"
+      },
+      {
+        "recipes": [
+          "ALCHEMICALTRANSMOGRIFY_MYCEL"
+        ],
+        "type": "crucible"
+      },
+      {
+        "recipes": [
+          "ALCHEMICALTRANSMOGRIFY_SAND"
+        ],
+        "type": "crucible"
+      },
+      {
+        "recipes": [
+          "ALCHEMICALTRANSMOGRIFY_FLINT"
+        ],
+        "type": "crucible"
+      }
+    ],
+    "parents": [
+      "WGFAKEALCHEMICALMANUFACTURE"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": -4,
+    "secondary": true,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "herba",
+        2
+      ],
+      [
+        "aer",
+        3
+      ],
+      [
+        "perditio",
+        2
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": -6,
+    "complexity": 1,
+    "complexityClamped": 1,
+    "concealed": true,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(WGContent.BlockRoseVine)",
+    "itemTriggers": [],
+    "key": "ROSEVINE",
+    "lost": false,
+    "pages": [
+      {
+        "text": "ROSEVINE.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "ROSEVINE"
+        ],
+        "type": "crucible"
+      }
+    ],
+    "parents": [
+      "WGFAKEALCHEMICALMANUFACTURE"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": -5,
+    "secondary": true,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": -5,
+    "complexity": 1,
+    "complexityClamped": 1,
+    "concealed": false,
+    "fake": {
+      "category": "ALCHEMY",
+      "original": "PUREIRON"
+    },
+    "hidden": true,
+    "icon": "new ItemStack(ConfigItems.itemNugget, 1, 16)",
+    "itemTriggers": [],
+    "key": "WGFAKEPUREIRON",
+    "lost": false,
+    "pages": [],
+    "parents": [],
+    "parentsHidden": [],
+    "round": false,
+    "row": -2,
+    "secondary": false,
+    "siblings": [],
+    "special": false,
+    "stub": true,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "metallum",
+        5
+      ],
+      [
+        "ordo",
+        1
+      ],
+      [
+        "venenum",
+        1
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": -6,
+    "complexity": 1,
+    "complexityClamped": 1,
+    "concealed": true,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(ConfigItems.itemNugget, 1, 21)",
+    "itemTriggers": [],
+    "key": "PURECINNABAR",
+    "lost": false,
+    "pages": [
+      {
+        "text": "PURECINNABAR.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "PURECINNABAR"
+        ],
+        "type": "crucible"
+      }
+    ],
+    "parents": [
+      "WGFAKEPUREIRON"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": -3,
+    "secondary": true,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 3,
+    "complexity": 1,
+    "complexityClamped": 1,
+    "concealed": false,
+    "fake": {
+      "category": "ARTIFICE",
+      "original": "INFERNALFURNACE"
+    },
+    "hidden": true,
+    "icon": "new ResourceLocation(\"thaumcraft\", \"textures/misc/r_infernalfurnace.png\")",
+    "itemTriggers": [],
+    "key": "WGFAKEINFERNALFURNACE",
+    "lost": false,
+    "pages": [],
+    "parents": [],
+    "parentsHidden": [],
+    "round": false,
+    "row": -5,
+    "secondary": false,
+    "siblings": [],
+    "special": false,
+    "stub": true,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "ignis",
+        2
+      ],
+      [
+        "metallum",
+        1
+      ],
+      [
+        "fabrico",
+        1
+      ],
+      [
+        "tenebrae",
+        1
+      ],
+      [
+        "vitium",
+        1
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 4,
+    "complexity": 2,
+    "complexityClamped": 2,
+    "concealed": true,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ResourceLocation(\"witchinggadgets:textures/gui/research/icon_blastfurnace.png\")",
+    "itemTriggers": [],
+    "key": "INFERNALBLASTFURNACE",
+    "lost": false,
+    "pages": [
+      {
+        "text": "INFERNALBLASTFURNACE.1",
+        "type": "text"
+      },
+      {
+        "text": "INFERNALBLASTFURNACE.2",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "INFERNALBLASTFURNACE"
+        ],
+        "type": "compound"
+      },
+      {
+        "text": "INFERNALBLASTFURNACE.3",
+        "type": "text"
+      }
+    ],
+    "parents": [
+      "WGFAKEINFERNALFURNACE"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": -7,
+    "secondary": false,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 3
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 5,
+    "complexity": 1,
+    "complexityClamped": 1,
+    "concealed": false,
+    "fake": {
+      "category": "ALCHEMY",
+      "original": "CENTRIFUGE"
+    },
+    "hidden": true,
+    "icon": "new ItemStack(ConfigBlocks.blockTube, 1, 2)",
+    "itemTriggers": [],
+    "key": "WGFAKECENTRIFUGE",
+    "lost": false,
+    "pages": [],
+    "parents": [],
+    "parentsHidden": [],
+    "round": false,
+    "row": -5,
+    "secondary": false,
+    "siblings": [],
+    "special": false,
+    "stub": true,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "terra",
+        2
+      ],
+      [
+        "permutatio",
+        1
+      ],
+      [
+        "potentia",
+        1
+      ],
+      [
+        "ordo",
+        1
+      ],
+      [
+        "perditio",
+        1
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 6,
+    "complexity": 2,
+    "complexityClamped": 2,
+    "concealed": false,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(WGContent.BlockMetalDevice,1,1)",
+    "itemTriggers": [],
+    "key": "TERRAFORMER",
+    "lost": false,
+    "pages": [
+      {
+        "text": "TERRAFORMER.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "TERRAFORMER"
+        ],
+        "type": "infusion"
+      },
+      {
+        "text": "TERRAFORMER.2",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "TERRAFORMER_PLAINS"
+        ],
+        "type": "arcane"
+      }
+    ],
+    "parents": [
+      "WGFAKECENTRIFUGE"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": -7,
+    "secondary": false,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "gelum",
+        8
+      ],
+      [
+        "ordo",
+        4
+      ],
+      [
+        "permutatio",
+        2
+      ],
+      [
+        "potentia",
+        1
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 6,
+    "complexity": 2,
+    "complexityClamped": 2,
+    "concealed": false,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(WGContent.BlockMetalDevice,1,3)",
+    "itemTriggers": [],
+    "key": "TERRAFORMFOCUS_COLDTAIGA",
+    "lost": false,
+    "pages": [
+      {
+        "text": "TERRAFORMFOCUS_COLDTAIGA.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "TERRAFORMFOCUS_COLDTAIGA"
+        ],
+        "type": "arcane"
+      }
+    ],
+    "parents": [
+      "TERRAFORMER"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": -9,
+    "secondary": true,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "ignis",
+        4
+      ],
+      [
+        "perditio",
+        8
+      ],
+      [
+        "permutatio",
+        2
+      ],
+      [
+        "potentia",
+        1
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 5,
+    "complexity": 2,
+    "complexityClamped": 2,
+    "concealed": false,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(WGContent.BlockMetalDevice,1,4)",
+    "itemTriggers": [],
+    "key": "TERRAFORMFOCUS_DESERT",
+    "lost": false,
+    "pages": [
+      {
+        "text": "TERRAFORMFOCUS_DESERT.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "TERRAFORMFOCUS_DESERT"
+        ],
+        "type": "arcane"
+      }
+    ],
+    "parents": [
+      "TERRAFORMER"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": -8,
+    "secondary": true,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "arbor",
+        8
+      ],
+      [
+        "herba",
+        4
+      ],
+      [
+        "permutatio",
+        2
+      ],
+      [
+        "potentia",
+        1
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 7,
+    "complexity": 2,
+    "complexityClamped": 2,
+    "concealed": false,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(WGContent.BlockMetalDevice,1,5)",
+    "itemTriggers": [],
+    "key": "TERRAFORMFOCUS_JUNGLE",
+    "lost": false,
+    "pages": [
+      {
+        "text": "TERRAFORMFOCUS_JUNGLE.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "TERRAFORMFOCUS_JUNGLE"
+        ],
+        "type": "arcane"
+      }
+    ],
+    "parents": [
+      "TERRAFORMER"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": -9,
+    "secondary": true,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "tenebrae",
+        8
+      ],
+      [
+        "ignis",
+        4
+      ],
+      [
+        "permutatio",
+        2
+      ],
+      [
+        "potentia",
+        1
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 8,
+    "complexity": 2,
+    "complexityClamped": 2,
+    "concealed": false,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(WGContent.BlockMetalDevice,1,6)",
+    "itemTriggers": [],
+    "key": "TERRAFORMFOCUS_HELL",
+    "lost": false,
+    "pages": [
+      {
+        "text": "TERRAFORMFOCUS_HELL.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "TERRAFORMFOCUS_HELL"
+        ],
+        "type": "arcane"
+      }
+    ],
+    "parents": [
+      "TERRAFORMER"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": -9,
+    "secondary": true,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 2
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "herba",
+        8
+      ],
+      [
+        "terra",
+        4
+      ],
+      [
+        "permutatio",
+        2
+      ],
+      [
+        "potentia",
+        1
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 9,
+    "complexity": 2,
+    "complexityClamped": 2,
+    "concealed": false,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(WGContent.BlockMetalDevice,1,9)",
+    "itemTriggers": [],
+    "key": "TERRAFORMFOCUS_MUSHROOM",
+    "lost": false,
+    "pages": [
+      {
+        "text": "TERRAFORMFOCUS_MUSHROOM.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "TERRAFORMFOCUS_MUSHROOM"
+        ],
+        "type": "arcane"
+      }
+    ],
+    "parents": [
+      "TERRAFORMER"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": -8,
+    "secondary": true,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "vitium",
+        8
+      ],
+      [
+        "praecantatio",
+        4
+      ],
+      [
+        "permutatio",
+        2
+      ],
+      [
+        "potentia",
+        1
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 9,
+    "complexity": 2,
+    "complexityClamped": 2,
+    "concealed": false,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(WGContent.BlockMetalDevice,1,8)",
+    "itemTriggers": [],
+    "key": "TERRAFORMFOCUS_TAINT",
+    "lost": false,
+    "pages": [
+      {
+        "text": "TERRAFORMFOCUS_TAINT.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "TERRAFORMFOCUS_TAINT"
+        ],
+        "type": "infusion"
+      }
+    ],
+    "parents": [
+      "TERRAFORMER",
+      "BOTTLETAINT"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": -7,
+    "secondary": true,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 3
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "vitreus",
+        1
+      ],
+      [
+        "ordo",
+        1
+      ],
+      [
+        "praecantatio",
+        1
+      ],
+      [
+        "fabrico",
+        1
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 1,
+    "complexity": 2,
+    "complexityClamped": 2,
+    "concealed": false,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(WGContent.BlockWoodenDevice,1,3)",
+    "itemTriggers": [],
+    "key": "GEMCUTTING",
+    "lost": false,
+    "pages": [
+      {
+        "text": "GEMCUTTING.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "GEMCUTTING_TOOLS"
+        ],
+        "type": "crafting"
+      },
+      {
+        "recipes": [
+          "GEMCUTTING"
+        ],
+        "type": "compound"
+      },
+      {
+        "text": "GEMCUTTING.2",
+        "type": "text"
+      },
+      {
+        "text": "GEMCUTTING.3",
+        "type": "text"
+      },
+      {
+        "text": "GEMCUTTING.4",
+        "type": "text"
+      },
+      {
+        "text": "GEMCUTTING.5",
+        "type": "text"
+      },
+      {
+        "text": "GEMCUTTING.6",
+        "type": "text"
+      },
+      {
+        "text": "GEMCUTTING.7",
+        "type": "text"
+      }
+    ],
+    "parents": [],
+    "parentsHidden": [],
+    "round": false,
+    "row": -2,
+    "secondary": false,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "vitreus",
+        3
+      ],
+      [
+        "ordo",
+        2
+      ],
+      [
+        "vacuos",
+        4
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 2,
+    "complexity": 2,
+    "complexityClamped": 2,
+    "concealed": false,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(WGContent.ItemCapsule)",
+    "itemTriggers": [],
+    "key": "CRYSTALCAPSULE",
+    "lost": false,
+    "pages": [
+      {
+        "text": "CRYSTALCAPSULE.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "CRYSTALCAPSULE"
+        ],
+        "type": "crucible"
+      }
+    ],
+    "parents": [
+      "GEMCUTTING"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": -2,
+    "secondary": true,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": -8,
+    "complexity": 1,
+    "complexityClamped": 1,
+    "concealed": false,
+    "fake": {
+      "category": "ARTIFICE",
+      "original": "INFUSIONENCHANTMENT"
+    },
+    "hidden": true,
+    "icon": "new ResourceLocation(\"thaumcraft:textures/misc/r_enchant.png\")",
+    "itemTriggers": [],
+    "key": "WGFAKEINFUSIONENCHANTMENT",
+    "lost": false,
+    "pages": [],
+    "parents": [],
+    "parentsHidden": [],
+    "round": false,
+    "row": 1,
+    "secondary": false,
+    "siblings": [],
+    "special": false,
+    "stub": true,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "praecantatio",
+        2
+      ],
+      [
+        "vitreus",
+        4
+      ],
+      [
+        "tenebrae",
+        4
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": -10,
+    "complexity": 2,
+    "complexityClamped": 2,
+    "concealed": true,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ResourceLocation(\"witchinggadgets:textures/gui/research/icon_ench_invisGear.png\")",
+    "itemTriggers": [],
+    "key": "ENCH_INVISIBLEGEAR",
+    "lost": false,
+    "pages": [
+      {
+        "text": "ENCH_INVISIBLEGEAR.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "ENCH_INVISIBLEGEAR"
+        ],
+        "type": "enchant"
+      }
+    ],
+    "parents": [
+      "WGFAKEINFUSIONENCHANTMENT"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": 1,
+    "secondary": true,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "praecantatio",
+        2
+      ],
+      [
+        "sensus",
+        4
+      ],
+      [
+        "lux",
+        4
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": -10,
+    "complexity": 2,
+    "complexityClamped": 2,
+    "concealed": true,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ResourceLocation(\"witchinggadgets:textures/gui/research/icon_ench_unveiling.png\")",
+    "itemTriggers": [],
+    "key": "ENCH_UNVEILING",
+    "lost": false,
+    "pages": [
+      {
+        "text": "ENCH_UNVEILING.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "ENCH_UNVEILING"
+        ],
+        "type": "enchant"
+      }
+    ],
+    "parents": [
+      "WGFAKEINFUSIONENCHANTMENT"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": 2,
+    "secondary": true,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "praecantatio",
+        2
+      ],
+      [
+        "motus",
+        4
+      ],
+      [
+        "tenebrae",
+        4
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": -9,
+    "complexity": 2,
+    "complexityClamped": 2,
+    "concealed": true,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ResourceLocation(\"witchinggadgets:textures/gui/research/icon_ench_stealth.png\")",
+    "itemTriggers": [],
+    "key": "ENCH_STEALTH",
+    "lost": false,
+    "pages": [
+      {
+        "text": "ENCH_STEALTH.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "ENCH_STEALTH"
+        ],
+        "type": "enchant"
+      }
+    ],
+    "parents": [
+      "WGFAKEINFUSIONENCHANTMENT"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": 3,
+    "secondary": true,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "praecantatio",
+        2
+      ],
+      [
+        "telum",
+        4
+      ],
+      [
+        "tenebrae",
+        4
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": -11,
+    "complexity": 2,
+    "complexityClamped": 2,
+    "concealed": true,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ResourceLocation(\"witchinggadgets:textures/gui/research/icon_ench_backstab.png\")",
+    "itemTriggers": [],
+    "key": "ENCH_BACKSTAB",
+    "lost": false,
+    "pages": [
+      {
+        "text": "ENCH_BACKSTAB.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "ENCH_BACKSTAB"
+        ],
+        "type": "enchant"
+      }
+    ],
+    "parents": [
+      "ENCH_STEALTH"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": 4,
+    "secondary": true,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "praecantatio",
+        2
+      ],
+      [
+        "vinculum",
+        4
+      ],
+      [
+        "tutamen",
+        4
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": -11,
+    "complexity": 2,
+    "complexityClamped": 2,
+    "concealed": true,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ResourceLocation(\"witchinggadgets:textures/gui/research/icon_ench_rideProtect.png\")",
+    "itemTriggers": [],
+    "key": "ENCH_RIDEPROTECT",
+    "lost": false,
+    "pages": [
+      {
+        "text": "ENCH_RIDEPROTECT.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "ENCH_RIDEPROTECT"
+        ],
+        "type": "enchant"
+      }
+    ],
+    "parents": [
+      "WGFAKEINFUSIONENCHANTMENT"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": 0,
+    "secondary": true,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 1,
+    "complexity": 1,
+    "complexityClamped": 1,
+    "concealed": false,
+    "fake": {
+      "category": "ELDRITCH",
+      "original": "ELDRITCHMINOR"
+    },
+    "hidden": true,
+    "icon": "new ResourceLocation(\"thaumcraft\", \"textures/misc/r_eldritchminor.png\")",
+    "itemTriggers": [],
+    "key": "WGFAKEELDRITCHMINOR",
+    "lost": false,
+    "pages": [],
+    "parents": [],
+    "parentsHidden": [],
+    "round": false,
+    "row": 3,
+    "secondary": false,
+    "siblings": [],
+    "special": true,
+    "stub": true,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 0,
+    "complexity": 1,
+    "complexityClamped": 1,
+    "concealed": false,
+    "fake": {
+      "category": "ELDRITCH",
+      "original": "PRIMPEARL"
+    },
+    "hidden": true,
+    "icon": "new ItemStack(ConfigItems.itemEldritchObject, 1, 3)",
+    "itemTriggers": [],
+    "key": "WGFAKEPRIMPEARL",
+    "lost": false,
+    "pages": [],
+    "parents": [],
+    "parentsHidden": [],
+    "round": false,
+    "row": 1,
+    "secondary": false,
+    "siblings": [],
+    "special": true,
+    "stub": true,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "praecantatio",
+        1
+      ],
+      [
+        "potentia",
+        1
+      ],
+      [
+        "aer",
+        1
+      ],
+      [
+        "ignis",
+        1
+      ],
+      [
+        "aqua",
+        1
+      ],
+      [
+        "terra",
+        1
+      ],
+      [
+        "ordo",
+        1
+      ],
+      [
+        "perditio",
+        1
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": -2,
+    "complexity": 3,
+    "complexityClamped": 3,
+    "concealed": false,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ResourceLocation(\"witchinggadgets:textures/gui/research/icon_primordialGear.png\")",
+    "itemTriggers": [],
+    "key": "PRIMORDIALGEARSET",
+    "lost": false,
+    "pages": [
+      {
+        "text": "PRIMORDIALGEARSET.1",
+        "type": "text"
+      },
+      {
+        "text": "PRIMORDIALGEARSET.2",
+        "type": "text"
+      }
+    ],
+    "parents": [
+      "VOIDMETAL",
+      "WGFAKEPRIMPEARL"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": 3,
+    "secondary": false,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "praecantatio",
+        8
+      ],
+      [
+        "vitreus",
+        4
+      ],
+      [
+        "vacuos",
+        4
+      ],
+      [
+        "potentia",
+        4
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": -3,
+    "complexity": 1,
+    "complexityClamped": 1,
+    "concealed": false,
+    "fake": null,
+    "hidden": true,
+    "icon": "new ItemStack(WGContent.ItemMaterial,1,12)",
+    "itemTriggers": [
+      "new ItemStack(WGContent.ItemMaterial,1,12)"
+    ],
+    "key": "EMPOWERPEARL",
+    "lost": false,
+    "pages": [
+      {
+        "text": "EMPOWERPEARL.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "EMPOWERPEARL"
+        ],
+        "type": "infusion"
+      }
+    ],
+    "parents": [
+      "WGFAKEPRIMPEARL"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": 5,
+    "secondary": true,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "vitreus",
+        1
+      ],
+      [
+        "praecantatio",
+        1
+      ],
+      [
+        "instrumentum",
+        1
+      ],
+      [
+        "aer",
+        1
+      ],
+      [
+        "ignis",
+        1
+      ],
+      [
+        "aqua",
+        1
+      ],
+      [
+        "terra",
+        1
+      ],
+      [
+        "ordo",
+        1
+      ],
+      [
+        "perditio",
+        1
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 2,
+    "complexity": 2,
+    "complexityClamped": 2,
+    "concealed": true,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(WGContent.ItemPrimordialGlove)",
+    "itemTriggers": [],
+    "key": "PRIMORDIALGLOVE",
+    "lost": false,
+    "pages": [
+      {
+        "text": "PRIMORDIALGLOVE.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "PRIMORDIALGLOVE"
+        ],
+        "type": "infusion"
+      },
+      {
+        "text": "PRIMORDIALGLOVE.2",
+        "type": "text"
+      }
+    ],
+    "parents": [
+      "VOIDMETAL",
+      "PRIMORDIALGEARSET",
+      "WGFAKEPRIMPEARL"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": 0,
+    "secondary": false,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "perditio",
+        1
+      ],
+      [
+        "telum",
+        1
+      ],
+      [
+        "instrumentum",
+        1
+      ],
+      [
+        "aer",
+        1
+      ],
+      [
+        "ignis",
+        1
+      ],
+      [
+        "aqua",
+        1
+      ],
+      [
+        "praecantatio",
+        2
+      ],
+      [
+        "terra",
+        1
+      ],
+      [
+        "ordo",
+        1
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": -4,
+    "complexity": 3,
+    "complexityClamped": 3,
+    "concealed": true,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ResourceLocation(\"witchinggadgets:textures/gui/research/icon_primordialWeaponry.png\")",
+    "itemTriggers": [],
+    "key": "PRIMORDIALWEAPONRY",
+    "lost": false,
+    "pages": [
+      {
+        "text": "PRIMORDIALWEAPONRY.1",
+        "type": "text"
+      },
+      {
+        "text": "PRIMORDIALWEAPONRY.2",
+        "type": "text"
+      },
+      {
+        "text": "PRIMORDIALWEAPONRY.3",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "PRIMORDIALWEAPONRY_CLAYMORE"
+        ],
+        "type": "infusion"
+      },
+      {
+        "recipes": [
+          "PRIMORDIALWEAPONRY_HAMMER"
+        ],
+        "type": "infusion"
+      },
+      {
+        "recipes": [
+          "PRIMORDIALWEAPONRY_GREATAXE"
+        ],
+        "type": "infusion"
+      }
+    ],
+    "parents": [
+      "PRIMORDIALGEARSET"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": 2,
+    "secondary": false,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "tutamen",
+        1
+      ],
+      [
+        "praecantatio",
+        1
+      ],
+      [
+        "aer",
+        1
+      ],
+      [
+        "ignis",
+        1
+      ],
+      [
+        "aqua",
+        1
+      ],
+      [
+        "terra",
+        1
+      ],
+      [
+        "ordo",
+        1
+      ],
+      [
+        "perditio",
+        1
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": -1,
+    "complexity": 3,
+    "complexityClamped": 3,
+    "concealed": true,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ResourceLocation(\"witchinggadgets:textures/gui/research/icon_primordialArmor.png\")",
+    "itemTriggers": [],
+    "key": "PRIMORDIALARMOR",
+    "lost": false,
+    "pages": [
+      {
+        "text": "PRIMORDIALARMOR.1",
+        "type": "text"
+      },
+      {
+        "text": "PRIMORDIALARMOR.2",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "PRIMORDIALARMOR_HELMET"
+        ],
+        "type": "infusion"
+      },
+      {
+        "recipes": [
+          "PRIMORDIALARMOR_CUIRASS"
+        ],
+        "type": "infusion"
+      },
+      {
+        "recipes": [
+          "PRIMORDIALARMOR_GREAVES"
+        ],
+        "type": "infusion"
+      },
+      {
+        "recipes": [
+          "PRIMORDIALARMOR_BOOTS"
+        ],
+        "type": "infusion"
+      }
+    ],
+    "parents": [
+      "PRIMORDIALGEARSET",
+      "ARMORFORTRESS"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": 5,
+    "secondary": false,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  },
+  {
+    "aspectTriggers": [],
+    "aspects": [
+      [
+        "pannus",
+        2
+      ],
+      [
+        "vacuos",
+        3
+      ],
+      [
+        "perditio",
+        5
+      ],
+      [
+        "alienis",
+        3
+      ]
+    ],
+    "autoUnlock": false,
+    "category": "WITCHGADG",
+    "column": 2,
+    "complexity": 1,
+    "complexityClamped": 1,
+    "concealed": true,
+    "fake": null,
+    "hidden": false,
+    "icon": "new ItemStack(WGContent.ItemBag,1,1)",
+    "itemTriggers": [],
+    "key": "VOIDBAG",
+    "lost": false,
+    "pages": [
+      {
+        "text": "VOIDBAG.1",
+        "type": "text"
+      },
+      {
+        "recipes": [
+          "VOIDBAG"
+        ],
+        "type": "infusion"
+      }
+    ],
+    "parents": [
+      "BAGOFTRICKS",
+      "WGFAKEELDRITCHMINOR"
+    ],
+    "parentsHidden": [],
+    "round": false,
+    "row": 2,
+    "secondary": true,
+    "siblings": [],
+    "special": false,
+    "stub": false,
+    "virtual": false,
+    "warp": 0
+  }
+]
