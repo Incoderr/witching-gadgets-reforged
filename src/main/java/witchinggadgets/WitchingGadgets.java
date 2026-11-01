@@ -17,6 +17,10 @@ import witchinggadgets.registry.ModEntities;
 import witchinggadgets.registry.ModItems;
 import witchinggadgets.registry.ModMenus;
 import witchinggadgets.registry.ModSounds;
+import witchinggadgets.research.BaseResearchLinks;
+import witchinggadgets.research.WgResearch;
+import witchinggadgets.test.CoreGameTests;
+import witchinggadgets.test.ResearchTableGameTests;
 import witchinggadgets.test.SmokeGameTests;
 
 @Mod(WitchingGadgets.MODID)
@@ -36,10 +40,14 @@ public class WitchingGadgets {
         ModSounds.register(modEventBus);
         ModMenus.register(modEventBus);
         ModPayloads.register();
+        WgResearch.init();
         Features.recipes();
+        BaseResearchLinks.register();
         Features.research();
         AspectSync.addRegistrar(Features::aspects);
         SmokeGameTests.register(modEventBus);
+        CoreGameTests.register(modEventBus);
+        ResearchTableGameTests.register(modEventBus);
         Features.tests(modEventBus);
     }
 
