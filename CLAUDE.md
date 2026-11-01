@@ -59,6 +59,12 @@ This file describes how to develop and port the mod. Phase status, test counts, 
 - Recipe keys are WG `tag + tagAddon` (`BAGOFTRICKS_CLOTH`, `CLOAKKAMA_0`), the research of a recipe is WG `tag`.
 - Base ids of TC4 references come from `tools/tc4_refs.json` (copied from Thaumic Tinkerer, built by `tools/tc4_ref.py --all` from the base `reference/decompiled`): `ConfigItems.itemResource` meta 7 is `thaumcraft:enchanted_fabric`, `ConfigBlocks.blockCosmeticSolid` meta 6 `thaumcraft:arcane_stone`.
 
+## Content notes
+
+- `materials/MaterialsFeature` registers all 14 `WG_Material` metas and the void metal block. Their behaviour (abacus, iconographic plate and photo, guiding string, gemcutting tools) arrives with the features that use them. The three cloths share `mat_cloth` tinted with the aspect colour like WG `getColorFromItemStack` (Vacuos `0x888888`, Lucrum `0xE6BE44`, Praecantatio `0x9700C0`). Item aspects follow WG `postInitThaumcraft`.
+- Spinning wheel: the WG TESR is static (the `animation` counter is never used), so `tools/gen_spinning.py` turns the 17 `ModelRenderer` boxes into a block model without a BER. The model is in the WG facing 5 (east) orientation, the blockstate rotates it with `y` 0/90/180/270 for east/south/west/north; WG renders without the usual entity flip, so side faces are upside down and the UVs keep that. The facing is opposite to the player's look like WG `onBlockPlacedBy`.
+- `spinning/SpinningRecipe` is WG `SpinningRecipe`: unordered, the number of filled input slots must equal the number of inputs, one item is taken from every input slot. Progress counts to 120 and the craft happens on the next tick (121 ticks per item), like WG. All six slots accept items from hoppers like WG `IInventory`; only the GUI output slot refuses placement. The GUI progress bar is synced through `ContainerData`.
+
 ## Generated files (do not edit by hand)
 
 | File | Generator |

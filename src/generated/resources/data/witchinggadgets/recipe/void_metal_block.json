@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "witchinggadgets:void_metal_block"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "v": "#c:ingots/void_metal"
+  },
+  "pattern": [
+    "vvv",
+    "vvv",
+    "vvv"
+  ],
+  "result": {
+    "id": "witchinggadgets:void_metal_block"
+  }
+}

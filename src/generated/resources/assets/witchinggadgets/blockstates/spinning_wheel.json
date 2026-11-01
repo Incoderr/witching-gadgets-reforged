@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "witchinggadgets:block/spinning_wheel"
+    },
+    "facing=south": {
+      "model": "witchinggadgets:block/spinning_wheel",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "witchinggadgets:block/spinning_wheel",
+      "y": 180
+    },
+    "facing=north": {
+      "model": "witchinggadgets:block/spinning_wheel",
+      "y": 270
+    }
+  }
+}

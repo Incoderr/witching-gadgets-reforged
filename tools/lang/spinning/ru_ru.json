@@ -1,0 +1,9 @@
+{
+  "tc.research_name.SPINNINGWHEEL": "Прядение",
+  "tc.research_text.SPINNINGWHEEL": "[WG] Не уколитесь",
+  "tc.research_page.SPINNINGWHEEL.1": "Многие великие волшебники пренебрегают прядением и ткачеством, недооценивая их истинную силу. Немало магических артефактов рождается из работы с тканью, включая мантию каждого тауматурга. Некоторые ведьмы скажут, что само плетение заклинаний во многом похоже на ткачество: оно требует бережного обращения с составными частями, будь то сырая магия в виде аспектов или нить.",
+  "tc.research_page.SPINNINGWHEEL.2": "Каждому, кто вступает на этот путь, стоит начать с собственной §lпрялки§r. Она нужна для получения пряжи: обычной, из изысканных материалов или усиленной магией. Из этой пряжи потом ткут полотно, из которого шьют разнообразную одежду и магические артефакты.",
+  "tc.research_page.SPINNINGWHEEL.r1": "<IMG>witchinggadgets:textures/gui/research/spinningrecipes1.png:0:0:255:255:0.5</IMG>§lПряжа§r",
+  "tc.research_page.SPINNINGWHEEL.r2": "<IMG>witchinggadgets:textures/gui/research/spinningrecipes2.png:0:0:255:255:0.5</IMG>§lЗолотая нить§r",
+  "tc.research_page.SPINNINGWHEEL.r3": "<IMG>witchinggadgets:textures/gui/research/spinningrecipes3.png:0:0:255:255:0.5</IMG>§lТаум-нить§r"
+}

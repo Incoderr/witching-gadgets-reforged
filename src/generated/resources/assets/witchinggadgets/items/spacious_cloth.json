@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "witchinggadgets:item/spacious_cloth",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -7829368
+      }
+    ]
+  }
+}
