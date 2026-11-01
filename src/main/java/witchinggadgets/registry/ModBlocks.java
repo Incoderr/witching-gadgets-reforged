@@ -5,11 +5,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
-import net.neoforged.neoforge.registries.DeferredRegister;
-import witchinggadgets.WitchingGadgets;
 
 public final class ModBlocks {
-    public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(WitchingGadgets.MODID);
+    public static final witchinggadgets.platform.WgRegistration.Blocks BLOCKS = new witchinggadgets.platform.WgRegistration.Blocks();
 
     private ModBlocks() {
     }
@@ -23,7 +21,7 @@ public final class ModBlocks {
         DeferredBlock<B> block,
         UnaryOperator<Item.Properties> itemProperties
     ) {
-        ModItems.ITEMS.registerSimpleBlockItem(block, itemProperties);
+        ModItems.ITEMS.registerSimpleBlockItem(block, itemProperties.apply(new Item.Properties()));
         return block;
     }
 

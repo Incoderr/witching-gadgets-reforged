@@ -1,11 +1,9 @@
 package witchinggadgets.registry;
 
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.registries.DeferredRegister;
-import witchinggadgets.WitchingGadgets;
 
 public final class ModItems {
-    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(WitchingGadgets.MODID);
+    public static final witchinggadgets.platform.WgRegistration.Items ITEMS = new witchinggadgets.platform.WgRegistration.Items();
 
     private ModItems() {
     }

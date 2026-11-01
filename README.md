@@ -1,6 +1,6 @@
 # Witching Gadgets: Reforged
 
-Unofficial port of **Witching Gadgets 1.1.10** by BluSunrize from Minecraft 1.7.10 to **Minecraft 26.3** on **NeoForge 26.3**. It is an addon to [Thaumcraft 4: Reforged](https://github.com/notlikethiss/thaumcraft-4-reforged) and needs it to run.
+Unofficial port of **Witching Gadgets 1.1.10** by BluSunrize from Minecraft 1.7.10 to **Minecraft 1.21.1** on **NeoForge 21.1** (branch `mc/1.21.1`, a backport of `main` for Minecraft 26.3). It is an addon to [Thaumcraft 4: Reforged](https://github.com/notlikethiss/thaumcraft-4-reforged) (branch `mc/1.21.1`) and needs it to run.
 
 The goal is to recreate the original gameplay as closely as possible: the spinning wheel and weaving, cloaks, robes and other magical clothing, infused gems and primordial gear, the Thaumic blast furnace and ore clusters, essentia pumps, terraformers and the rest of the gadgets. Integrations with other mods (except JEI) are not ported. Travellers' Gear slots are not available on modern versions, so their items are moved to the base mod's bauble slots. The technical side is rebuilt on modern APIs, the original coremod (ASM transformers) is replaced by events or mixins.
 
@@ -10,31 +10,29 @@ The project is a scaffold for now: registries, network seams, config, game test 
 
 ## Requirements to build
 
-- Java 25
+- Java 21
 - Python 3
-- A checkout of Thaumcraft 4: Reforged next to this repository (`../thaumcraft-4-reforged`)
+- A checkout of Thaumcraft 4: Reforged on branch `mc/1.21.1`, either as a worktree in `../thaumcraft-4-reforged/.worktrees/mc-1.21.1` or as `../thaumcraft-4-reforged-1.21.1` (or pass `-PthaumcraftDir=/path`)
 
-Versions match the base mod:
+Versions match the base mod's `mc/1.21.1` branch:
 
 - Mod `1.0`
 - [Thaumcraft 4: Reforged](https://github.com/notlikethiss/thaumcraft-4-reforged) `1.0`
-- Minecraft `26.3`
-- NeoForge `26.3.0.57-beta`
-- ModDevGradle `2.0.148`
-- TerraBlender `26.3-26.3.0.0.9` (required by the base)
-- JEI `31.9.0.58` (optional at runtime; included in development runs)
+- Minecraft `1.21.1`
+- NeoForge `21.1.256`
+- ModDevGradle `2.0.148`, Parchment `2024.11.17`
+- TerraBlender `1.21.1-4.1.0.1` and Curios `9.5.1+1.21.1` (required by the base)
+- JEI `19.57.0.451` (optional at runtime; included in development runs, `-PwithoutJei` disables it)
 
 ## Building and running
 
-The base mod is included as a Gradle composite build (`includeBuild("../thaumcraft-4-reforged")`), so Gradle builds it automatically and both mods are loaded in every run.
+The base mod is included as a Gradle composite build: `settings.gradle` picks the first checkout whose `minecraft_version` is `1.21.1`, Gradle builds it automatically and both mods are loaded in every run.
 
 ```sh
-export JAVA_HOME=/path/to/openjdk-25
-
 ./gradlew build               # build the addon jar into build/libs
 ./gradlew runClient           # start a development client
-./gradlew runServer           # start a development server (game folder: run/)
-./gradlew runGameTestServer   # run the addon game tests only
+./gradlew runServer           # start a development server (game folder: run/server)
+./gradlew runGameTestServer   # run the addon game tests (game folder: run/gametest)
 python3 tools/fetch_wg.py     # download the original source into reference/wg-src
 python3 tools/check_seams.py  # check version-specific API boundaries
 ```
@@ -45,7 +43,7 @@ GitHub Actions builds pushes to `main` and `mc/**` and can also be started manua
 
 The workflow checks out Thaumcraft 4: Reforged alongside the addon, using the matching `mc/**` branch for Minecraft branches and `main` otherwise. Java, Minecraft and mod versions are read from `gradle.properties`.
 
-After the seam check and Gradle build pass, the workflow replaces the release and tag named after the Minecraft version (currently `26.3`), attaches the addon JAR and uses the latest commit as release notes. Releases from `main` are marked as latest. This follows the release process used by Thaumcraft 4: Reforged.
+After the seam check and Gradle build pass, the workflow replaces the release and tag named after the Minecraft version (`1.21.1` on this branch), attaches the addon JAR and uses the latest commit as release notes. Releases from `main` are marked as latest. This follows the release process used by Thaumcraft 4: Reforged.
 
 ## Project layout
 

@@ -1,7 +1,7 @@
 package witchinggadgets;
 
 import com.mojang.logging.LogUtils;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
@@ -25,7 +25,7 @@ public class WitchingGadgets {
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public WitchingGadgets(IEventBus modEventBus, ModContainer modContainer) {
-        modContainer.registerConfig(ModConfig.Type.SYNCED, Config.SPEC);
+        modContainer.registerConfig(ModConfig.Type.SERVER, Config.SPEC);
         Features.load();
         ModEffects.register(modEventBus);
         ModBlocks.register(modEventBus);
@@ -43,7 +43,7 @@ public class WitchingGadgets {
         Features.tests(modEventBus);
     }
 
-    public static Identifier id(String path) {
-        return Identifier.fromNamespaceAndPath(MODID, path);
+    public static ResourceLocation id(String path) {
+        return ResourceLocation.fromNamespaceAndPath(MODID, path);
     }
 }
