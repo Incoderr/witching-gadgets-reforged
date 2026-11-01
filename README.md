@@ -34,6 +34,9 @@ The base mod is included as a Gradle composite build: `settings.gradle` picks th
 ./gradlew runServer           # start a development server (game folder: run/server)
 ./gradlew runGameTestServer   # run the addon game tests (game folder: run/gametest)
 python3 tools/fetch_wg.py     # download the original source into reference/wg-src
+python3 tools/convert_assets.py
+python3 tools/gen_resources.py
+python3 tools/inventory.py --check
 python3 tools/check_seams.py  # check version-specific API boundaries
 ```
 
@@ -65,11 +68,19 @@ reference/              original mod source (git ignored)
 
 ## Tools
 
-| Script                  | Purpose                                                                       |
-| ----------------------- | ----------------------------------------------------------------------------- |
-| `tools/fetch_wg.py`     | Downloads the Witching Gadgets source (branch `master`) into `reference/wg-src` |
-| `tools/check_seams.py`  | Checks version-specific API boundaries                                        |
-| `tools/features.txt`    | List of per-feature resource generators                                       |
+| Script                    | Purpose                                                                                       |
+| ------------------------- | --------------------------------------------------------------------------------------------- |
+| `tools/fetch_wg.py`       | Downloads the Witching Gadgets source (branch `master`) into `reference/wg-src`               |
+| `tools/convert_assets.py` | Converts original textures, `.obj` models and `.lang` files, merges extra translations from `tools/lang/` |
+| `tools/gen_resources.py`  | Generates blockstates, models, loot tables, recipes and tags from per-feature generators      |
+| `tools/features.txt`      | List of per-feature resource generators                                                       |
+| `tools/inventory.py`      | Checks `tools/id_map.json` against registrations, models and lang                             |
+| `tools/id_map.json`       | Maps every original block and item (with metadata) to a modern id                             |
+| `tools/check_seams.py`    | Checks version-specific API boundaries                                                        |
+
+## Localization
+
+The original English, German and Chinese language files are converted. The original has no Russian translation, so Russian is maintained by hand in `tools/lang/` together with English additions.
 
 ## Credits
 

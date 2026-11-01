@@ -18,10 +18,10 @@ This file describes how to sync and maintain the backport. Status, test counts, 
 
 ## Syncing with main
 
-Last synced `main` commit: `f320c85`.
+Last synced `main` commit: `ca5e55b`.
 
 1. `git log --reverse <sha>..main`.
-2. A commit with only resources, lang or `tools/`: `git cherry-pick`, then regenerate resources for 1.21.1.
+2. A commit with only resources, lang or `tools/`: `git cherry-pick`, then `python3 tools/convert_assets.py` and `python3 tools/gen_resources.py` (the `mcformat.py` profile comes from `minecraft_version` in `gradle.properties`).
 3. A commit with Java: `git cherry-pick` or `git show <sha> | git apply -3`, adapt the 1.21.1 API by hand, `./gradlew compileJava`.
 4. Commit with the same message, update the sha above.
 
@@ -32,6 +32,7 @@ Last synced `main` commit: `f320c85`.
 - `WgNetwork` dispatches client handlers through `setClientHandler`, 1.21.1 has no client payload registration event.
 - GameTests use `@GameTestHolder` + `@GameTestGenerator` in `WgGameTestSuite`, filtered by `neoforge.enabledGameTestNamespaces`. The structure `witchinggadgets:test/platform` lives in `src/main/resources/data/witchinggadgets/structure/test/platform.nbt`, `WgGameTestHelper` shifts positions one block up onto it. `runGameTestServer` fails unless the log reports a successful run.
 - Run folders are `run/client`, `run/server`, `run/gametest`.
+- `tools/mcformat.py` has the `1.21.1` profile (pack format 34, legacy recipe ingredients and `neoforge:item_exists` conditions, loot `conditions`/`functions`, explicit `render_type` in block models). `gen_resources.py` writes 26.3 item definitions as `models/item` with `overrides` and copies `equipment` textures to `textures/models/armor`, `inventory.py` looks for item models in `models/item`.
 - Baubles go through Curios via the base's `platform/BaublesCurios`.
 
 ## Checks

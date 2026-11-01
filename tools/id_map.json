@@ -1,0 +1,746 @@
+{
+ "blocks": [
+  {
+   "old": "WG_WallMirror",
+   "meta": null,
+   "lang": "tile.WG_WallMirror.name",
+   "id": "wall_mirror",
+   "state": {},
+   "skip": null
+  },
+  {
+   "old": "WG_VoidWalkway",
+   "meta": null,
+   "lang": "tile.WG_VoidWalkway.name",
+   "id": "void_walkway",
+   "state": {},
+   "skip": null
+  },
+  {
+   "old": "WG_StoneDevice",
+   "meta": 0,
+   "lang": "tile.WG_StoneDevice.etherealWall.name",
+   "id": "ethereal_wall",
+   "state": {},
+   "skip": null
+  },
+  {
+   "old": "WG_StoneDevice",
+   "meta": 1,
+   "lang": "tile.WG_StoneDevice.magicTileLock.name",
+   "id": "magic_tile_lock",
+   "state": {},
+   "skip": null
+  },
+  {
+   "old": "WG_StoneDevice",
+   "meta": 2,
+   "lang": "tile.WG_StoneDevice.obsidianPlate.name",
+   "id": "obsidian_plate",
+   "state": {},
+   "skip": null
+  },
+  {
+   "old": "WG_StoneDevice",
+   "meta": 3,
+   "lang": "tile.WG_StoneDevice.obsidianDecoration0.name",
+   "id": "obsidian_rune_0",
+   "state": {},
+   "skip": null
+  },
+  {
+   "old": "WG_StoneDevice",
+   "meta": 4,
+   "lang": "tile.WG_StoneDevice.obsidianDecoration1.name",
+   "id": "obsidian_rune_1",
+   "state": {},
+   "skip": null
+  },
+  {
+   "old": "WG_StoneDevice",
+   "meta": 5,
+   "lang": "tile.WG_StoneDevice.obsidianDecoration2.name",
+   "id": "obsidian_rune_2",
+   "state": {},
+   "skip": null
+  },
+  {
+   "old": "WG_StoneDevice",
+   "meta": 6,
+   "lang": "tile.WG_StoneDevice.sarcophagus.name",
+   "id": "sarcophagus",
+   "state": {},
+   "skip": null
+  },
+  {
+   "old": "WG_StoneDevice",
+   "meta": 7,
+   "lang": "tile.WG_StoneDevice.timeStone.name",
+   "id": "ageing_stone",
+   "state": {},
+   "skip": null
+  },
+  {
+   "old": "WG_StoneDevice",
+   "meta": 8,
+   "lang": "tile.WG_StoneDevice.blastFurnace.name",
+   "id": "infernal_blast_furnace",
+   "state": {},
+   "skip": null
+  },
+  {
+   "old": "WG_WoodenDevice",
+   "meta": 0,
+   "lang": "tile.WG_WoodenDevice.spinningWheel.name",
+   "id": "spinning_wheel",
+   "state": {},
+   "skip": null
+  },
+  {
+   "old": "WG_WoodenDevice",
+   "meta": 1,
+   "lang": null,
+   "id": "snow_generator",
+   "state": {},
+   "skip": "hidden from the creative tab in WG, has no recipe or research"
+  },
+  {
+   "old": "WG_WoodenDevice",
+   "meta": 2,
+   "lang": "tile.WG_WoodenDevice.cobbleGen.name",
+   "id": "stone_extruder",
+   "state": {},
+   "skip": null
+  },
+  {
+   "old": "WG_WoodenDevice",
+   "meta": 3,
+   "lang": "tile.WG_WoodenDevice.cuttingTable.name",
+   "id": "cutting_table",
+   "state": {},
+   "skip": null
+  },
+  {
+   "old": "WG_WoodenDevice",
+   "meta": 4,
+   "lang": "tile.WG_WoodenDevice.saunaStove.name",
+   "id": "sauna_stove",
+   "state": {},
+   "skip": null
+  },
+  {
+   "old": "WG_WoodenDevice",
+   "meta": 5,
+   "lang": "tile.WG_WoodenDevice.labelLibrary.name",
+   "id": "label_library",
+   "state": {},
+   "skip": null
+  },
+  {
+   "old": "WG_WoodenDevice",
+   "meta": null,
+   "lang": "tile.WG_WoodenDevice.loom.name",
+   "id": "loom",
+   "state": {},
+   "skip": "not registered in Witching Gadgets 1.1.10, stale lang key"
+  },
+  {
+   "old": "WG_WoodenDevice",
+   "meta": null,
+   "lang": "tile.WG_WoodenDevice.armorStand.name",
+   "id": "armor_stand",
+   "state": {},
+   "skip": "not registered in Witching Gadgets 1.1.10, stale lang key"
+  },
+  {
+   "old": "WG_MetalDevice",
+   "meta": 0,
+   "lang": "tile.WG_MetalDevice.essentiaPump.name",
+   "id": "essentia_pump",
+   "state": {},
+   "skip": null
+  },
+  {
+   "old": "WG_MetalDevice",
+   "meta": 1,
+   "lang": "tile.WG_MetalDevice.terraformer.name",
+   "id": "terraformer",
+   "state": {},
+   "skip": null
+  },
+  {
+   "old": "WG_MetalDevice",
+   "meta": 2,
+   "lang": "tile.WG_MetalDevice.tfFocusPlains.name",
+   "id": "terraform_focus_plains",
+   "state": {},
+   "skip": null
+  },
+  {
+   "old": "WG_MetalDevice",
+   "meta": 3,
+   "lang": "tile.WG_MetalDevice.tfFocusColdTaiga.name",
+   "id": "terraform_focus_cold_taiga",
+   "state": {},
+   "skip": null
+  },
+  {
+   "old": "WG_MetalDevice",
+   "meta": 4,
+   "lang": "tile.WG_MetalDevice.tfFocusDesert.name",
+   "id": "terraform_focus_desert",
+   "state": {},
+   "skip": null
+  },
+  {
+   "old": "WG_MetalDevice",
+   "meta": 5,
+   "lang": "tile.WG_MetalDevice.tfFocusJungle.name",
+   "id": "terraform_focus_jungle",
+   "state": {},
+   "skip": null
+  },
+  {
+   "old": "WG_MetalDevice",
+   "meta": 6,
+   "lang": "tile.WG_MetalDevice.tfFocusHell.name",
+   "id": "terraform_focus_hell",
+   "state": {},
+   "skip": null
+  },
+  {
+   "old": "WG_MetalDevice",
+   "meta": 7,
+   "lang": "tile.WG_MetalDevice.voidmetalBlock.name",
+   "id": "void_metal_block",
+   "state": {},
+   "skip": null
+  },
+  {
+   "old": "WG_MetalDevice",
+   "meta": 8,
+   "lang": "tile.WG_MetalDevice.tfFocusTaint.name",
+   "id": "terraform_focus_taint",
+   "state": {},
+   "skip": null
+  },
+  {
+   "old": "WG_MetalDevice",
+   "meta": 9,
+   "lang": "tile.WG_MetalDevice.tfFocusMushroom.name",
+   "id": "terraform_focus_mushroom",
+   "state": {},
+   "skip": null
+  },
+  {
+   "old": "WG_RoseVine",
+   "meta": null,
+   "lang": "tile.WG_RoseVine.name",
+   "id": "rose_vine",
+   "state": {},
+   "skip": null
+  },
+  {
+   "old": "WG_CustomAir",
+   "meta": null,
+   "lang": "tile.WG_CustomAir.name",
+   "id": "glimmer_of_light",
+   "state": {},
+   "skip": null,
+   "no_item": true
+  }
+ ],
+ "items": [
+  {
+   "old": "WG_Material",
+   "meta": 0,
+   "lang": "item.WG_Material.threadSimple.name",
+   "id": "simple_thread",
+   "skip": null
+  },
+  {
+   "old": "WG_Material",
+   "meta": 1,
+   "lang": "item.WG_Material.threadGold.name",
+   "id": "golden_thread",
+   "skip": null
+  },
+  {
+   "old": "WG_Material",
+   "meta": 2,
+   "lang": "item.WG_Material.threadThaumium.name",
+   "id": "thaumium_thread",
+   "skip": null
+  },
+  {
+   "old": "WG_Material",
+   "meta": 3,
+   "lang": "item.WG_Material.clothSpace.name",
+   "id": "spacious_cloth",
+   "skip": null
+  },
+  {
+   "old": "WG_Material",
+   "meta": 4,
+   "lang": "item.WG_Material.clothGolden.name",
+   "id": "golden_cloth",
+   "skip": null
+  },
+  {
+   "old": "WG_Material",
+   "meta": 5,
+   "lang": "item.WG_Material.clothBewitched.name",
+   "id": "bewitched_cloth",
+   "skip": null
+  },
+  {
+   "old": "WG_Material",
+   "meta": 6,
+   "lang": "item.WG_Material.wolfPelt.name",
+   "id": "wolf_pelt",
+   "skip": null
+  },
+  {
+   "old": "WG_Material",
+   "meta": 7,
+   "lang": "item.WG_Material.calculator.name",
+   "id": "arcane_abacus",
+   "skip": null
+  },
+  {
+   "old": "WG_Material",
+   "meta": 8,
+   "lang": "item.WG_Material.cuttingTools.name",
+   "id": "gemcutting_tools",
+   "skip": null
+  },
+  {
+   "old": "WG_Material",
+   "meta": 9,
+   "lang": "item.WG_Material.photoPlate.name",
+   "id": "photo_plate",
+   "skip": null
+  },
+  {
+   "old": "WG_Material",
+   "meta": 10,
+   "lang": "item.WG_Material.developedPhoto.name",
+   "id": "developed_photo",
+   "skip": null
+  },
+  {
+   "old": "WG_Material",
+   "meta": 11,
+   "lang": "item.WG_Material.guidingString.name",
+   "id": "guiding_string",
+   "skip": null
+  },
+  {
+   "old": "WG_Material",
+   "meta": 12,
+   "lang": "item.WG_Material.powerlessPearl.name",
+   "id": "powerless_pearl",
+   "skip": null
+  },
+  {
+   "old": "WG_Material",
+   "meta": 13,
+   "lang": "item.WG_Material.gemstoneDust.name",
+   "id": "gemstone_dust",
+   "skip": null
+  },
+  {
+   "old": "WG_Material",
+   "meta": null,
+   "lang": "item.WG_Material.clusterAluminum.name",
+   "id": "clusteraluminum",
+   "skip": "not registered in Witching Gadgets 1.1.10, stale lang key"
+  },
+  {
+   "old": "WG_Material",
+   "meta": null,
+   "lang": "item.WG_Material.clusterCobalt.name",
+   "id": "clustercobalt",
+   "skip": "not registered in Witching Gadgets 1.1.10, stale lang key"
+  },
+  {
+   "old": "WG_Material",
+   "meta": null,
+   "lang": "item.WG_Material.clusterArdite.name",
+   "id": "clusterardite",
+   "skip": "not registered in Witching Gadgets 1.1.10, stale lang key"
+  },
+  {
+   "old": "WG_Material",
+   "meta": null,
+   "lang": "item.WG_Material.clusterNickel.name",
+   "id": "clusternickel",
+   "skip": "not registered in Witching Gadgets 1.1.10, stale lang key"
+  },
+  {
+   "old": "WG_Material",
+   "meta": null,
+   "lang": "item.WG_Material.clusterFZDarkIron.name",
+   "id": "clusterfzdarkiron",
+   "skip": "not registered in Witching Gadgets 1.1.10, stale lang key"
+  },
+  {
+   "old": "WG_Cluster",
+   "meta": null,
+   "lang": "item.WG_Cluster.name",
+   "id": "cluster",
+   "skip": "native clusters for ores of other mods, integrations are not ported"
+  },
+  {
+   "old": "WG_Bag",
+   "meta": 0,
+   "lang": "item.WG_Bag.normal.name",
+   "id": "bag_of_tricks",
+   "skip": null
+  },
+  {
+   "old": "WG_Bag",
+   "meta": 1,
+   "lang": "item.WG_Bag.void.name",
+   "id": "void_bag",
+   "skip": null
+  },
+  {
+   "old": "WG_Bag",
+   "meta": 2,
+   "lang": "item.WG_Bag.ender.name",
+   "id": "ender_bag",
+   "skip": null
+  },
+  {
+   "old": "WG_Bag",
+   "meta": 3,
+   "lang": "item.WG_Bag.hungry.name",
+   "id": "hungry_bag",
+   "skip": null
+  },
+  {
+   "old": "WG_ThaumiumShears",
+   "meta": null,
+   "lang": "item.WG_ThaumiumShears.name",
+   "id": "thaumium_shears",
+   "skip": null
+  },
+  {
+   "old": "WG_MagicFood",
+   "meta": 0,
+   "lang": "item.WG_MagicFood.sweetwart.name",
+   "id": "sweetwart",
+   "skip": null
+  },
+  {
+   "old": "WG_MagicFood",
+   "meta": 1,
+   "lang": "item.WG_MagicFood.nethercake.name",
+   "id": "nethercake",
+   "skip": null
+  },
+  {
+   "old": "WG_MagicFood",
+   "meta": 2,
+   "lang": "item.WG_MagicFood.brainjerky.name",
+   "id": "brain_jerky",
+   "skip": null
+  },
+  {
+   "old": "WG_AdvancedRobeChest",
+   "meta": null,
+   "lang": "item.WG_AdvancedRobeChest.name",
+   "id": "bewitched_robe",
+   "skip": null
+  },
+  {
+   "old": "WG_AdvancedRobeLegs",
+   "meta": null,
+   "lang": "item.WG_AdvancedRobeLegs.name",
+   "id": "bewitched_leggings",
+   "skip": null
+  },
+  {
+   "old": "WG_AdvancedScribingTools",
+   "meta": null,
+   "lang": "item.WG_AdvancedScribingTools.name",
+   "id": "illuminated_scribing_tools",
+   "skip": "not registered in Witching Gadgets 1.1.10, stale lang key"
+  },
+  {
+   "old": "WG_Cloak",
+   "meta": 0,
+   "lang": "item.WG_Cloak.standard.name",
+   "id": "cloak",
+   "skip": null
+  },
+  {
+   "old": "WG_Cloak",
+   "meta": 1,
+   "lang": "item.WG_Cloak.spectral.name",
+   "id": "spectral_cloak",
+   "skip": null
+  },
+  {
+   "old": "WG_Cloak",
+   "meta": 2,
+   "lang": "item.WG_Cloak.storage.name",
+   "id": "storage_cloak",
+   "skip": null
+  },
+  {
+   "old": "WG_Cloak",
+   "meta": 3,
+   "lang": "item.WG_Cloak.wolf.name",
+   "id": "wolf_cloak",
+   "skip": null
+  },
+  {
+   "old": "WG_Cloak",
+   "meta": 4,
+   "lang": "item.WG_Cloak.raven.name",
+   "id": "raven_cloak",
+   "skip": "needs Twilight Forest raven feathers, integrations are not ported"
+  },
+  {
+   "old": "WG_Kama",
+   "meta": 0,
+   "lang": "item.WG_Kama.standard.name",
+   "id": "kama",
+   "skip": null
+  },
+  {
+   "old": "WG_Kama",
+   "meta": 1,
+   "lang": "item.WG_Kama.spectral.name",
+   "id": "spectral_kama",
+   "skip": null
+  },
+  {
+   "old": "WG_Kama",
+   "meta": 2,
+   "lang": "item.WG_Kama.storage.name",
+   "id": "storage_kama",
+   "skip": null
+  },
+  {
+   "old": "WG_Kama",
+   "meta": 3,
+   "lang": "item.WG_Kama.wolf.name",
+   "id": "wolf_kama",
+   "skip": null
+  },
+  {
+   "old": "WG_Kama",
+   "meta": 4,
+   "lang": "item.WG_Kama.raven.name",
+   "id": "raven_kama",
+   "skip": "needs Twilight Forest raven feathers, integrations are not ported"
+  },
+  {
+   "old": "WG_EliteArmorHelm",
+   "meta": null,
+   "lang": "item.WG_EliteArmorHelm.ANGELIC_0.name",
+   "id": "angelic_helm",
+   "skip": "not registered in Witching Gadgets 1.1.10, stale lang key"
+  },
+  {
+   "old": "WG_EliteArmorHelm",
+   "meta": null,
+   "lang": "item.WG_EliteArmorHelm.DEMONIC_0.name",
+   "id": "demonic_helm",
+   "skip": "not registered in Witching Gadgets 1.1.10, stale lang key"
+  },
+  {
+   "old": "WG_EliteArmorChest",
+   "meta": null,
+   "lang": "item.WG_EliteArmorChest.ANGELIC_1.name",
+   "id": "angelic_chest",
+   "skip": "not registered in Witching Gadgets 1.1.10, stale lang key"
+  },
+  {
+   "old": "WG_EliteArmorChest",
+   "meta": null,
+   "lang": "item.WG_EliteArmorChest.DEMONIC_1.name",
+   "id": "demonic_chest",
+   "skip": "not registered in Witching Gadgets 1.1.10, stale lang key"
+  },
+  {
+   "old": "WG_EliteArmorLegs",
+   "meta": null,
+   "lang": "item.WG_EliteArmorLegs.ANGELIC_2.name",
+   "id": "angelic_legs",
+   "skip": "not registered in Witching Gadgets 1.1.10, stale lang key"
+  },
+  {
+   "old": "WG_EliteArmorLegs",
+   "meta": null,
+   "lang": "item.WG_EliteArmorLegs.DEMONIC_2.name",
+   "id": "demonic_legs",
+   "skip": "not registered in Witching Gadgets 1.1.10, stale lang key"
+  },
+  {
+   "old": "WG_EliteArmorBoots",
+   "meta": null,
+   "lang": "item.WG_EliteArmorBoots.ANGELIC_3.name",
+   "id": "angelic_boots",
+   "skip": "not registered in Witching Gadgets 1.1.10, stale lang key"
+  },
+  {
+   "old": "WG_EliteArmorBoots",
+   "meta": null,
+   "lang": "item.WG_EliteArmorBoots.DEMONIC_3.name",
+   "id": "demonic_boots",
+   "skip": "not registered in Witching Gadgets 1.1.10, stale lang key"
+  },
+  {
+   "old": "WG_InfusedGem",
+   "meta": null,
+   "lang": "item.WG_InfusedGem.name",
+   "id": "infused_gem",
+   "skip": null
+  },
+  {
+   "old": "WG_InfusedGem",
+   "meta": null,
+   "lang": "item.WG_InfusedGem.innert.name",
+   "id": "infused_gem",
+   "skip": null,
+   "variant": "inert"
+  },
+  {
+   "old": "WG_Baubles",
+   "meta": 0,
+   "lang": "item.WG_Baubles.shouldersDoublejump.name",
+   "id": "double_jump_shoulders",
+   "skip": null
+  },
+  {
+   "old": "WG_Baubles",
+   "meta": 1,
+   "lang": "item.WG_Baubles.shouldersKnockback.name",
+   "id": "knockback_shoulders",
+   "skip": null
+  },
+  {
+   "old": "WG_Baubles",
+   "meta": 2,
+   "lang": "item.WG_Baubles.vambraceStrength.name",
+   "id": "strength_vambraces",
+   "skip": null
+  },
+  {
+   "old": "WG_Baubles",
+   "meta": 3,
+   "lang": "item.WG_Baubles.vambraceHaste.name",
+   "id": "haste_vambraces",
+   "skip": null
+  },
+  {
+   "old": "WG_Baubles",
+   "meta": 4,
+   "lang": "item.WG_Baubles.titleCrimsonCult.name",
+   "id": "crimson_cult_title",
+   "skip": null
+  },
+  {
+   "old": "WG_Baubles",
+   "meta": 5,
+   "lang": "item.WG_Baubles.ringLuck.name",
+   "id": "luck_ring",
+   "skip": null
+  },
+  {
+   "old": "WG_Baubles",
+   "meta": 6,
+   "lang": "item.WG_Baubles.ringSniper.name",
+   "id": "sniper_ring",
+   "skip": null
+  },
+  {
+   "old": "WG_Baubles",
+   "meta": null,
+   "lang": "item.WG_Baubles.ring_primordial.name",
+   "id": "primordial_ring",
+   "skip": "not registered in Witching Gadgets 1.1.10, stale lang key"
+  },
+  {
+   "old": "WG_Baubles",
+   "meta": null,
+   "lang": "item.WG_Baubles.ring_lifeProtection.name",
+   "id": "life_protection_ring",
+   "skip": "not registered in Witching Gadgets 1.1.10, stale lang key"
+  },
+  {
+   "old": "WG_ScanCamera",
+   "meta": null,
+   "lang": "item.WG_ScanCamera.name",
+   "id": "scan_camera",
+   "skip": null
+  },
+  {
+   "old": "WG_PrimordialGlove",
+   "meta": null,
+   "lang": "item.WG_PrimordialGlove.name",
+   "id": "primordial_gauntlet",
+   "skip": null
+  },
+  {
+   "old": "WG_PrimordialHammer",
+   "meta": null,
+   "lang": "item.WG_PrimordialHammer.name",
+   "id": "primordial_hammer",
+   "skip": null
+  },
+  {
+   "old": "WG_PrimordialAxe",
+   "meta": null,
+   "lang": "item.WG_PrimordialAxe.name",
+   "id": "primordial_axe",
+   "skip": null
+  },
+  {
+   "old": "WG_PrimordialSword",
+   "meta": null,
+   "lang": "item.WG_PrimordialSword.name",
+   "id": "primordial_sword",
+   "skip": null
+  },
+  {
+   "old": "WG_PrimordialHelm",
+   "meta": null,
+   "lang": "item.WG_PrimordialHelm.name",
+   "id": "primordial_helmet",
+   "skip": null
+  },
+  {
+   "old": "WG_PrimordialChest",
+   "meta": null,
+   "lang": "item.WG_PrimordialChest.name",
+   "id": "primordial_chestplate",
+   "skip": null
+  },
+  {
+   "old": "WG_PrimordialLegs",
+   "meta": null,
+   "lang": "item.WG_PrimordialLegs.name",
+   "id": "primordial_leggings",
+   "skip": null
+  },
+  {
+   "old": "WG_PrimordialBoots",
+   "meta": null,
+   "lang": "item.WG_PrimordialBoots.name",
+   "id": "primordial_boots",
+   "skip": null
+  },
+  {
+   "old": "WG_CrystalFlask",
+   "meta": null,
+   "lang": "item.WG_CrystalFlask.name",
+   "id": "crystal_capsule",
+   "skip": null
+  }
+ ]
+}
