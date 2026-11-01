@@ -1,10 +1,13 @@
 import argparse
+import codecs
 import json
 import re
 import shutil
 from collections import Counter, defaultdict
 from pathlib import Path
 
+codecs.register_error("cp1252_fallback", lambda error: (error.object[error.start:error.end].decode("cp1252"), error.end))
+BOM = b"\xef\xbb\xbf"
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / "reference" / "wg-src" / "src" / "main" / "resources" / "assets" / "witchinggadgets"
 NS = "witchinggadgets"
@@ -178,11 +181,12 @@ def escape_format(value, stats):
 
 
 def decode(data, path):
-    try:
-        return data.decode("utf-8-sig")
-    except UnicodeDecodeError:
-        report["renamed"].append(f"lang/{path.name} decoded as cp1252")
-        return data.decode("cp1252")
+    if data.startswith(BOM):
+        data = data[len(BOM):]
+    text = data.decode("utf-8", "cp1252_fallback")
+    if text != data.decode("utf-8", "replace"):
+        report["renamed"].append(f"lang/{path.name}: cp1252 bytes decoded")
+    return text
 
 
 def read_lang(path):
