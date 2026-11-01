@@ -1,10 +1,13 @@
 import argparse
+import codecs
 import json
 import re
 import sys
 from collections import OrderedDict
 from pathlib import Path
 
+codecs.register_error("cp1252_fallback", lambda error: (error.object[error.start:error.end].decode("cp1252"), error.end))
+BOM = b"\xef\xbb\xbf"
 ROOT = Path(__file__).resolve().parent.parent
 NS = "witchinggadgets"
 REGISTRY = ROOT / "src" / "main" / "java" / NS
@@ -18,10 +21,9 @@ LIST_LIMIT = 15
 
 
 def decode(data):
-    try:
-        return data.decode("utf-8-sig")
-    except UnicodeDecodeError:
-        return data.decode("cp1252")
+    if data.startswith(BOM):
+        data = data[len(BOM):]
+    return data.decode("utf-8", "cp1252_fallback")
 
 
 def read_source_lang():
