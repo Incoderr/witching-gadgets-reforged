@@ -18,7 +18,7 @@ This file describes how to sync and maintain the backport. Status, test counts, 
 
 ## Syncing with main
 
-Last synced `main` commit: `b2d0686`.
+Last synced `main` commit: `6c89d2e`.
 
 1. `git log --reverse <sha>..main`.
 2. A commit with only resources, lang or `tools/`: `git cherry-pick`, then `python3 tools/convert_assets.py` and `python3 tools/gen_resources.py` (the `mcformat.py` profile comes from `minecraft_version` in `gradle.properties`).
@@ -34,6 +34,9 @@ Last synced `main` commit: `b2d0686`.
 - Run folders are `run/client`, `run/server`, `run/gametest`.
 - `tools/mcformat.py` has the `1.21.1` profile (pack format 34, legacy recipe ingredients and `neoforge:item_exists` conditions, loot `conditions`/`functions`, explicit `render_type` in block models). `gen_resources.py` writes 26.3 item definitions as `models/item` with `overrides` and copies `equipment` textures to `textures/models/armor`, `inventory.py` looks for item models in `models/item`.
 - Baubles go through Curios via the base's `platform/BaublesCurios`.
+- Item tints from 26.3 item definitions are lost in legacy `models/item`; `client/platform/WgItemTints` registers them with `RegisterColorHandlersEvent.Item` (the cloths). A new tinted item on `main` needs a line there.
+- 1.21.1 block model rotations only allow 0, ±22.5 and ±45 degrees, `mcformat.py` snaps the spinning wheel's -10 and 15 degree boxes to ±22.5.
+- 1.21.1 API in ported code: `GuiGraphics` with `renderBg`/`renderLabels` and a `render` override that draws the background and tooltip, `BlockEntityType.Builder.of(...).build(null)`, `ContainerHelper.loadAllItems(input.tag(), items, input.lookup())` over the base `compat` value IO, `RecipeManager.byKey(ResourceLocation)`, `GameTestHelper.getBlockEntity(pos)`.
 
 ## Checks
 

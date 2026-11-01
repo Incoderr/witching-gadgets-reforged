@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "witchinggadgets:spinning_wheel",
+      "required": false
+    }
+  ]
+}
