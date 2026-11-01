@@ -13,7 +13,7 @@ This file describes how to sync and maintain the backport. Status, test counts, 
 
 - Worktree `.worktrees/mc-1.21.1` of the main checkout `witching-gadgets-reforged`.
 - The base is the `mc/1.21.1` branch of Thaumcraft 4: Reforged: `settings.gradle` takes the first of `../thaumcraft-4-reforged`, `../thaumcraft-4-reforged/.worktrees/mc-1.21.1`, `../thaumcraft-4-reforged-1.21.1` whose `minecraft_version` is `1.21.1`, or `-PthaumcraftDir`. From this worktree that is `../../../thaumcraft-4-reforged/.worktrees/mc-1.21.1`, found by walking up the folders.
-- References stay in the main checkout (gitignored): `reference/wg-src`.
+- References are gitignored and not shared between worktrees: run `python3 tools/fetch_wg.py` in the worktree to get `reference/wg-src`.
 - The `mc/1.21.1` branch of `../thaumic-tinkerer-reforged` is the reference for 1.21.1 addon code.
 
 ## Syncing with main
