@@ -45,14 +45,41 @@ This file describes how to develop and port the mod. Phase status, test counts, 
 - A feature adds one line each to the shared files: `Features.java`, `client/ClientFeatures.java`, `tools/features.txt`, `network/ModPayloads.java`, `client/ClientPayloadHandlers.java`. These files use `merge=union` in `.gitattributes`, write lines as separate statements.
 - A feature's GameTests live in `test/<Feature>GameTests.java` on `WgGameTestSuite` (`new WgGameTestSuite("name").add("test", body)`, registered with one line in `Features.tests`).
 
+## Generated files (do not edit by hand)
+
+| File | Generator |
+|---|---|
+| `src/main/resources/assets/witchinggadgets` (textures, `obj`, lang) | `tools/convert_assets.py` (+ `tools/assets_extra/`, `tools/lang/`) |
+| `src/generated/resources` (rewritten completely) | `tools/gen_resources.py` |
+| `reference/wg-src` | `tools/fetch_wg.py` |
+
+- After a lang change: `convert_assets.py`, then `gen_resources.py`. Manual translations only in `tools/lang/<lang>.json` and `tools/lang/<feature>/<lang>.json`. WG has no Russian, `ru_ru` exists only from `tools/lang/` and is translated by us; base terms are reused (Arcane is «магический», Primordial and Primal «сингулярный», Taint «заражённый», Void «пустотный», Thaumium «таум-»).
+- `en_US.lang` and `de_DE.lang` of WG are cp1252, `zh_CN.lang` is UTF-8, `convert_assets.py` falls back to cp1252.
+- Some WG `.mcmeta` files are lenient JSON (`{index:0, time:120}`), `convert_assets.py` quotes the keys.
+- Lang keys: blocks `block.witchinggadgets.<id>`, items `item.witchinggadgets.<id>`, a `variant` row in `id_map.json` gives `item.witchinggadgets.<id>.<variant>` (`infused_gem.inert`). Research `witchinggadgets_research_name.KEY` becomes `tc.research_name.KEY`, `_text.KEY` `tc.research_text.KEY`, `_page.KEY.N` `tc.research_page.KEY.N` with the WG suffix kept (`1`, `2`, `r1`), pages are referenced by the full key. Category `tc.research_category.WITCHGADG`. Enchantments `enchantment.wg.camelCase` become `enchantment.witchinggadgets.snake_case`. `wg.*` keys stay as they are, anything else gets the `witchinggadgets.` prefix.
+- Textures are copied with `blocks` renamed to `block`, `items` to `item`, names lowercased; `models` and `gui` keep their folder names. `.obj` models go to `assets/witchinggadgets/obj/<snake_case>.obj`.
+- The resource format profile lives in `tools/mcformat.py`.
+
+## id_map.json
+
+- Edited by hand. A row: `old` (WG registration name), `meta`, `lang` (en_US.lang key or null), `id`, `state` (blocks only), `skip` (reason or null), optional `no_item` (block without an item) and `variant` (an extra lang key of an existing id).
+- Ids are the snake_case registration sub-name when it is meaningful, otherwise the lang name: `timeStone` is `ageing_stone`, `cobbleGen` `stone_extruder`, `calculator` `arcane_abacus`, `CrystalFlask` `crystal_capsule`, `blastFurnace` `infernal_blast_furnace`. The three `obsidianDecoration` metas are `obsidian_rune_0..2`.
+- Skipped: the hidden `snowGen`, raven cloak and kama (need Twilight Forest), native clusters of other mods' ores (`WG_Cluster`), and stale lang keys of content WG 1.1.10 does not register (loom, armor stand, elite armor, scribing tools, primordial and life protection rings, old material clusters). Every tile/item `.name` key of en_US.lang must be covered by a row, `inventory.py --check` verifies it.
+
 ## Checks
 
 ```sh
 python3 tools/fetch_wg.py
+python3 tools/convert_assets.py
+python3 tools/gen_resources.py && git status --short src/generated
+python3 tools/inventory.py --check
 python3 tools/check_seams.py
 ./gradlew build
 ./gradlew runGameTestServer
 ```
+
+- Regeneration must not change files.
+- `inventory.py --check` prints what is missing (registrations, models, lang) and exits 0. `--strict` fails on anything missing, the `id_map.json` schema is always checked. `--all` prints full lists.
 
 - Visual checks in `runClient` and two-client play are done by the user.
 
