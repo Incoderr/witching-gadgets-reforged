@@ -1,0 +1,57 @@
+package witchinggadgets.test;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.gametest.framework.FunctionGameTestInstance;
+import net.minecraft.gametest.framework.GameTestHelper;
+import net.minecraft.gametest.framework.TestData;
+import net.minecraft.gametest.framework.TestEnvironmentDefinition;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.event.RegisterGameTestsEvent;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import witchinggadgets.WitchingGadgets;
+
+public final class WgGameTestSuite {
+    private final String name;
+    private final DeferredRegister<Consumer<GameTestHelper>> functions;
+    private final List<String> tests = new ArrayList<>();
+    private boolean isolated;
+
+    public WgGameTestSuite(String name) {
+        this.name = name;
+        this.functions = DeferredRegister.create(Registries.TEST_FUNCTION, WitchingGadgets.MODID);
+    }
+
+    public WgGameTestSuite add(String test, Consumer<GameTestHelper> body) {
+        String testName = name + "_" + test;
+        tests.add(testName);
+        functions.register(testName, () -> body);
+        return this;
+    }
+
+    public WgGameTestSuite isolated() {
+        isolated = true;
+        return this;
+    }
+
+    public void register(IEventBus modEventBus) {
+        functions.register(modEventBus);
+        modEventBus.addListener(this::registerTests);
+    }
+
+    private void registerTests(RegisterGameTestsEvent event) {
+        var shared = isolated ? null : event.registerEnvironment(WitchingGadgets.id(name + "_default"), new TestEnvironmentDefinition.AllOf());
+        for (String testName : tests) {
+            var environment = isolated ? event.registerEnvironment(WitchingGadgets.id(testName + "_env"), new TestEnvironmentDefinition.AllOf()) : shared;
+            ResourceKey<Consumer<GameTestHelper>> function = ResourceKey.create(Registries.TEST_FUNCTION, WitchingGadgets.id(testName));
+            event.registerTest(
+                WitchingGadgets.id(testName),
+                new FunctionGameTestInstance(function, new TestData<>(environment, Identifier.fromNamespaceAndPath("thaumcraft", "test/platform"), 100, 0, true))
+            );
+        }
+    }
+}

@@ -1,0 +1,21 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+}
+
+plugins {
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
+}
+
+rootProject.name = 'witching-gadgets-reforged'
+
+def thaumcraftDir = providers.gradleProperty("thaumcraftDir").orNull
+if (thaumcraftDir == null) {
+    def dir = settingsDir
+    while (dir.parentFile != null && !new File(dir.parentFile, "thaumcraft-4-reforged").isDirectory()) {
+        dir = dir.parentFile
+    }
+    thaumcraftDir = new File(dir.parentFile, "thaumcraft-4-reforged").path
+}
+includeBuild(thaumcraftDir)

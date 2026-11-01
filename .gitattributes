@@ -1,0 +1,6 @@
+src/main/java/witchinggadgets/Features.java merge=union
+src/main/java/witchinggadgets/client/ClientFeatures.java merge=union
+tools/features.txt merge=union
+src/main/java/witchinggadgets/network/ModPayloads.java merge=union
+src/main/java/witchinggadgets/client/ClientPayloadHandlers.java merge=union
+src/generated/** merge=ours
