@@ -19,7 +19,11 @@ public final class ModCreativeTabs {
         .icon(() -> new ItemStack(thaumcraft.registry.ModItems.THAUMIUM_INGOT.get()))
         .displayItems((parameters, output) -> {
             for (DeferredHolder<Item, ? extends Item> holder : ModItems.ITEMS.getEntries()) {
-                output.accept(holder.get());
+                if (holder.get() instanceof CreativeVariants variants) {
+                    variants.creativeStacks(output::accept);
+                } else {
+                    output.accept(holder.get());
+                }
             }
         })
         .build());

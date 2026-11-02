@@ -2,6 +2,18 @@
   "replace": false,
   "values": [
     {
+      "id": "witchinggadgets:bag_of_tricks",
+      "required": false
+    },
+    {
+      "id": "witchinggadgets:bewitched_leggings",
+      "required": false
+    },
+    {
+      "id": "witchinggadgets:bewitched_robe",
+      "required": false
+    },
+    {
       "id": "witchinggadgets:cloak",
       "required": false
     },

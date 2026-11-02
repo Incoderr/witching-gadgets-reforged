@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "witchinggadgets:item/bag_of_tricks",
+    "tints": [
+      {
+        "type": "minecraft:dye",
+        "default": -7703363
+      }
+    ]
+  }
+}

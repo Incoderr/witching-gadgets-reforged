@@ -2,6 +2,8 @@ package witchinggadgets.client;
 
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
+import witchinggadgets.bags.BagsFeature;
+import witchinggadgets.client.bags.BagScreen;
 import witchinggadgets.client.cloaks.CloakStorageScreen;
 import witchinggadgets.client.spinning.SpinningWheelScreen;
 import witchinggadgets.cloaks.CloaksFeature;
@@ -14,6 +16,7 @@ public final class ClientFeatures {
     public static void registerScreens(RegisterMenuScreensEvent event) {
         event.register(SpinningFeature.SPINNING_WHEEL_MENU.get(), SpinningWheelScreen::new);
         event.register(CloaksFeature.STORAGE_MENU.get(), CloakStorageScreen::new);
+        event.register(BagsFeature.BAG_MENU.get(), BagScreen::new);
     }
 
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {

@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "witchinggadgets:item/bewitched_robe",
+    "tints": [
+      {
+        "type": "minecraft:dye",
+        "default": -9815936
+      }
+    ]
+  }
+}

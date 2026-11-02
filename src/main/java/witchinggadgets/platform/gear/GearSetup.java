@@ -1,6 +1,7 @@
 package witchinggadgets.platform.gear;
 
 import net.neoforged.bus.api.IEventBus;
+import witchinggadgets.platform.DoubleJumpPayload;
 
 public final class GearSetup {
     private GearSetup() {
@@ -11,5 +12,6 @@ public final class GearSetup {
         GearMenus.register(bus);
         OpenGearPayload.register();
         ActivateGearPayload.register();
+        DoubleJumpPayload.register();
     }
 }
