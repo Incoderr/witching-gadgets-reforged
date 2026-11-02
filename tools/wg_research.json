@@ -721,6 +721,15 @@
       {
         "text": "CLOAKKAMA.1",
         "type": "text"
+      },
+      {
+        "recipes": [
+          "CLOAKKAMA_0",
+          "CLOAKKAMA_1",
+          "CLOAKKAMA_2",
+          "CLOAKKAMA_3"
+        ],
+        "type": "arcane"
       }
     ],
     "parents": [

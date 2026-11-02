@@ -1,5 +1,12 @@
 {
   "key.witchinggadgets.gear": "Инвентарь снаряжения",
   "button.witchinggadgets.gear": "Снаряжение",
-  "button.witchinggadgets.normal": "Обычн."
+  "button.witchinggadgets.normal": "Обычн.",
+  "wg.desc.gearSlot.bauble.AMULET": "Надевается в слот §aамулета§7",
+  "wg.desc.gearSlot.bauble.BELT": "Надевается в слот §aпояса§7",
+  "wg.desc.gearSlot.bauble.RING": "Надевается в слот §aкольца§7",
+  "wg.desc.gearSlot.tg.0": "Надевается в слот §aплаща§7",
+  "wg.desc.gearSlot.tg.1": "Надевается в слот §aнаплечника§7",
+  "wg.desc.gearSlot.tg.2": "Надевается в слот §aнаручей§7",
+  "wg.desc.gearSlot.tg.3": "Надевается в слот §aтитула§7"
 }

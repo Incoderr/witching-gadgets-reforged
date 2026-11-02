@@ -215,7 +215,7 @@ class Interpreter:
             self.research(root, calls)
             return
         if root["t"] == "name" and isinstance(self.variables.get(root["v"]), list) and len(calls) == 1 and calls[0]["name"] == "add":
-            self.variables[root["v"]].append(calls[0]["args"][0])
+            self.variables[root["v"]].append((calls[0]["args"][0], dict(self.variables)))
             return
         raise ValueError("unknown statement " + node["raw"][:120])
 
@@ -298,7 +298,7 @@ class Interpreter:
         cast, _, variable, method, inner = match.groups()
         kind = PAGE_CASTS[cast]
         if method == "toArray":
-            recipes = [self.recipe_key(item) for item in self.variables[variable]]
+            recipes = [self.recipe_key(item, scope) for item, scope in self.variables[variable]]
         else:
             expression = parse_fragment(inner)
             recipes = [self.string_fragment(expression)]
@@ -307,7 +307,15 @@ class Interpreter:
             return None
         return {"type": kind, "recipes": recipes}
 
-    def recipe_key(self, node):
+    def recipe_key(self, node, scope):
+        current = self.variables
+        self.variables = scope
+        try:
+            return self.recipe_key_now(node)
+        finally:
+            self.variables = current
+
+    def recipe_key_now(self, node):
         root, calls = chain_of(node)
         if root["t"] == "call" and root["name"] == "get" and root["target"]["t"] == "name" and root["target"]["v"] == "recipeList":
             return self.string(root["args"][0])

@@ -7,5 +7,6 @@ public final class GearSetup {
     }
 
     public static void register(IEventBus bus) {
+        ActivateGearPayload.register();
     }
 }

@@ -68,7 +68,7 @@ def write(path, content):
                 shutil.copyfile(source, destination)
         return
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(content, indent=2) + "\n", encoding="utf-8")
+    path.write_text(json.dumps(content, indent=2) + "\n", encoding="utf-8", newline="\n")
 
 
 def ref(name, kind="block"):
