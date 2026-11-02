@@ -144,7 +144,7 @@ def main():
     arguments = parser.parse_args()
     if arguments.all:
         data = build_all()
-        OUTPUT.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        OUTPUT.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
         print(f"wrote {OUTPUT.relative_to(ROOT)}: {len(data['thaumcraft'])} thaumcraft, {len(data['vanilla'])} vanilla, {len(data['oredict'])} oredict")
         return 0
     if not arguments.reference:

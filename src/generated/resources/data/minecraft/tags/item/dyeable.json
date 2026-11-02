@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "witchinggadgets:cloak",
+      "required": false
+    },
+    {
+      "id": "witchinggadgets:kama",
+      "required": false
+    }
+  ]
+}

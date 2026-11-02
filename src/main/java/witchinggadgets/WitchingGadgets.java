@@ -9,6 +9,7 @@ import net.neoforged.fml.config.ModConfig;
 import org.slf4j.Logger;
 import thaumcraft.aspect.AspectSync;
 import witchinggadgets.network.ModPayloads;
+import witchinggadgets.platform.WgStackData;
 import witchinggadgets.platform.gear.GearSetup;
 import witchinggadgets.registry.ModBlockEntities;
 import witchinggadgets.registry.ModBlocks;
@@ -43,6 +44,7 @@ public class WitchingGadgets {
         ModMenus.register(modEventBus);
         ModPayloads.register();
         GearSetup.register(modEventBus);
+        WgStackData.register(modEventBus);
         WgResearch.init();
         Features.recipes();
         BaseResearchLinks.register();

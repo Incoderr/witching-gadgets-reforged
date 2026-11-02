@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "witchinggadgets:item/storage_kama",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -7829368
+      }
+    ]
+  }
+}

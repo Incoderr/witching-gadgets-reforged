@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import thaumcraft.platform.baubles.BaubleAttachments;
 import witchinggadgets.gear.GearSlot;
 import witchinggadgets.platform.gear.GearAttachments;
 
@@ -19,6 +20,12 @@ public final class Gear {
 
     public static void set(Player player, GearSlot slot, ItemStack stack) {
         GearAttachments.inventory(player).setItem(slot.ordinal(), stack);
+    }
+
+    // Resends gear and base bauble contents after an equipped stack was changed in place.
+    public static void sync(Player player) {
+        GearAttachments.inventory(player).setChanged();
+        BaubleAttachments.inventory(player).setChanged();
     }
 
     public static List<ItemStack> stacks(Player player) {

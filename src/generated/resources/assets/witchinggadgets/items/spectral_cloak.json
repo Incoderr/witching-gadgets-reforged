@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "witchinggadgets:item/spectral_cloak",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -14540254
+      }
+    ]
+  }
+}

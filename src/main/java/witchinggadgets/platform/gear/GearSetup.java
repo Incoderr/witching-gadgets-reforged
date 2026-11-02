@@ -10,5 +10,6 @@ public final class GearSetup {
         GearAttachments.register(bus);
         GearMenus.register(bus);
         OpenGearPayload.register();
+        ActivateGearPayload.register();
     }
 }
