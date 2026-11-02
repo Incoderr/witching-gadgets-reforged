@@ -9,7 +9,6 @@ import witchinggadgets.baubles.BaubleEffects;
 import witchinggadgets.baubles.BaublesFeature;
 import witchinggadgets.gear.GearSlot;
 
-// The jump itself happens on the client; the server only forgets the fall.
 public record DoubleJumpPayload() implements CustomPacketPayload {
     public static final Type<DoubleJumpPayload> TYPE = new Type<>(WitchingGadgets.id("double_jump"));
     public static final StreamCodec<RegistryFriendlyByteBuf, DoubleJumpPayload> CODEC = StreamCodec.unit(new DoubleJumpPayload());

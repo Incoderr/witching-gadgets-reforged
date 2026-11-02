@@ -18,3 +18,5 @@ cmds
 CHECKLIST.md
 INVENTORY.md
 PLAN.md
+hs_err_pid*.log
+replay_pid*.log

@@ -104,7 +104,6 @@ public final class BaubleEffects {
         }
     }
 
-    // WG moves the wearer by 0.25 up a ladder it pushes against and 0.1875 down otherwise.
     private static void climb(Player player) {
         if (!player.level().isClientSide() || !player.onClimbable()) {
             return;
@@ -139,7 +138,6 @@ public final class BaubleEffects {
         event.setNewSpeed(speed);
     }
 
-    // The WG coremod adds two levels of fortune and looting to the held item of a luck ring wearer.
     @SubscribeEvent
     static void onEnchantmentLevel(GetEnchantmentLevelEvent event) {
         if (LUCKY.isEmpty()) {

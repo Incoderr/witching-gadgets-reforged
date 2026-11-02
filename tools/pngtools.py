@@ -1,4 +1,3 @@
-"""Minimal RGBA PNG reader and writer (8-bit truecolor with alpha, no interlacing)."""
 import struct
 import zlib
 

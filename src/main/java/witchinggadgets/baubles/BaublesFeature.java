@@ -30,7 +30,6 @@ public final class BaublesFeature {
 
     public static final WgStackKey<String> TITLE = WgStackKey.register("title", Codec.STRING, ByteBufCodecs.STRING_UTF8);
 
-    // Plain Travellers' Gear bases (TG travelgearShoulderBase and travelgearVambraceBase).
     public static final DeferredItem<WearableItem> PAULDRON = wearable("pauldron", GearSlot.PAULDRON);
     public static final DeferredItem<WearableItem> VAMBRACE = wearable("vambrace", GearSlot.VAMBRACE);
 

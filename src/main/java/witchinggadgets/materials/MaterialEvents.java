@@ -18,7 +18,6 @@ public final class MaterialEvents {
     private MaterialEvents() {
     }
 
-    // WG drops 2 + looting (max 4) rolls of wolf pelts, each with a 1 in (3 - looting) chance.
     @SubscribeEvent(priority = EventPriority.LOWEST)
     static void onLivingDrops(LivingDropsEvent event) {
         if (!(event.getEntity() instanceof Wolf wolf)) {

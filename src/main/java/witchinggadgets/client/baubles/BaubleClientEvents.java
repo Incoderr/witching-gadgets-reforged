@@ -25,7 +25,6 @@ public final class BaubleClientEvents {
     private BaubleClientEvents() {
     }
 
-    // Seraph's Shoulders give one extra jump in the air like the WG key handler.
     @SubscribeEvent
     static void onClientTick(ClientTickEvent.Post event) {
         Minecraft minecraft = Minecraft.getInstance();

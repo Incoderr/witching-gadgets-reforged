@@ -1,7 +1,6 @@
 import shutil
 
 ROBE_DEFAULT = 6961280
-# WG advancedRobes_1 (chest) and _2 (legs) model textures, each with an untinted overlay.
 LAYERS = {
     "humanoid": "advancedrobes_1",
     "humanoid_leggings": "advancedrobes_2",
