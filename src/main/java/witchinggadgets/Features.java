@@ -2,9 +2,13 @@ package witchinggadgets;
 
 import net.neoforged.bus.api.IEventBus;
 import thaumcraft.aspect.AspectRegistry;
+import witchinggadgets.bags.BagsFeature;
+import witchinggadgets.baubles.BaublesFeature;
 import witchinggadgets.cloaks.CloaksFeature;
 import witchinggadgets.materials.MaterialsFeature;
+import witchinggadgets.robes.RobesFeature;
 import witchinggadgets.spinning.SpinningFeature;
+import witchinggadgets.test.ClothingGameTests;
 import witchinggadgets.test.CloaksGameTests;
 import witchinggadgets.test.MaterialsGameTests;
 import witchinggadgets.test.SpinningGameTests;
@@ -17,16 +21,25 @@ public final class Features {
         MaterialsFeature.load();
         SpinningFeature.load();
         CloaksFeature.load();
+        BagsFeature.load();
+        BaublesFeature.load();
+        RobesFeature.load();
     }
 
     public static void research() {
         SpinningFeature.research();
         CloaksFeature.research();
+        BagsFeature.research();
+        BaublesFeature.research();
+        RobesFeature.research();
     }
 
     public static void recipes() {
         SpinningFeature.recipes();
         CloaksFeature.recipes();
+        BagsFeature.recipes();
+        BaublesFeature.recipes();
+        RobesFeature.recipes();
     }
 
     public static void aspects(AspectRegistry registry) {
@@ -37,5 +50,6 @@ public final class Features {
         MaterialsGameTests.register(modEventBus);
         SpinningGameTests.register(modEventBus);
         CloaksGameTests.register(modEventBus);
+        ClothingGameTests.register(modEventBus);
     }
 }

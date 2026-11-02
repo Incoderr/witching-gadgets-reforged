@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "witchinggadgets:item/chestplaterobeadvanced",
+    "layer1": "witchinggadgets:item/chestplaterobeadvanced_overlay"
+  }
+}
