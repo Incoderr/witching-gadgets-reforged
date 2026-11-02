@@ -39,7 +39,6 @@ public final class CloakGeometry {
         return mode == ANIMATION_STRETCH && angle > 1 ? 1.0 + 0.3 * angle / 90.0 : 1.0;
     }
 
-    // Vertices are in the original model space after translate(0, 1.45, 0) scale(1, -1, 1).
     public static void cloak(Sink sink, double stretch, int argb, int light) {
         double prev0 = CIRCLE[0];
         double prev1 = CIRCLE[1];
@@ -88,7 +87,6 @@ public final class CloakGeometry {
         }
     }
 
-    // Kama cloth around the hips; legDegrees > 0 lifts the matching seam.
     public static void kama(Sink sink, boolean sprinting, float leftLegDegrees, float rightLegDegrees, int argb, int light) {
         double angleMax = sprinting ? 60 : 70;
         double ap = 0.8125;

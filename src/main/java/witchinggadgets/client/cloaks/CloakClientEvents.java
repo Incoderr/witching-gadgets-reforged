@@ -29,7 +29,6 @@ public final class CloakClientEvents {
         }
     }
 
-    // Spectral players are hidden from viewers without revealing goggles.
     @SubscribeEvent
     static void onRenderPlayer(RenderPlayerEvent.Pre<?> event) {
         Minecraft minecraft = Minecraft.getInstance();

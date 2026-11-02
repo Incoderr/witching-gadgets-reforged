@@ -10,7 +10,6 @@ import net.minecraft.world.item.component.TooltipDisplay;
 import witchinggadgets.gear.GearItem;
 import witchinggadgets.gear.GearSlot;
 
-// WG ItemMagicalBaubles pieces worn in the gear slots (shoulders, vambraces, title).
 public class WearableItem extends Item implements GearItem {
     private final GearSlot slot;
 

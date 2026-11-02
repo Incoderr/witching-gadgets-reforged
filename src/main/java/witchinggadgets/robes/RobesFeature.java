@@ -19,7 +19,6 @@ import witchinggadgets.research.WgResearch;
 public final class RobesFeature {
     public static final String RESEARCH = "ADVANCEDROBES";
 
-    // WG armorMatSpecialRobe "WG:ADVANCEDCLOTH": durability 25, defense 2/4/3/2, enchantability 25.
     public static final TcArmorMaterial BEWITCHED_ROBE_ARMOR = new TcArmorMaterial(
         25, 2, 4, 3, 2, 25, SoundEvents.ARMOR_EQUIP_GENERIC, 0.0F, 0.0F, TcMaterials.REPAIRS_ENCHANTED_FABRIC, WitchingGadgets.id("bewitched_robe")
     );

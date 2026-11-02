@@ -9,7 +9,6 @@ TEXTURES = {
     "luck_ring": "bauble_ringluck",
     "sniper_ring": "bauble_ringsniper",
 }
-# Travellers' Gear bases do not exist without TG: grey copies of the WG pieces stand in for them.
 BASES = {
     "pauldron": "bauble_shouldersknockback",
     "vambrace": "bauble_vambracestrength",

@@ -22,7 +22,6 @@ public final class Gear {
         GearAttachments.inventory(player).setItem(slot.ordinal(), stack);
     }
 
-    // Resends gear and base bauble contents after an equipped stack was changed in place.
     public static void sync(Player player) {
         GearAttachments.inventory(player).setChanged();
         BaubleAttachments.inventory(player).setChanged();

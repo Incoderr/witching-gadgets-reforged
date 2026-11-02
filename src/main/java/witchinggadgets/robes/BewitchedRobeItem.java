@@ -13,7 +13,6 @@ import thaumcraft.item.armor.ArmorSupport;
 import thaumcraft.item.gear.Repairable;
 import thaumcraft.wand.VisDiscountGear;
 
-// WG ItemAdvancedRobes: chest 5% and legs 4% vis discount.
 public class BewitchedRobeItem extends Item implements Repairable, VisDiscountGear {
     public BewitchedRobeItem(Properties properties) {
         super(properties);

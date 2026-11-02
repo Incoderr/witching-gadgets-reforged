@@ -8,7 +8,6 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.neoforged.neoforge.server.ServerLifecycleHooks;
 
-// Data-driven registry lookups for code that has no level at hand (recipe outputs).
 public final class WgRegistries {
     private WgRegistries() {
     }
