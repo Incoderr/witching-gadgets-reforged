@@ -1,6 +1,6 @@
 {
   "textures": {
-    "wheel": "witchinggadgets:models/spinningwheel",
+    "wheel": "witchinggadgets:block/spinning_wheel",
     "particle": "thaumcraft:block/woodplain"
   },
   "elements": [
