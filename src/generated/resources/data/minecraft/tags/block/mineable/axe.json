@@ -4,6 +4,10 @@
     {
       "id": "witchinggadgets:spinning_wheel",
       "required": false
+    },
+    {
+      "id": "witchinggadgets:stone_extruder",
+      "required": false
     }
   ]
 }

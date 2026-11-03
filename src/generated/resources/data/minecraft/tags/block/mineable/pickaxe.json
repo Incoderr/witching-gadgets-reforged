@@ -2,6 +2,14 @@
   "replace": false,
   "values": [
     {
+      "id": "witchinggadgets:ageing_stone",
+      "required": false
+    },
+    {
+      "id": "witchinggadgets:ethereal_wall",
+      "required": false
+    },
+    {
       "id": "witchinggadgets:void_metal_block",
       "required": false
     }
