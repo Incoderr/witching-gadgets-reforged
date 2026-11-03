@@ -7,6 +7,8 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.inventory.ChestMenu;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -20,6 +22,7 @@ import thaumcraft.platform.Bauble;
 import thaumcraft.platform.BaubleType;
 import thaumcraft.platform.Baubles;
 import thaumcraft.test.TestSupport;
+import witchinggadgets.bags.BagEvents;
 import witchinggadgets.bags.BagMenu;
 import witchinggadgets.bags.BagsFeature;
 import witchinggadgets.baubles.BaublesFeature;
@@ -38,7 +41,10 @@ public final class ClothingGameTests {
         .add("luck_ring_adds_fortune_and_looting", ClothingGameTests::luckRing)
         .add("lucky_coin_is_enchanted", ClothingGameTests::luckyCoin)
         .add("titles_have_three_variants", ClothingGameTests::titles)
-        .add("bewitched_robes_discount_vis", ClothingGameTests::robes);
+        .add("bewitched_robes_discount_vis", ClothingGameTests::robes)
+        .add("void_bag_destroys_filtered_pickups", ClothingGameTests::voidBag)
+        .add("hungry_bag_swallows_pickups", ClothingGameTests::hungryBag)
+        .add("ender_bag_opens_ender_chest", ClothingGameTests::enderBag);
 
     private ClothingGameTests() {
     }
@@ -55,7 +61,7 @@ public final class ClothingGameTests {
         for (String key : new String[] {
             "BAGOFTRICKS_CLOTH", "BAGOFTRICKS_BAG", "ADVANCEDROBES_CLOTH", "ADVANCEDROBES_CHEST", "ADVANCEDROBES_LEGS",
             "WGBAUBLES_WOLFVAMBRACES", "WGBAUBLES_KNOCKBACKSHOULDERS", "WGBAUBLES_COIN", "WGBAUBLES_HASTEVAMBRACES",
-            "WGBAUBLES_DOUBLEJUMPSHOULDERS", "WGBAUBLES_SNIPERRING", "WGBAUBLES_LUCKRING"
+            "WGBAUBLES_DOUBLEJUMPSHOULDERS", "WGBAUBLES_SNIPERRING", "WGBAUBLES_LUCKRING", "HUNGERBAG", "ENDERBAG", "VOIDBAG"
         }) {
             helper.assertTrue(TcRecipes.get(key) != null, "recipe " + key + " is missing");
         }
@@ -152,6 +158,41 @@ public final class ClothingGameTests {
         ItemStack legs = new ItemStack(RobesFeature.BEWITCHED_LEGGINGS.get());
         helper.assertValueEqual(RobesFeature.BEWITCHED_ROBE.get().getVisDiscount(chest, null, null), 5, "robe discount");
         helper.assertValueEqual(RobesFeature.BEWITCHED_LEGGINGS.get().getVisDiscount(legs, null, null), 4, "leggings discount");
+        helper.succeed();
+    }
+
+    private static void voidBag(GameTestHelper helper) {
+        ServerPlayer player = player(helper);
+        ItemStack bag = new ItemStack(BagsFeature.VOID_BAG.get());
+        BagsFeature.CONTENTS.set(bag, ItemContainerContents.fromItems(List.of(new ItemStack(Items.COBBLESTONE))));
+        ItemEntity cobble = new ItemEntity(helper.getLevel(), player.getX(), player.getY(), player.getZ(), new ItemStack(Items.COBBLESTONE, 5));
+        ItemEntity dirt = new ItemEntity(helper.getLevel(), player.getX(), player.getY(), player.getZ(), new ItemStack(Items.DIRT, 5));
+        helper.getLevel().addFreshEntity(cobble);
+        helper.getLevel().addFreshEntity(dirt);
+        helper.assertTrue(BagEvents.voidItem(player, bag, cobble), "filtered cobblestone was kept");
+        helper.assertTrue(cobble.isRemoved(), "cobblestone entity survived");
+        helper.assertFalse(BagEvents.voidItem(player, bag, dirt), "unfiltered dirt was voided");
+        dirt.discard();
+        helper.succeed();
+    }
+
+    private static void hungryBag(GameTestHelper helper) {
+        ItemStack bag = new ItemStack(BagsFeature.HUNGRY_BAG.get());
+        ItemEntity apples = new ItemEntity(helper.getLevel(), 0, 0, 0, new ItemStack(Items.APPLE, 10));
+        helper.getLevel().addFreshEntity(apples);
+        helper.assertTrue(BagEvents.feed(bag, apples), "apples were not swallowed");
+        ItemContainerContents contents = BagsFeature.CONTENTS.getOrDefault(bag, ItemContainerContents.EMPTY);
+        helper.assertTrue(contents.stream().anyMatch(stack -> stack.is(Items.APPLE) && stack.getCount() == 10), "apples not stored");
+        helper.succeed();
+    }
+
+    private static void enderBag(GameTestHelper helper) {
+        ServerPlayer player = player(helper);
+        ItemStack bag = new ItemStack(BagsFeature.ENDER_BAG.get());
+        player.setItemInHand(InteractionHand.MAIN_HAND, bag);
+        bag.use(helper.getLevel(), player, InteractionHand.MAIN_HAND);
+        helper.assertTrue(player.containerMenu instanceof ChestMenu chest && chest.getContainer() == player.getEnderChestInventory(), "ender chest not opened");
+        player.closeContainer();
         helper.succeed();
     }
 }
