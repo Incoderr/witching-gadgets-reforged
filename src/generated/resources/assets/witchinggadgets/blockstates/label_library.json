@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "witchinggadgets:block/label_library"
+    },
+    "facing=east": {
+      "model": "witchinggadgets:block/label_library",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "witchinggadgets:block/label_library",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "witchinggadgets:block/label_library",
+      "y": 270
+    }
+  }
+}

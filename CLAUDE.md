@@ -18,7 +18,7 @@ This file describes how to sync and maintain the backport. Status, test counts, 
 
 ## Syncing with main
 
-Last synced `main` commit: `421cbf5`.
+Last synced `main` commit: `28b12da`.
 
 1. `git log --reverse <sha>..main`.
 2. A commit with only resources, lang or `tools/`: `git cherry-pick`, then `python3 tools/convert_assets.py` and `python3 tools/gen_resources.py` (the `mcformat.py` profile comes from `minecraft_version` in `gradle.properties`).
@@ -40,7 +40,7 @@ Last synced `main` commit: `421cbf5`.
 - Disguised blocks (ethereal wall): `platform/CamoBlockEntity` extends the base `CamouflagedBlockEntity`; the base 1.21.1 `thaumcraft:warded` loader always falls back to stone, so `client/platform/CamoModels` wraps the plain baked models of the listed blocks in `ModelEvent.ModifyBakingResult` instead, and `gen_arcanestone.py` writes a plain blockstate for the legacy profile. Block tints go through `RegisterColorHandlersEvent.Block` in `client/platform/WgBlockTints`.
 - Item tints from 26.3 item definitions are lost in legacy `models/item`; `client/platform/WgItemTints` registers them with `RegisterColorHandlersEvent.Item` (the cloths). A new tinted item on `main` needs a line there (cloths, cloaks and kamas, bags, robes).
 - 1.21.1 block model rotations only allow 0, ±22.5 and ±45 degrees, `mcformat.py` snaps the spinning wheel's -10 and 15 degree boxes to ±22.5.
-- 1.21.1 API in ported code: `GuiGraphics` with `renderBg`/`renderLabels` and a `render` override that draws the background and tooltip, `BlockEntityType.Builder.of(...).build(null)`, `ContainerHelper.loadAllItems(input.tag(), items, input.lookup())` over the base `compat` value IO, `RecipeManager.byKey(ResourceLocation)`, `GameTestHelper.getBlockEntity(pos)`.
+- 1.21.1 API in ported code: `GuiGraphics` with `renderBg`/`renderLabels` and a `render` override that draws the background and tooltip, `BlockEntityType.Builder.of(...).build(null)`, `ContainerHelper.loadAllItems(input.tag(), items, input.lookup())` over the base `compat` value IO, `RecipeManager.byKey(ResourceLocation)`, `GameTestHelper.getBlockEntity(pos)`, `ItemInteractionResult` from `useItemOn`, `BucketItem.content`, `javax.annotation.Nullable` (not a type-use annotation: `@Nullable Transfer.FluidTank`). Block entity renderers keep the old `render(entity, partialTick, poseStack, buffers, light, overlay)` and draw items through the base `client/render/ItemSlot`.
 
 ## Checks
 

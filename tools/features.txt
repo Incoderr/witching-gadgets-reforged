@@ -5,3 +5,4 @@ bags
 baubles
 robes
 arcanestone
+devices

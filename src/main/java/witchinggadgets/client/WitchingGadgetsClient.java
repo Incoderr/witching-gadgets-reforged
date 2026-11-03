@@ -12,6 +12,7 @@ import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import witchinggadgets.WitchingGadgets;
+import witchinggadgets.client.devices.DevicesClient;
 
 @Mod(value = WitchingGadgets.MODID, dist = Dist.CLIENT)
 @EventBusSubscriber(modid = WitchingGadgets.MODID, value = Dist.CLIENT)
@@ -20,6 +21,7 @@ public final class WitchingGadgetsClient {
         container.registerConfig(ModConfig.Type.CLIENT, WgClientConfig.SPEC);
         container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
         ClientPayloadHandlers.register();
+        DevicesClient.init();
     }
 
     @SubscribeEvent

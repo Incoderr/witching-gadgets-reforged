@@ -2,6 +2,14 @@
   "replace": false,
   "values": [
     {
+      "id": "witchinggadgets:label_library",
+      "required": false
+    },
+    {
+      "id": "witchinggadgets:sauna_stove",
+      "required": false
+    },
+    {
       "id": "witchinggadgets:spinning_wheel",
       "required": false
     },
