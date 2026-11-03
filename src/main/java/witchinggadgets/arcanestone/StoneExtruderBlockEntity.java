@@ -8,13 +8,13 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
+import thaumcraft.blockentity.TcBlockEntity;
 import thaumcraft.platform.Transfer;
 
-public class StoneExtruderBlockEntity extends BlockEntity {
+public class StoneExtruderBlockEntity extends TcBlockEntity {
     public static final int CYCLE = 40;
     public static final int FIZZ = 32;
 

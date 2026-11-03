@@ -1,4 +1,4 @@
-package witchinggadgets.client.arcanestone;
+package witchinggadgets.client.platform;
 
 import java.util.List;
 import net.minecraft.client.color.block.BlockTintSources;
@@ -11,10 +11,10 @@ import witchinggadgets.WitchingGadgets;
 import witchinggadgets.arcanestone.ArcaneStoneFeature;
 
 @EventBusSubscriber(modid = WitchingGadgets.MODID, value = Dist.CLIENT)
-public final class ArcaneStoneClient {
+public final class WgBlockTints {
     private static final int WATER = 0x3F76E4;
 
-    private ArcaneStoneClient() {
+    private WgBlockTints() {
     }
 
     @SubscribeEvent
