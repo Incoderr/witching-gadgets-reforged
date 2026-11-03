@@ -6,12 +6,14 @@ import witchinggadgets.arcanestone.ArcaneStoneFeature;
 import witchinggadgets.bags.BagsFeature;
 import witchinggadgets.baubles.BaublesFeature;
 import witchinggadgets.cloaks.CloaksFeature;
+import witchinggadgets.devices.DevicesFeature;
 import witchinggadgets.materials.MaterialsFeature;
 import witchinggadgets.robes.RobesFeature;
 import witchinggadgets.spinning.SpinningFeature;
 import witchinggadgets.test.ArcaneStoneGameTests;
 import witchinggadgets.test.ClothingGameTests;
 import witchinggadgets.test.CloaksGameTests;
+import witchinggadgets.test.DevicesGameTests;
 import witchinggadgets.test.MaterialsGameTests;
 import witchinggadgets.test.SpinningGameTests;
 
@@ -27,6 +29,7 @@ public final class Features {
         BaublesFeature.load();
         RobesFeature.load();
         ArcaneStoneFeature.load();
+        DevicesFeature.load();
     }
 
     public static void research() {
@@ -36,6 +39,7 @@ public final class Features {
         BaublesFeature.research();
         RobesFeature.research();
         ArcaneStoneFeature.research();
+        DevicesFeature.research();
     }
 
     public static void recipes() {
@@ -45,6 +49,7 @@ public final class Features {
         BaublesFeature.recipes();
         RobesFeature.recipes();
         ArcaneStoneFeature.recipes();
+        DevicesFeature.recipes();
     }
 
     public static void aspects(AspectRegistry registry) {
@@ -57,5 +62,6 @@ public final class Features {
         CloaksGameTests.register(modEventBus);
         ClothingGameTests.register(modEventBus);
         ArcaneStoneGameTests.register(modEventBus);
+        DevicesGameTests.register(modEventBus);
     }
 }

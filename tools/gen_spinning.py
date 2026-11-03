@@ -1,3 +1,5 @@
+import boxmodel
+
 TEXTURE_WIDTH = 64
 TEXTURE_HEIGHT = 32
 PARTS = [
@@ -22,33 +24,10 @@ PARTS = [
 FACINGS = {"east": 0, "south": 90, "west": 180, "north": 270}
 
 
-def uv(u1, v1, u2, v2):
-    scale_u = 16 / TEXTURE_WIDTH
-    scale_v = 16 / TEXTURE_HEIGHT
-    return [round(u1 * scale_u, 4), round(v1 * scale_v, 4), round(u2 * scale_u, 4), round(v2 * scale_v, 4)]
-
-
-def faces(u, v, size):
-    width, height, depth = size
-    return {
-        "east": {"uv": uv(u + depth + width, v + depth + height, u + depth + width + depth, v + depth), "texture": "#wheel"},
-        "west": {"uv": uv(u, v + depth + height, u + depth, v + depth), "texture": "#wheel"},
-        "down": {"uv": uv(u + depth, v, u + depth + width, v + depth), "texture": "#wheel"},
-        "up": {"uv": uv(u + depth + width, v + depth, u + depth + width + width, v), "texture": "#wheel"},
-        "north": {"uv": uv(u + depth, v + depth + height, u + depth + width, v + depth), "texture": "#wheel"},
-        "south": {"uv": uv(u + depth + width + depth, v + depth + height, u + depth + width + depth + width, v + depth), "texture": "#wheel"},
-    }
-
-
 def element(part):
     u, v, offset, size, pivot, rotation = part
     origin = [pivot[0] + 8, pivot[1], pivot[2]]
-    start = [round(origin[axis] + offset[axis], 4) for axis in range(3)]
-    end = [round(start[axis] + size[axis], 4) for axis in range(3)]
-    content = {"from": start, "to": end, "faces": faces(u, v, size)}
-    if rotation:
-        content["rotation"] = {"origin": [round(value, 4) for value in origin], "axis": rotation[0], "angle": rotation[1]}
-    return content
+    return boxmodel.unflipped(u, v, offset, size, origin, (TEXTURE_WIDTH, TEXTURE_HEIGHT), "#wheel", rotation)
 
 
 def generate(ctx):
