@@ -18,7 +18,19 @@
       "required": false
     },
     {
+      "id": "witchinggadgets:ender_bag",
+      "required": false
+    },
+    {
+      "id": "witchinggadgets:hungry_bag",
+      "required": false
+    },
+    {
       "id": "witchinggadgets:kama",
+      "required": false
+    },
+    {
+      "id": "witchinggadgets:void_bag",
       "required": false
     }
   ]

@@ -12,6 +12,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RenderPlayerEvent;
 import witchinggadgets.WitchingGadgets;
+import witchinggadgets.client.baubles.BaubleLayer;
 import witchinggadgets.cloaks.CloakEvents;
 
 @EventBusSubscriber(modid = WitchingGadgets.MODID, value = Dist.CLIENT)
@@ -25,6 +26,7 @@ public final class CloakClientEvents {
             AvatarRenderer<AbstractClientPlayer> renderer = event.getPlayerRenderer(skin);
             if (renderer != null) {
                 renderer.addLayer(new CloakLayer(renderer));
+                renderer.addLayer(new BaubleLayer(renderer));
             }
         }
     }

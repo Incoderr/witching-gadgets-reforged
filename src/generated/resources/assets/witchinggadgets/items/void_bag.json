@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "witchinggadgets:item/void_bag",
+    "tints": [
+      {
+        "type": "minecraft:dye",
+        "default": -12040120
+      }
+    ]
+  }
+}
