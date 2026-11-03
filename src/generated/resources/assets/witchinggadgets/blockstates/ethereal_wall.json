@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "powered=false": {
+      "type": "thaumcraft:warded",
+      "fallback": {
+        "model": "witchinggadgets:block/ethereal_wall"
+      }
+    },
+    "powered=true": {
+      "type": "thaumcraft:warded",
+      "fallback": {
+        "model": "witchinggadgets:block/ethereal_wall"
+      }
+    }
+  }
+}

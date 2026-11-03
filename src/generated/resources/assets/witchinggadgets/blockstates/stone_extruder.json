@@ -1,0 +1,50 @@
+{
+  "variants": {
+    "facing=north,powered=false": {
+      "model": "witchinggadgets:block/stone_extruder"
+    },
+    "facing=north,powered=true": {
+      "model": "witchinggadgets:block/stone_extruder_powered"
+    },
+    "facing=east,powered=false": {
+      "model": "witchinggadgets:block/stone_extruder",
+      "y": 90
+    },
+    "facing=east,powered=true": {
+      "model": "witchinggadgets:block/stone_extruder_powered",
+      "y": 90
+    },
+    "facing=south,powered=false": {
+      "model": "witchinggadgets:block/stone_extruder",
+      "y": 180
+    },
+    "facing=south,powered=true": {
+      "model": "witchinggadgets:block/stone_extruder_powered",
+      "y": 180
+    },
+    "facing=west,powered=false": {
+      "model": "witchinggadgets:block/stone_extruder",
+      "y": 270
+    },
+    "facing=west,powered=true": {
+      "model": "witchinggadgets:block/stone_extruder_powered",
+      "y": 270
+    },
+    "facing=up,powered=false": {
+      "model": "witchinggadgets:block/stone_extruder",
+      "x": 270
+    },
+    "facing=up,powered=true": {
+      "model": "witchinggadgets:block/stone_extruder_powered",
+      "x": 270
+    },
+    "facing=down,powered=false": {
+      "model": "witchinggadgets:block/stone_extruder",
+      "x": 90
+    },
+    "facing=down,powered=true": {
+      "model": "witchinggadgets:block/stone_extruder_powered",
+      "x": 90
+    }
+  }
+}

@@ -4,3 +4,4 @@ cloaks
 bags
 baubles
 robes
+arcanestone
