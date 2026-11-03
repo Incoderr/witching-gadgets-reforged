@@ -75,6 +75,13 @@ def ref(name, kind="block"):
     return f"{NS}:{kind}/{name}"
 
 
+def block_texture(source, name):
+    target = ASSETS / "textures" / "block" / f"{name}.png"
+    target.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(SOURCE_TEXTURES / f"{source}.png", target)
+    return ref(name)
+
+
 def tint(color):
     value = color | 0xFF000000
     if value >= 0x80000000:
@@ -336,6 +343,9 @@ def validate_textures():
     for texture in sorted(TEXTURE_REFERENCES):
         namespace, _, location = texture.partition(":")
         if namespace != NS:
+            continue
+        if location.split("/")[0] not in ("block", "item"):
+            missing.append(f"{texture} (outside the block and item atlases)")
             continue
         if not (SOURCE_TEXTURES / f"{location}.png").exists() and not (ASSETS / "textures" / f"{location}.png").exists():
             missing.append(texture)

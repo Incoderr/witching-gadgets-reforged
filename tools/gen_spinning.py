@@ -55,7 +55,7 @@ def generate(ctx):
     notes = []
     elements = [ctx.profile.model_element(element(part), "spinning_wheel", notes) for part in PARTS]
     ctx.block_model("spinning_wheel", {
-        "textures": {"wheel": ctx.ref("spinningwheel", "models"), "particle": "thaumcraft:block/woodplain"},
+        "textures": {"wheel": ctx.block_texture("models/spinningwheel", "spinning_wheel"), "particle": "thaumcraft:block/woodplain"},
         "elements": elements,
     })
     ctx.blockstate("spinning_wheel", {"variants": {
