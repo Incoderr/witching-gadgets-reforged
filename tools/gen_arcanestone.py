@@ -59,9 +59,8 @@ def extruder_model(fluids):
 def generate(ctx):
     ctx.cube_all("ethereal_wall", "etherealwall")
     fallback = {"model": ctx.ref("ethereal_wall")}
-    ctx.blockstate("ethereal_wall", {"variants": {
-        f"powered={value}": {"type": "thaumcraft:warded", "fallback": fallback} for value in ("false", "true")
-    }})
+    wall = {"type": "thaumcraft:warded", "fallback": fallback} if ctx.profile.modern else fallback
+    ctx.blockstate("ethereal_wall", {"variants": {f"powered={value}": wall for value in ("false", "true")}})
     ctx.block_item("ethereal_wall")
 
     ctx.cube_all("ageing_stone", "timestone")
