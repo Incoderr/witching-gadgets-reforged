@@ -6,7 +6,6 @@ import net.minecraft.gametest.framework.FunctionGameTestInstance;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.gametest.framework.TestData;
 import net.minecraft.gametest.framework.TestEnvironmentDefinition;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -44,7 +43,7 @@ public final class SmokeGameTests {
             ResourceKey<Consumer<GameTestHelper>> function = ResourceKey.create(Registries.TEST_FUNCTION, WitchingGadgets.id(name));
             event.registerTest(
                 WitchingGadgets.id(name),
-                new FunctionGameTestInstance(function, new TestData<>(environment, Identifier.fromNamespaceAndPath("thaumcraft", "test/platform"), 100, 0, true))
+                new FunctionGameTestInstance(function, new TestData<>(environment, WitchingGadgets.id("test/platform"), 100, 0, true))
             );
         }
     }
