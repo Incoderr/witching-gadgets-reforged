@@ -21,7 +21,6 @@ import thaumcraft.crafting.TcRecipes;
 import thaumcraft.platform.Bauble;
 import thaumcraft.platform.BaubleType;
 import thaumcraft.platform.Baubles;
-import thaumcraft.test.TestSupport;
 import witchinggadgets.bags.BagEvents;
 import witchinggadgets.bags.BagMenu;
 import witchinggadgets.bags.BagsFeature;

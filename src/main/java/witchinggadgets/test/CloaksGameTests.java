@@ -14,7 +14,6 @@ import thaumcraft.aspect.Aspect;
 import thaumcraft.crafting.TcRecipes;
 import thaumcraft.platform.BaubleType;
 import thaumcraft.platform.Baubles;
-import thaumcraft.test.TestSupport;
 import thaumcraft.wand.WandRegistry;
 import thaumcraft.wand.Wands;
 import witchinggadgets.cloaks.CloakEvents;

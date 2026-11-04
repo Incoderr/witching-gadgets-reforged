@@ -9,6 +9,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import thaumcraft.aspect.Aspect;
 import thaumcraft.aspect.AspectList;
 import thaumcraft.aspect.AspectRegistry;
+import witchinggadgets.gadgets.ArcaneAbacusItem;
 import witchinggadgets.registry.ModBlocks;
 import witchinggadgets.registry.ModItems;
 
@@ -20,7 +21,7 @@ public final class MaterialsFeature {
     public static final DeferredItem<Item> GOLDEN_CLOTH = ModItems.ITEMS.registerSimpleItem("golden_cloth");
     public static final DeferredItem<Item> BEWITCHED_CLOTH = ModItems.ITEMS.registerSimpleItem("bewitched_cloth");
     public static final DeferredItem<Item> WOLF_PELT = ModItems.ITEMS.registerSimpleItem("wolf_pelt");
-    public static final DeferredItem<Item> ARCANE_ABACUS = single("arcane_abacus");
+    public static final DeferredItem<ArcaneAbacusItem> ARCANE_ABACUS = ModItems.ITEMS.registerItem("arcane_abacus", ArcaneAbacusItem::new, properties -> properties.stacksTo(1));
     public static final DeferredItem<Item> GEMCUTTING_TOOLS = single("gemcutting_tools");
     public static final DeferredItem<Item> PHOTO_PLATE = ModItems.ITEMS.registerSimpleItem("photo_plate");
     public static final DeferredItem<Item> DEVELOPED_PHOTO = single("developed_photo");
