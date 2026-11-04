@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "witchinggadgets:photo_plate"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "witchinggadgets:photo_plate"
+  ],
+  "result": {
+    "id": "thaumcraft:mirrored_glass"
+  }
+}

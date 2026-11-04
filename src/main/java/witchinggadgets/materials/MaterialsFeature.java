@@ -10,6 +10,8 @@ import thaumcraft.aspect.Aspect;
 import thaumcraft.aspect.AspectList;
 import thaumcraft.aspect.AspectRegistry;
 import witchinggadgets.gadgets.ArcaneAbacusItem;
+import witchinggadgets.gadgets.GuidingStringItem;
+import witchinggadgets.gadgets.PhotoItem;
 import witchinggadgets.registry.ModBlocks;
 import witchinggadgets.registry.ModItems;
 
@@ -23,9 +25,9 @@ public final class MaterialsFeature {
     public static final DeferredItem<Item> WOLF_PELT = ModItems.ITEMS.registerSimpleItem("wolf_pelt");
     public static final DeferredItem<ArcaneAbacusItem> ARCANE_ABACUS = ModItems.ITEMS.registerItem("arcane_abacus", ArcaneAbacusItem::new, properties -> properties.stacksTo(1));
     public static final DeferredItem<Item> GEMCUTTING_TOOLS = single("gemcutting_tools");
-    public static final DeferredItem<Item> PHOTO_PLATE = ModItems.ITEMS.registerSimpleItem("photo_plate");
-    public static final DeferredItem<Item> DEVELOPED_PHOTO = single("developed_photo");
-    public static final DeferredItem<Item> GUIDING_STRING = single("guiding_string");
+    public static final DeferredItem<PhotoItem> PHOTO_PLATE = ModItems.ITEMS.registerItem("photo_plate", properties -> new PhotoItem(false, properties));
+    public static final DeferredItem<PhotoItem> DEVELOPED_PHOTO = ModItems.ITEMS.registerItem("developed_photo", properties -> new PhotoItem(true, properties));
+    public static final DeferredItem<GuidingStringItem> GUIDING_STRING = ModItems.ITEMS.registerItem("guiding_string", GuidingStringItem::new, properties -> properties.stacksTo(1));
     public static final DeferredItem<Item> POWERLESS_PEARL = ModItems.ITEMS.registerSimpleItem("powerless_pearl");
     public static final DeferredItem<Item> GEMSTONE_DUST = ModItems.ITEMS.registerSimpleItem("gemstone_dust");
 

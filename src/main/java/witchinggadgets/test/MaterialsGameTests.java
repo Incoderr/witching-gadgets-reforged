@@ -27,7 +27,7 @@ public final class MaterialsGameTests {
     private static void toolsAndPhotosDoNotStack(GameTestHelper helper) {
         helper.assertValueEqual(new ItemStack(MaterialsFeature.ARCANE_ABACUS.get()).getMaxStackSize(), 1, "abacus stack size");
         helper.assertValueEqual(new ItemStack(MaterialsFeature.GEMCUTTING_TOOLS.get()).getMaxStackSize(), 1, "gemcutting tools stack size");
-        helper.assertValueEqual(new ItemStack(MaterialsFeature.DEVELOPED_PHOTO.get()).getMaxStackSize(), 1, "developed photo stack size");
+        helper.assertValueEqual(new ItemStack(MaterialsFeature.DEVELOPED_PHOTO.get()).getMaxStackSize(), 64, "developed photo stack size");
         helper.assertValueEqual(new ItemStack(MaterialsFeature.GUIDING_STRING.get()).getMaxStackSize(), 1, "guiding string stack size");
         helper.assertValueEqual(new ItemStack(MaterialsFeature.SIMPLE_THREAD.get()).getMaxStackSize(), 64, "yarn stack size");
         helper.succeed();

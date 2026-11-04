@@ -1,0 +1,12 @@
+newmtl Gold_01
+map_Kd #gold
+
+newmtl Leather_02
+map_Kd #leather
+
+newmtl Scanner_03
+map_Kd #scanner
+
+newmtl Wood_04
+map_Kd #wood
+
