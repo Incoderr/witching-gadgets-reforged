@@ -1,5 +1,6 @@
 package witchinggadgets.test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import net.minecraft.core.BlockPos;
@@ -7,9 +8,11 @@ import net.minecraft.core.Direction;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.contents.TranslatableContents;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.block.Blocks;
@@ -21,14 +24,22 @@ import thaumcraft.aspect.AspectList;
 import thaumcraft.crafting.TcRecipes;
 import thaumcraft.node.NodeBlockEntity;
 import thaumcraft.registry.ModBlocks;
+import thaumcraft.registry.ModItems;
+import thaumcraft.research.ScanManager;
 import witchinggadgets.gadgets.ArcaneAbacusItem;
+import witchinggadgets.gadgets.GadgetsFeature;
+import witchinggadgets.gadgets.GuidingStringItem;
+import witchinggadgets.gadgets.PhotoItem;
+import witchinggadgets.gadgets.ScanCameraItem;
 import witchinggadgets.materials.MaterialsFeature;
 
 public final class GadgetsGameTests {
     private static final WgGameTestSuite SUITE = new WgGameTestSuite("gadgets")
         .add("recipes_registered", GadgetsGameTests::recipes)
         .add("abacus_reduces_node_to_primals", GadgetsGameTests::node)
-        .add("abacus_reports_matrix_symmetry", GadgetsGameTests::matrix);
+        .add("abacus_reports_matrix_symmetry", GadgetsGameTests::matrix)
+        .add("guiding_string_records_turns", GadgetsGameTests::guidingString)
+        .add("camera_photo_develops_and_teaches", GadgetsGameTests::camera);
 
     private GadgetsGameTests() {
     }
@@ -38,7 +49,9 @@ public final class GadgetsGameTests {
     }
 
     private static void recipes(GameTestHelper helper) {
-        helper.assertTrue(TcRecipes.get("CALCULATOR") != null, "recipe CALCULATOR is missing");
+        for (String key : new String[] {"CALCULATOR", "SCANCAMERA", "SCANCAMERA_DEVELOP", "SCANCAMERA_CLEARPLATE", "LABYRINTHSTRING"}) {
+            helper.assertTrue(TcRecipes.get(key) != null, "recipe " + key + " is missing");
+        }
         helper.succeed();
     }
 
@@ -79,6 +92,73 @@ public final class GadgetsGameTests {
         helper.setBlock(new BlockPos(3, 2, 3), Blocks.SKELETON_SKULL);
         helper.assertFalse(hasWarning(ArcaneAbacusItem.inspectMatrix(helper.getLevel(), absolute, player), "noPartnerStabilizer"), "paired stabilizers warned");
         helper.succeed();
+    }
+
+    private static void guidingString(GameTestHelper helper) {
+        Player player = helper.makeMockPlayer(GameType.SURVIVAL);
+        player.setPos(helper.absoluteVec(new Vec3(1.5, 2.0, 1.5)));
+        player.setYRot(0.0F);
+        ItemStack string = new ItemStack(MaterialsFeature.GUIDING_STRING.get());
+        GuidingStringItem.toggle(string, player);
+        helper.assertTrue(GuidingStringItem.active(string), "string is not active");
+        helper.assertValueEqual(GuidingStringItem.path(string).size(), 1, "first point");
+        GuidingStringItem.track(string, player);
+        helper.assertValueEqual(GuidingStringItem.path(string).size(), 1, "point without a turn");
+        player.setPos(helper.absoluteVec(new Vec3(4.5, 2.0, 4.5)));
+        player.setYRot(90.0F);
+        GuidingStringItem.track(string, player);
+        helper.assertValueEqual(GuidingStringItem.path(string).size(), 2, "point after a turn");
+        GuidingStringItem.toggle(string, player);
+        helper.assertFalse(GuidingStringItem.active(string), "string still active");
+        helper.assertValueEqual(GuidingStringItem.path(string).size(), 3, "toggle adds a point");
+        player.setShiftKeyDown(true);
+        GuidingStringItem.toggle(string, player);
+        helper.assertTrue(GuidingStringItem.path(string).isEmpty(), "sneak did not clear the path");
+        helper.succeed();
+    }
+
+    private static void camera(GameTestHelper helper) {
+        BlockPos pos = new BlockPos(1, 1, 1);
+        helper.setBlock(pos, Blocks.STONE);
+        ServerPlayer player = serverPlayer(helper);
+        ScanManager.Target target = ScanManager.resolveBlock(helper.getLevel(), helper.absolutePos(pos));
+        helper.assertTrue(target != null, "stone is not scannable");
+        ScanCameraItem.Shot shot = new ScanCameraItem.Shot(target, Component.literal("Stone"), Vec3.ZERO, 15);
+        helper.assertFalse(ScanCameraItem.takePhoto(player, shot), "photo without mirrored glass");
+        player.getInventory().add(new ItemStack(ModItems.MIRRORED_GLASS.get(), 2));
+        helper.assertTrue(ScanCameraItem.takePhoto(player, shot), "photo was not taken");
+        helper.assertValueEqual(player.getInventory().countItem(ModItems.MIRRORED_GLASS.get()), 1, "glass left");
+        int plateSlot = -1;
+        for (int slot = 0; slot < player.getInventory().getContainerSize(); slot++) {
+            if (player.getInventory().getItem(slot).is(MaterialsFeature.PHOTO_PLATE.get())) {
+                plateSlot = slot;
+            }
+        }
+        ItemStack plate = plateSlot < 0 ? ItemStack.EMPTY : player.getInventory().getItem(plateSlot);
+        helper.assertTrue(GadgetsFeature.SCAN.has(plate), "plate has no scan");
+
+        GadgetsFeature.PhotoDeveloping developing = new GadgetsFeature.PhotoDeveloping();
+        List<ItemStack> grid = new ArrayList<>(List.of(plate, new ItemStack(Items.PAPER), new ItemStack(Items.PAPER), new ItemStack(Items.INK_SAC), new ItemStack(Items.INK_SAC)));
+        while (grid.size() < 9) {
+            grid.add(ItemStack.EMPTY);
+        }
+        helper.assertTrue(developing.matches(grid, player), "developing did not match");
+        ItemStack developed = developing.result(grid);
+        helper.assertValueEqual(developed.getCount(), 2, "copies");
+        helper.assertValueEqual(developing.aspects(grid).getAmount(Aspect.WATER), 10, "aqua cost");
+        grid.set(4, ItemStack.EMPTY);
+        helper.assertFalse(developing.matches(grid, player), "uneven ink and paper matched");
+
+        helper.assertFalse(ScanManager.hasBeenScanned(player, target), "stone already scanned");
+        helper.assertTrue(PhotoItem.study(player, developed), "studying failed");
+        helper.assertTrue(ScanManager.hasBeenScanned(player, target), "stone not scanned");
+        helper.assertValueEqual(developed.getCount(), 1, "photo not consumed");
+        helper.assertFalse(PhotoItem.study(player, developed), "studied twice");
+        helper.succeed();
+    }
+
+    private static ServerPlayer serverPlayer(GameTestHelper helper) {
+        return TestSupport.mockServerPlayer(helper);
     }
 
     private static boolean hasWarning(ArcaneAbacusItem.Report report, String key) {

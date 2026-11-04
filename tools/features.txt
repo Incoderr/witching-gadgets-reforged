@@ -6,4 +6,5 @@ baubles
 robes
 arcanestone
 devices
+gadgets
 testing
