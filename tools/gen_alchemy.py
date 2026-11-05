@@ -7,6 +7,7 @@ WALLS = {
     "east": (True, True),
 }
 PUMP_FACINGS = ("north", "east", "south", "west")
+VINE_COLOR = 0x48B518
 
 
 def box_element(box, invert, mirror, texture):
@@ -39,7 +40,7 @@ def rose_vine(ctx):
             })
             parts.append({"when": {"age": str(age), side: "true"}, "apply": {"model": ctx.ref(f"rose_vine_{side}_{age}")}})
     ctx.blockstate("rose_vine", {"multipart": parts})
-    ctx.block_item("rose_vine", model=ctx.ref("rose_vine_west_5"))
+    ctx.generated_item("rose_vine", "rosevine", [ctx.tint(VINE_COLOR)], texture_kind="block")
     ctx.shear_only("rose_vine")
 
 

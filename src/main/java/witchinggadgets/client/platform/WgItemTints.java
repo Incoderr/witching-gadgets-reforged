@@ -13,6 +13,7 @@ import thaumcraft.aspect.Aspect;
 import witchinggadgets.gems.CrystalCapsuleItem;
 import witchinggadgets.gems.GemsFeature;
 import witchinggadgets.gems.InfusedGemItem;
+import witchinggadgets.alchemy.AlchemyFeature;
 import witchinggadgets.bags.BagItem;
 import witchinggadgets.bags.BagsFeature;
 import witchinggadgets.cloaks.CloaksFeature;
@@ -45,6 +46,7 @@ public final class WgItemTints {
             (stack, layer) -> layer == 0 ? 0xFF000000 | PrimordialGear.abilityAspect(stack).getColor() : -1,
             PrimordialFeature.PRIMORDIAL_HELMET.get(), PrimordialFeature.PRIMORDIAL_CHESTPLATE.get(), PrimordialFeature.PRIMORDIAL_LEGGINGS.get(), PrimordialFeature.PRIMORDIAL_BOOTS.get()
         );
+        event.register((stack, layer) -> layer == 0 ? 0xFF48B518 : -1, AlchemyFeature.ROSE_VINE.get());
         event.register(
             (stack, layer) -> layer == 1 ? 0xFF000000 | PrimordialGear.abilityAspect(stack).getColor() : -1,
             PrimordialFeature.PRIMORDIAL_SWORD.get(), PrimordialFeature.PRIMORDIAL_HAMMER.get(), PrimordialFeature.PRIMORDIAL_AXE.get()

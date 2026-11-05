@@ -18,7 +18,7 @@ This file describes how to sync and maintain the backport. Status, test counts, 
 
 ## Syncing with main
 
-Last synced `main` commit: `691bbee`.
+Last synced `main` commit: `23e8304`.
 
 1. `git log --reverse <sha>..main`.
 2. A commit with only resources, lang or `tools/`: `git cherry-pick`, then `python3 tools/convert_assets.py` and `python3 tools/gen_resources.py` (the `mcformat.py` profile comes from `minecraft_version` in `gradle.properties`).
@@ -38,7 +38,7 @@ Last synced `main` commit: `691bbee`.
 - 1.21.1 armor items extend `ArmorItem` and take the material in the constructor. The base only gives its own robes a dyeable layer plus overlay, so `platform/WgArmor.dyeable` registers WG armor materials with those two layers; `RobesFeature.load` creates it before item registration. `client/robes/RobeModels` sets the default dye colour of the bewitched robes and the skirted chest model through one `IClientItemExtensions` per item (a second registration for the same item would replace it).
 - Tests: mock server players come from `test/TestSupport` (the base dropped its `thaumcraft.test` package); spawn invulnerability is not bypassed there, so damage in tests uses `fellOutOfWorld` or is not asserted. Curios fires equip/unequip only on its tick, so tests call `onGearUnequipped` directly.
 - Disguised blocks (ethereal wall): `platform/CamoBlockEntity` extends the base `CamouflagedBlockEntity`; the base 1.21.1 `thaumcraft:warded` loader always falls back to stone, so `client/platform/CamoModels` wraps the plain baked models of the listed blocks in `ModelEvent.ModifyBakingResult` instead, and `gen_arcanestone.py` writes a plain blockstate for the legacy profile. Block tints go through `RegisterColorHandlersEvent.Block` in `client/platform/WgBlockTints`.
-- Item tints from 26.3 item definitions are lost in legacy `models/item`; `client/platform/WgItemTints` registers them with `RegisterColorHandlersEvent.Item` (the cloths). A new tinted item on `main` needs a line there (cloths, cloaks and kamas, bags, robes, infused gems, crystal capsules); `main`'s `client/platform/WgItemTintSources` does not exist here.
+- Item tints from 26.3 item definitions are lost in legacy `models/item`; `client/platform/WgItemTints` registers them with `RegisterColorHandlersEvent.Item` (the cloths). A new tinted item on `main` needs a line there (cloths, cloaks and kamas, bags, robes, infused gems, crystal capsules, primordial gear, rose vine); `main`'s `client/platform/WgItemTintSources` does not exist here.
 - A `minecraft:select` on `minecraft:component` becomes `overrides` with the predicate `witchinggadgets:<component>` (case index + 1); `client/platform/WgItemProperties` registers that property (`gem_cut`).
 - 1.21.1 has no render state modifiers: `client/enchantments/EnchantmentsClient` hides Translucency armor by emptying `Inventory.armor` in `RenderPlayerEvent.Pre` (lowest priority) and restoring it in `Post`; it writes the list directly so no equip sound plays.
 - Addon armor materials that are not dyeable go through the base `Registration.armorMaterial`, called from the feature `load()` (primordial armor): calling it first from the item constructor registers too late. Custom armor models set part visibility in `setupModelAnimations` (`PrimordialArmorModel.animateArmor`). The 1.21.1 server does not know the forward input, so primordial boots move and raise the step height only on the client; fall distance is reduced on both sides.
