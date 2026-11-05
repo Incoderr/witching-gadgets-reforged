@@ -6,6 +6,13 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import witchinggadgets.WitchingGadgets;
 import net.minecraft.world.item.component.DyedItemColor;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.Fluids;
+import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
+import thaumcraft.aspect.Aspect;
+import witchinggadgets.gems.CrystalCapsuleItem;
+import witchinggadgets.gems.GemsFeature;
+import witchinggadgets.gems.InfusedGemItem;
 import witchinggadgets.bags.BagItem;
 import witchinggadgets.bags.BagsFeature;
 import witchinggadgets.cloaks.CloaksFeature;
@@ -31,6 +38,28 @@ public final class WgItemTints {
         event.register((stack, layer) -> layer == 0 && stack.getItem() instanceof BagItem bag ? DyedItemColor.getOrDefault(stack, bag.kind().color()) | 0xFF000000 : -1,
             BagsFeature.BAG_OF_TRICKS.get(), BagsFeature.VOID_BAG.get(), BagsFeature.ENDER_BAG.get(), BagsFeature.HUNGRY_BAG.get());
         event.register((stack, layer) -> layer == 0 ? DyedItemColor.getOrDefault(stack, ROBE_DEFAULT) | 0xFF000000 : -1, RobesFeature.BEWITCHED_ROBE.get(), RobesFeature.BEWITCHED_LEGGINGS.get());
+        event.register((stack, layer) -> {
+            Aspect aspect = InfusedGemItem.aspect(stack);
+            return layer == 0 && aspect != null ? 0xFF000000 | aspect.getColor() : -1;
+        }, GemsFeature.INFUSED_GEM.get());
+        event.register((stack, layer) -> {
+            if (layer != 0) {
+                return -1;
+            }
+            Fluid fluid = CrystalCapsuleItem.fluid(stack);
+            return fluid == null ? 0x00FFFFFF : fluidColor(fluid);
+        }, GemsFeature.CRYSTAL_CAPSULE.get());
+    }
+
+    public static int fluidColor(Fluid fluid) {
+        int tint = IClientFluidTypeExtensions.of(fluid).getTintColor();
+        if ((tint & 0xFFFFFF) != 0xFFFFFF) {
+            return 0xFF000000 | tint;
+        }
+        if (fluid.isSame(Fluids.LAVA)) {
+            return 0xFFD96415;
+        }
+        return 0xFF000000 | fluid.defaultFluidState().createLegacyBlock().getBlock().defaultMapColor().col;
     }
 
 }

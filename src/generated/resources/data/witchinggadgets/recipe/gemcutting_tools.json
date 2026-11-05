@@ -1,0 +1,31 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "witchinggadgets:gemcutting_tools"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "q": {
+      "tag": "c:gems/quartz"
+    },
+    "f": {
+      "item": "minecraft:flint"
+    },
+    "i": {
+      "tag": "c:ingots/iron"
+    },
+    "s": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "pattern": [
+    "qfi",
+    "sss"
+  ],
+  "result": {
+    "id": "witchinggadgets:gemcutting_tools"
+  }
+}

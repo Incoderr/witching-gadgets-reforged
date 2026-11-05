@@ -1,0 +1,21 @@
+{
+  "anvil_cost": 1,
+  "description": {
+    "translate": "enchantment.witchinggadgets.gemstone_potency"
+  },
+  "effects": {},
+  "max_cost": {
+    "base": 61,
+    "per_level_above_first": 10
+  },
+  "max_level": 3,
+  "min_cost": {
+    "base": 10,
+    "per_level_above_first": 11
+  },
+  "slots": [
+    "any"
+  ],
+  "supported_items": "witchinggadgets:infused_gem",
+  "weight": 4
+}

@@ -44,7 +44,10 @@ def legacy_item(path, definition):
             overrides = [{"predicate": {"custom_model_data": entry["threshold"]}, "model": entry["model"]["model"]} for entry in definition["entries"]]
         elif kind == "minecraft:select":
             model = definition["fallback"]["model"]
-            overrides = [{"predicate": {"witchinggadgets:seed_aspect": index + 1}, "model": case["model"]["model"]} for index, case in enumerate(definition["cases"])]
+            predicate = "witchinggadgets:seed_aspect"
+            if definition.get("property") == "minecraft:component":
+                predicate = "witchinggadgets:" + definition["component"].split(":")[1]
+            overrides = [{"predicate": {predicate: index + 1}, "model": case["model"]["model"]} for index, case in enumerate(definition["cases"])]
         else:
             raise ValueError(f"unsupported item model for {name}: {kind}")
         content = json.loads(target.read_text()) if model == own and target.exists() else {"parent": model}

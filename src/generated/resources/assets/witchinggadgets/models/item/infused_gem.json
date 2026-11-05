@@ -1,0 +1,11 @@
+{
+  "parent": "witchinggadgets:item/infused_gem_point",
+  "overrides": [
+    {
+      "predicate": {
+        "witchinggadgets:gem_cut": 1
+      },
+      "model": "witchinggadgets:item/infused_gem_oval"
+    }
+  ]
+}

@@ -2,6 +2,10 @@
   "replace": false,
   "values": [
     {
+      "id": "witchinggadgets:cutting_table",
+      "required": false
+    },
+    {
       "id": "witchinggadgets:label_library",
       "required": false
     },
