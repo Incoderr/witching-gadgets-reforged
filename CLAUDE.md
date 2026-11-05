@@ -18,7 +18,7 @@ This file describes how to sync and maintain the backport. Status, test counts, 
 
 ## Syncing with main
 
-Last synced `main` commit: `9004f09`.
+Last synced `main` commit: `84d27c3`.
 
 1. `git log --reverse <sha>..main`.
 2. A commit with only resources, lang or `tools/`: `git cherry-pick`, then `python3 tools/convert_assets.py` and `python3 tools/gen_resources.py` (the `mcformat.py` profile comes from `minecraft_version` in `gradle.properties`).
@@ -45,7 +45,7 @@ Last synced `main` commit: `9004f09`.
 - 1.21.1 has no `blocks_attacks` component: `platform/WgBlocking.halfBlock` returns the properties unchanged, `PrimordialWeaponItem` here starts using on use with the block animation and `ItemAbilities.SHIELD_BLOCK`, and `WgBlocking` turns `LivingShieldBlockEvent` into the 26.3 behaviour (any angle, half damage, no item damage). The block break event is `BlockEvent.BreakEvent` here (`BreakBlockEvent` on `main`).
 - The base 1.21.1 has no TC4 config, so `platform/BaseConfig.allowMirrors()` returns `true` here.
 - 1.21.1 block model rotations only allow 0, ±22.5 and ±45 degrees, `mcformat.py` snaps the spinning wheel's -10 and 15 degree boxes to ±22.5.
-- 1.21.1 API in ported code: `GuiGraphics` with `renderBg`/`renderLabels` and a `render` override that draws the background and tooltip, `BlockEntityType.Builder.of(...).build(null)`, `ContainerHelper.loadAllItems(input.tag(), items, input.lookup())` over the base `compat` value IO, `RecipeManager.byKey(ResourceLocation)`, `GameTestHelper.getBlockEntity(pos)`, `ItemInteractionResult` from `useItemOn`, `BucketItem.content`, `javax.annotation.Nullable` (not a type-use annotation: `@Nullable Transfer.FluidTank`). Block entity renderers keep the old `render(entity, partialTick, poseStack, buffers, light, overlay)` and draw items through the base `client/render/ItemSlot`.
+- 1.21.1 API in ported code: `GuiGraphics` with `renderBg`/`renderLabels` and a `render` override that draws the background and tooltip, `BlockEntityType.Builder.of(...).build(null)`, `ContainerHelper.loadAllItems(input.tag(), items, input.lookup())` over the base `compat` value IO, `RecipeManager.byKey(ResourceLocation)`, `GameTestHelper.getBlockEntity(pos)`, `ItemInteractionResult` from `useItemOn`, `BucketItem.content`, `javax.annotation.Nullable` (not a type-use annotation: `@Nullable Transfer.FluidTank`). The essentia pump item goes through a `BlockEntityWithoutLevelRenderer` registered in `client/devices/DeviceItemRenderers` (a `minecraft:special` item on `main`), and the pump renderer writes its own vertices with overlay and normal for the entity render types. Block entity renderers keep the old `render(entity, partialTick, poseStack, buffers, light, overlay)` and draw items through the base `client/render/ItemSlot`.
 
 ## Checks
 

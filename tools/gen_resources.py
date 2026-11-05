@@ -93,6 +93,8 @@ def tint(color):
 
 
 def block_model(name, content):
+    if "elements" in content and "parent" not in content:
+        content = {"parent": "minecraft:block/block", **content}
     if profile.explicit_render_types:
         content = {"render_type": "minecraft:cutout", **content}
     BLOCK_MODELS[name] = content

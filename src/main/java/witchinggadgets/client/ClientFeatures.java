@@ -6,6 +6,7 @@ import witchinggadgets.bags.BagsFeature;
 import witchinggadgets.client.bags.BagScreen;
 import witchinggadgets.client.bags.VoidBagScreen;
 import witchinggadgets.client.cloaks.CloakStorageScreen;
+import witchinggadgets.client.devices.EssentiaPumpRenderer;
 import witchinggadgets.client.devices.LabelLibraryRenderer;
 import witchinggadgets.client.devices.LabelLibraryScreen;
 import witchinggadgets.client.gems.CuttingTableRenderer;
@@ -32,5 +33,6 @@ public final class ClientFeatures {
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(DevicesFeature.LABEL_LIBRARY_ENTITY.get(), LabelLibraryRenderer::new);
         event.registerBlockEntityRenderer(GemsFeature.CUTTING_TABLE_ENTITY.get(), CuttingTableRenderer::new);
+        event.registerBlockEntityRenderer(DevicesFeature.ESSENTIA_PUMP_ENTITY.get(), EssentiaPumpRenderer::new);
     }
 }

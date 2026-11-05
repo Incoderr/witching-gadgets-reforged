@@ -34,10 +34,10 @@ public class RoseVineBlock extends Block implements WandInteractable {
     public static final BooleanProperty EAST = BlockStateProperties.EAST;
 
     private static final VoxelShape FLOOR = Block.box(0, 0, 0, 16, 6, 16);
-    private static final VoxelShape NORTH_WALL = Block.box(0, 0, 0, 16, 16, 4);
-    private static final VoxelShape SOUTH_WALL = Block.box(0, 0, 12, 16, 16, 16);
-    private static final VoxelShape WEST_WALL = Block.box(0, 0, 0, 4, 16, 16);
-    private static final VoxelShape EAST_WALL = Block.box(12, 0, 0, 16, 16, 16);
+    private static final VoxelShape NORTH_WALL = Block.box(0, 0, 0, 16, 16, 3);
+    private static final VoxelShape SOUTH_WALL = Block.box(0, 0, 13, 16, 16, 16);
+    private static final VoxelShape WEST_WALL = Block.box(0, 0, 0, 3, 16, 16);
+    private static final VoxelShape EAST_WALL = Block.box(13, 0, 0, 16, 16, 16);
 
     public RoseVineBlock(Properties properties) {
         super(properties);

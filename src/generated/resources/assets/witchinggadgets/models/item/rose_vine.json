@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "witchinggadgets:block/rosevine"
-  }
+  "parent": "witchinggadgets:block/rose_vine_west_5"
 }
