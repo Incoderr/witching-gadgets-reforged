@@ -7,4 +7,5 @@ robes
 arcanestone
 devices
 gadgets
+gems
 testing

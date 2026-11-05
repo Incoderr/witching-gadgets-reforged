@@ -12,6 +12,7 @@ import thaumcraft.aspect.AspectRegistry;
 import witchinggadgets.gadgets.ArcaneAbacusItem;
 import witchinggadgets.gadgets.GuidingStringItem;
 import witchinggadgets.gadgets.PhotoItem;
+import witchinggadgets.gems.GemcuttingToolsItem;
 import witchinggadgets.registry.ModBlocks;
 import witchinggadgets.registry.ModItems;
 
@@ -24,7 +25,7 @@ public final class MaterialsFeature {
     public static final DeferredItem<Item> BEWITCHED_CLOTH = ModItems.ITEMS.registerSimpleItem("bewitched_cloth");
     public static final DeferredItem<Item> WOLF_PELT = ModItems.ITEMS.registerSimpleItem("wolf_pelt");
     public static final DeferredItem<ArcaneAbacusItem> ARCANE_ABACUS = ModItems.ITEMS.registerItem("arcane_abacus", ArcaneAbacusItem::new, properties -> properties.stacksTo(1));
-    public static final DeferredItem<Item> GEMCUTTING_TOOLS = single("gemcutting_tools");
+    public static final DeferredItem<GemcuttingToolsItem> GEMCUTTING_TOOLS = ModItems.ITEMS.registerItem("gemcutting_tools", GemcuttingToolsItem::new, properties -> properties.stacksTo(1));
     public static final DeferredItem<PhotoItem> PHOTO_PLATE = ModItems.ITEMS.registerItem("photo_plate", properties -> new PhotoItem(false, properties));
     public static final DeferredItem<PhotoItem> DEVELOPED_PHOTO = ModItems.ITEMS.registerItem("developed_photo", properties -> new PhotoItem(true, properties));
     public static final DeferredItem<GuidingStringItem> GUIDING_STRING = ModItems.ITEMS.registerItem("guiding_string", GuidingStringItem::new, properties -> properties.stacksTo(1));
@@ -58,9 +59,5 @@ public final class MaterialsFeature {
         registry.register(PHOTO_PLATE.get(), new AspectList().add(Aspect.CRYSTAL, 5).add(Aspect.SENSES, 3).add(Aspect.EXCHANGE, 2).add(Aspect.POISON, 1));
         registry.register(DEVELOPED_PHOTO.get(), new AspectList().add(Aspect.AIR, 2).add(Aspect.WATER, 2).add(Aspect.ORDER, 2).add(Aspect.SENSES, 2).add(Aspect.MIND, 2));
         registry.register(POWERLESS_PEARL.get(), new AspectList().add(Aspect.CRYSTAL, 4).add(Aspect.VOID, 4));
-    }
-
-    private static DeferredItem<Item> single(String name) {
-        return ModItems.ITEMS.registerItem(name, Item::new, properties -> properties.stacksTo(1));
     }
 }

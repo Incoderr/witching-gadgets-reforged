@@ -1,0 +1,30 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "property": "minecraft:component",
+    "component": "witchinggadgets:gem_cut",
+    "cases": [
+      {
+        "when": "oval",
+        "model": {
+          "type": "minecraft:model",
+          "model": "witchinggadgets:item/infused_gem_oval",
+          "tints": [
+            {
+              "type": "witchinggadgets:gem_aspect"
+            }
+          ]
+        }
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "witchinggadgets:item/infused_gem_point",
+      "tints": [
+        {
+          "type": "witchinggadgets:gem_aspect"
+        }
+      ]
+    }
+  }
+}

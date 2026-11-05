@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "witchinggadgets:block/cutting_table"
+    },
+    "facing=east": {
+      "model": "witchinggadgets:block/cutting_table",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "witchinggadgets:block/cutting_table",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "witchinggadgets:block/cutting_table",
+      "y": 270
+    }
+  }
+}
