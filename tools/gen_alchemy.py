@@ -6,7 +6,7 @@ WALLS = {
     "west": (True, False),
     "east": (True, True),
 }
-PUMP_FACINGS = {"north": 0, "east": 90, "south": 180, "west": 270}
+PUMP_FACINGS = ("north", "east", "south", "west")
 
 
 def box_element(box, invert, mirror, texture):
@@ -39,42 +39,19 @@ def rose_vine(ctx):
             })
             parts.append({"when": {"age": str(age), side: "true"}, "apply": {"model": ctx.ref(f"rose_vine_{side}_{age}")}})
     ctx.blockstate("rose_vine", {"multipart": parts})
-    ctx.generated_item("rose_vine", "rosevine", texture_kind="block")
+    ctx.block_item("rose_vine", model=ctx.ref("rose_vine_west_5"))
     ctx.shear_only("rose_vine")
 
 
-def faces(texture, uv=None):
-    result = {}
-    for face in ("down", "up", "north", "south", "west", "east"):
-        entry = {"texture": texture}
-        if uv:
-            entry["uv"] = uv
-        result[face] = entry
-    return result
-
-
 def pump(ctx):
-    elements = [
-        {"from": [2, 2, 8], "to": [14, 14, 12], "faces": faces("#body")},
-        {"from": [4, 4, 4], "to": [12, 12, 8], "faces": faces("#body")},
-        {"from": [5.17, 5.17, 0], "to": [10.83, 10.83, 4], "rotation": {"angle": 45, "axis": "z", "origin": [8, 8, 2]}, "faces": faces("#nozzle")},
-    ]
-    for x, y in ((0, 0), (12, 0), (0, 12), (12, 12)):
-        elements.append({"from": [x, y, 10], "to": [x + 4, y + 4, 16], "faces": faces("#bellows")})
-    ctx.block_model("essentia_pump", {
-        "textures": {
-            "body": "thaumcraft:block/metalbase",
-            "nozzle": "thaumcraft:block/alchemyblock",
-            "bellows": "thaumcraft:block/planks_greatwood",
-            "particle": "thaumcraft:block/metalbase",
-        },
-        "elements": elements,
-    })
-    ctx.blockstate("essentia_pump", {"variants": {
-        f"facing={facing}": {"model": ctx.ref("essentia_pump"), **({"y": angle} if angle else {})}
-        for facing, angle in PUMP_FACINGS.items()
+    ctx.block_model("essentia_pump", {"parent": "minecraft:block/block", "textures": {"particle": "thaumcraft:block/metalbase"}})
+    ctx.blockstate("essentia_pump", {"variants": {f"facing={facing}": {"model": ctx.ref("essentia_pump")} for facing in PUMP_FACINGS}})
+    ctx.item_model("essentia_pump", {"parent": "minecraft:block/block", "textures": {"particle": "thaumcraft:block/metalbase"}})
+    ctx.write(ctx.ASSETS / "items" / "essentia_pump.json", {"model": {
+        "type": "minecraft:special",
+        "base": ctx.ref("essentia_pump", "item"),
+        "model": {"type": f"{ctx.NS}:essentia_pump"},
     }})
-    ctx.block_item("essentia_pump")
     ctx.self_drop("essentia_pump")
     ctx.mineable("pickaxe", "essentia_pump")
 

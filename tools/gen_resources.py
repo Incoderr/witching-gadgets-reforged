@@ -48,6 +48,8 @@ def tint(color):
 
 
 def block_model(name, content):
+    if "elements" in content and "parent" not in content:
+        content = {"parent": "minecraft:block/block", **content}
     BLOCK_MODELS[name] = content
     write(ASSETS / "models" / "block" / f"{name}.json", content)
 

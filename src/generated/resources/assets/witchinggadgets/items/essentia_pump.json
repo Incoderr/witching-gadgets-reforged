@@ -1,6 +1,9 @@
 {
   "model": {
-    "type": "minecraft:model",
-    "model": "witchinggadgets:block/essentia_pump"
+    "type": "minecraft:special",
+    "base": "witchinggadgets:item/essentia_pump",
+    "model": {
+      "type": "witchinggadgets:essentia_pump"
+    }
   }
 }
