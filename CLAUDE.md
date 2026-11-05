@@ -18,7 +18,7 @@ This file describes how to sync and maintain the backport. Status, test counts, 
 
 ## Syncing with main
 
-Last synced `main` commit: `23e8304`.
+Last synced `main` commit: `3909dde`.
 
 1. `git log --reverse <sha>..main`.
 2. A commit with only resources, lang or `tools/`: `git cherry-pick`, then `python3 tools/convert_assets.py` and `python3 tools/gen_resources.py` (the `mcformat.py` profile comes from `minecraft_version` in `gradle.properties`).
