@@ -13,7 +13,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 import thaumcraft.client.platform.TcRenderTypes;
-import thaumcraft.client.platform.VertexQuadSink;
+import thaumcraft.client.platform.EntityQuadSink;
 import thaumcraft.client.render.AlchemyRendering;
 import witchinggadgets.devices.EssentiaPumpBlock;
 import witchinggadgets.devices.EssentiaPumpBlockEntity;
@@ -63,8 +63,8 @@ public class EssentiaPumpRenderer implements BlockEntityRenderer<EssentiaPumpBlo
             default -> {
             }
         }
-        collector.submitCustomGeometry(poseStack, TcRenderTypes.entityCutoutNoCull(ALEMBIC), (pose, buffer) -> PumpGeometry.funnel(new VertexQuadSink(pose, buffer), light));
-        collector.submitCustomGeometry(poseStack, TcRenderTypes.entityCutoutNoCull(NOZZLE), (pose, buffer) -> PumpGeometry.nozzle(new VertexQuadSink(pose, buffer), light));
+        collector.submitCustomGeometry(poseStack, TcRenderTypes.entityCutoutNoCull(ALEMBIC), (pose, buffer) -> PumpGeometry.funnel(new EntityQuadSink(pose, buffer), light));
+        collector.submitCustomGeometry(poseStack, TcRenderTypes.entityCutoutNoCull(NOZZLE), (pose, buffer) -> PumpGeometry.nozzle(new EntityQuadSink(pose, buffer), light));
 
         poseStack.scale(0.375F, 0.375F, 0.375F);
         poseStack.translate(0.625F, -0.0625F, -0.125F);

@@ -20,7 +20,7 @@ import thaumcraft.aspect.Aspect;
 import thaumcraft.client.geom.ModelBoxGeometry;
 import thaumcraft.client.geom.QuadSink;
 import thaumcraft.client.platform.TcRenderTypes;
-import thaumcraft.client.platform.VertexQuadSink;
+import thaumcraft.client.platform.EntityQuadSink;
 import thaumcraft.registry.ModItems;
 import witchinggadgets.WitchingGadgets;
 import witchinggadgets.gems.CuttingTableBlock;
@@ -80,7 +80,7 @@ public class CuttingTableRenderer implements BlockEntityRenderer<CuttingTableBlo
         poseStack.scale(0.0625F, 0.0625F, 0.0625F);
         int light = state.lightCoords;
         collector.submitCustomGeometry(poseStack, TcRenderTypes.entityTranslucent(TEXTURE), (pose, buffer) -> {
-            QuadSink sink = new VertexQuadSink(pose, buffer);
+            QuadSink sink = new EntityQuadSink(pose, buffer);
             for (int index = 0; index < 3; index++) {
                 if (state.colors[index] == 0) {
                     continue;
