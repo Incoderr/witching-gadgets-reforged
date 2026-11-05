@@ -3,6 +3,7 @@ package witchinggadgets.primordial;
 import com.mojang.serialization.Codec;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Rarity;
 import net.neoforged.neoforge.registries.DeferredItem;
 import thaumcraft.aspect.Aspect;
@@ -13,8 +14,10 @@ import thaumcraft.item.gear.TcMaterials;
 import thaumcraft.platform.ArmorSlot;
 import thaumcraft.platform.Registration;
 import thaumcraft.platform.TcArmorMaterial;
+import thaumcraft.platform.TcToolMaterial;
 import witchinggadgets.WitchingGadgets;
 import witchinggadgets.crafting.WgRecipes;
+import witchinggadgets.platform.WgBlocking;
 import witchinggadgets.platform.WgStackKey;
 import witchinggadgets.registry.ModItems;
 import witchinggadgets.research.WgResearch;
@@ -35,6 +38,21 @@ public final class PrimordialFeature {
     public static final DeferredItem<PrimordialArmorItem> PRIMORDIAL_CHESTPLATE = armor("primordial_chestplate", ArmorSlot.CHESTPLATE);
     public static final DeferredItem<PrimordialArmorItem> PRIMORDIAL_LEGGINGS = armor("primordial_leggings", ArmorSlot.LEGGINGS);
     public static final DeferredItem<PrimordialArmorItem> PRIMORDIAL_BOOTS = armor("primordial_boots", ArmorSlot.BOOTS);
+
+    public static final TcToolMaterial PRIMORDIAL_TOOL = new TcToolMaterial(1500, 8.0F, 6.0F, 25, TcMaterials.REPAIRS_VOID_METAL, BlockTags.INCORRECT_FOR_NETHERITE_TOOL);
+
+    public static final DeferredItem<PrimordialWeaponItem> PRIMORDIAL_SWORD = ModItems.ITEMS.registerItem(
+        "primordial_sword", properties -> new PrimordialWeaponItem(PrimordialWeaponItem.Kind.CLAYMORE, properties),
+        properties -> WgBlocking.halfBlock(Registration.sword(properties.rarity(Rarity.EPIC), PRIMORDIAL_TOOL, 4.0F, -2.4F))
+    );
+    public static final DeferredItem<PrimordialWeaponItem> PRIMORDIAL_HAMMER = ModItems.ITEMS.registerItem(
+        "primordial_hammer", properties -> new PrimordialWeaponItem(PrimordialWeaponItem.Kind.HAMMER, properties),
+        properties -> WgBlocking.halfBlock(Registration.pickaxe(properties.rarity(Rarity.EPIC), PRIMORDIAL_TOOL, 2.0F, -2.8F))
+    );
+    public static final DeferredItem<PrimordialWeaponItem> PRIMORDIAL_AXE = ModItems.ITEMS.registerItem(
+        "primordial_axe", properties -> new PrimordialWeaponItem(PrimordialWeaponItem.Kind.GREATAXE, properties),
+        properties -> WgBlocking.halfBlock(Registration.axe(properties.rarity(Rarity.EPIC), PRIMORDIAL_TOOL, 3.0F, -3.0F))
+    );
 
     private PrimordialFeature() {
     }
@@ -60,6 +78,25 @@ public final class PrimordialFeature {
         armorRecipe("_CUIRASS", "witchinggadgets:primordial_chestplate", "thaumcraft:fortress_chestplate");
         armorRecipe("_GREAVES", "witchinggadgets:primordial_leggings", "thaumcraft:fortress_leggings");
         armorRecipe("_BOOTS", "witchinggadgets:primordial_boots", "thaumcraft:boots_traveller");
+        weaponRecipe("_CLAYMORE", "witchinggadgets:primordial_sword", Aspect.WEAPON, 64, null, "thaumcraft:void_sword", "thaumcraft:void_sword");
+        weaponRecipe("_HAMMER", "witchinggadgets:primordial_hammer", Aspect.TOOL, 32, Aspect.WEAPON, "thaumcraft:void_pickaxe", "thaumcraft:void_sword");
+        weaponRecipe("_GREATAXE", "witchinggadgets:primordial_axe", Aspect.TOOL, 32, Aspect.WEAPON, "thaumcraft:void_axe", "thaumcraft:void_axe");
+    }
+
+    private static void weaponRecipe(String suffix, String result, Aspect first, int amount, Aspect second, String tool, String last) {
+        TcIngredient pearl = TcIngredient.item("thaumcraft:primordial_pearl");
+        TcIngredient wisp = TcIngredient.item("thaumcraft:wisp_essence");
+        TcIngredient charm = TcIngredient.item("thaumcraft:primal_charm");
+        AspectList aspects = new AspectList().add(Aspect.MAGIC, 64).add(Aspect.METAL, 128).add(first, amount);
+        if (second != null) {
+            aspects.add(second, 32);
+        }
+        aspects.add(Aspect.AIR, 32).add(Aspect.FIRE, 32).add(Aspect.WATER, 32).add(Aspect.EARTH, 32).add(Aspect.ORDER, 32).add(Aspect.ENTROPY, 32);
+        WgRecipes.infusion(
+            "PRIMORDIALWEAPONRY" + suffix, "PRIMORDIALWEAPONRY", TcStack.withData(result, 1, Map.of(PEARLS_DATA, "true")), 10, aspects,
+            TcIngredient.item("witchinggadgets:void_metal_block"),
+            wisp, TcIngredient.item(tool), wisp, pearl, wisp, charm, TcIngredient.item("thaumcraft:greatwood_rod"), charm, wisp, pearl, wisp, TcIngredient.item(last)
+        );
     }
 
     private static void armorRecipe(String suffix, String result, String base) {
@@ -88,6 +125,18 @@ public final class PrimordialFeature {
             .setHidden()
             .setPages(WgResearch.text("1"), WgResearch.infusion("EMPOWERPEARL"))
             .registerResearchItem();
+        WgResearch.item("PRIMORDIALWEAPONRY", new AspectList().add(Aspect.ENTROPY, 1).add(Aspect.WEAPON, 1).add(Aspect.TOOL, 1).add(Aspect.AIR, 1).add(Aspect.FIRE, 1).add(Aspect.WATER, 1).add(Aspect.MAGIC, 2).add(Aspect.EARTH, 1).add(Aspect.ORDER, 1), -4, 2, 3, WitchingGadgets.id("textures/gui/research/icon_primordialweaponry.png"))
+            .setParents("PRIMORDIALGEARSET")
+            .setConcealed()
+            .setPages(
+                WgResearch.text("1"),
+                WgResearch.text("2"),
+                WgResearch.text("3"),
+                WgResearch.infusion("PRIMORDIALWEAPONRY_CLAYMORE"),
+                WgResearch.infusion("PRIMORDIALWEAPONRY_HAMMER"),
+                WgResearch.infusion("PRIMORDIALWEAPONRY_GREATAXE")
+            )
+            .registerResearchItem();
         WgResearch.item("PRIMORDIALARMOR", primals(new AspectList().add(Aspect.ARMOR, 1).add(Aspect.MAGIC, 1)), -1, 5, 3, WitchingGadgets.id("textures/gui/research/icon_primordialarmor.png"))
             .setParents("PRIMORDIALGEARSET", "ARMORFORTRESS")
             .setConcealed()
@@ -103,7 +152,7 @@ public final class PrimordialFeature {
     }
 
     private static AspectList primals(AspectList list) {
-        for (Aspect aspect : PrimordialArmorItem.ABILITIES) {
+        for (Aspect aspect : PrimordialGear.ABILITIES) {
             list.add(aspect, 1);
         }
         return list;

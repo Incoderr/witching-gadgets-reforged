@@ -21,6 +21,7 @@ import witchinggadgets.WitchingGadgets;
 import witchinggadgets.gems.CrystalCapsuleItem;
 import witchinggadgets.gems.InfusedGemItem;
 import witchinggadgets.primordial.PrimordialArmorItem;
+import witchinggadgets.primordial.PrimordialGear;
 
 @EventBusSubscriber(modid = WitchingGadgets.MODID, value = Dist.CLIENT)
 public final class WgItemTintSources {
@@ -81,7 +82,7 @@ public final class WgItemTintSources {
 
         @Override
         public int calculate(ItemStack stack, @Nullable ClientLevel level, @Nullable LivingEntity owner) {
-            return ARGB.opaque(PrimordialArmorItem.abilityAspect(stack).getColor());
+            return ARGB.opaque(PrimordialGear.abilityAspect(stack).getColor());
         }
 
         @Override

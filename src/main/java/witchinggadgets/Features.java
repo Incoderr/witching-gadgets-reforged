@@ -7,6 +7,7 @@ import witchinggadgets.bags.BagsFeature;
 import witchinggadgets.baubles.BaublesFeature;
 import witchinggadgets.cloaks.CloaksFeature;
 import witchinggadgets.devices.DevicesFeature;
+import witchinggadgets.effects.EffectsFeature;
 import witchinggadgets.enchantments.EnchantmentsFeature;
 import witchinggadgets.gadgets.GadgetsFeature;
 import witchinggadgets.gems.GemsFeature;
@@ -42,6 +43,7 @@ public final class Features {
         GemsFeature.load();
         EnchantmentsFeature.load();
         PrimordialFeature.load();
+        EffectsFeature.load();
     }
 
     public static void research() {
@@ -56,6 +58,7 @@ public final class Features {
         GemsFeature.research();
         EnchantmentsFeature.research();
         PrimordialFeature.research();
+        EffectsFeature.research();
     }
 
     public static void recipes() {

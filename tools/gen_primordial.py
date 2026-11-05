@@ -1,5 +1,7 @@
 import shutil
 
+import pngtools
+
 PIECES = [
     ("primordial_helmet", 0, "minecraft:head_armor"),
     ("primordial_chestplate", 1, "minecraft:chest_armor"),
@@ -8,7 +10,41 @@ PIECES = [
 ]
 
 
+WEAPONS = {
+    "primordial_sword": "primordialsword",
+    "primordial_hammer": "primordialhammer",
+    "primordial_axe": "primordialaxe",
+}
+EFFECTS = {"dissolve": (36, 198), "cinder_coat": (54, 198)}
+HAMMER_MINEABLE = ["#minecraft:mineable/pickaxe", "#minecraft:mineable/shovel", "#c:glass_blocks", "#minecraft:ice"]
+GREATAXE_MINEABLE = ["#minecraft:mineable/axe", "#minecraft:leaves", "#minecraft:replaceable_by_trees"]
+
+
+def effect_icons(ctx):
+    source = ctx.ROOT / "src" / "main" / "resources" / "assets" / ctx.NS / "textures" / "gui" / "potioneffects.png"
+    width, height, rows = pngtools.read_rgba(source)
+    for name, (x, y) in EFFECTS.items():
+        cropped = [row[x * 4:(x + 18) * 4] for row in rows[y:y + 18]]
+        target = ctx.ASSETS / "textures" / "mob_effect" / f"{name}.png"
+        target.parent.mkdir(parents=True, exist_ok=True)
+        pngtools.write_rgba(target, 18, 18, cropped)
+
+
 def generate(ctx):
+    tint = [{"type": "minecraft:constant", "value": -1}, {"type": f"{ctx.NS}:primordial_ability"}]
+    for name, texture in WEAPONS.items():
+        ctx.item_model(name, {"parent": "minecraft:item/handheld", "textures": {
+            "layer0": ctx.ref(texture, "item"),
+            "layer1": ctx.ref(f"{texture}_overlay", "item"),
+        }})
+        ctx.item_definition(name, ctx.ref(name, "item"), tint)
+    ctx.item_tags["minecraft:swords"].add(f"{ctx.NS}:primordial_sword")
+    ctx.item_tags["minecraft:pickaxes"].add(f"{ctx.NS}:primordial_hammer")
+    ctx.item_tags["minecraft:axes"].add(f"{ctx.NS}:primordial_axe")
+    ctx.block_tags[f"{ctx.NS}:primordial_hammer_mineable"].update(HAMMER_MINEABLE)
+    ctx.block_tags[f"{ctx.NS}:primordial_greataxe_mineable"].update(GREATAXE_MINEABLE)
+    effect_icons(ctx)
+
     for name, index, tag in PIECES:
         ctx.generated_item(name, ["primordialarmorrune", f"primordialarmor{index}"], [{"type": f"{ctx.NS}:primordial_ability"}])
         ctx.item_tags[tag].add(f"{ctx.NS}:{name}")

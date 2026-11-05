@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "witchinggadgets:item/primordialsword",
+    "layer1": "witchinggadgets:item/primordialsword_overlay"
+  }
+}

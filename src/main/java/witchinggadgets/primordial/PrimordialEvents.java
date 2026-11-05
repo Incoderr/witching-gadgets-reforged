@@ -80,21 +80,21 @@ public final class PrimordialEvents {
         Inventory inventory = player.getInventory();
         for (int slot = 0; slot < inventory.getContainerSize(); slot++) {
             ItemStack stack = inventory.getItem(slot);
-            if (stack.getItem() instanceof PrimordialArmorItem) {
+            if (stack.getItem() instanceof PrimordialGear gear) {
                 if (player.tickCount % 40 == 0 && !pieces.contains(stack)) {
                     repair(stack);
                 }
                 if (PrimordialFeature.PEARLS_PENDING.getOrDefault(stack, false)) {
                     PrimordialFeature.PEARLS_PENDING.remove(stack);
-                    returnPearls(player);
+                    returnPearls(player, gear.returnedPearls());
                 }
             }
         }
         for (ItemStack piece : pieces) {
-            int ability = PrimordialArmorItem.ability(piece);
-            if (ability == PrimordialArmorItem.AIR) {
+            int ability = PrimordialGear.ability(piece);
+            if (ability == PrimordialGear.AIR) {
                 deflect(player);
-            } else if (ability == PrimordialArmorItem.WATER) {
+            } else if (ability == PrimordialGear.WATER) {
                 cure(player);
             }
         }
@@ -106,8 +106,8 @@ public final class PrimordialEvents {
         }
     }
 
-    public static void returnPearls(Player player) {
-        ItemStack pearls = new ItemStack(MaterialsFeature.POWERLESS_PEARL.get(), 3);
+    public static void returnPearls(Player player, int count) {
+        ItemStack pearls = new ItemStack(MaterialsFeature.POWERLESS_PEARL.get(), count);
         if (!player.getInventory().add(pearls)) {
             player.drop(pearls, false, Prediction.SERVER_ONLY);
         }
@@ -188,12 +188,12 @@ public final class PrimordialEvents {
         }
         DamageSource source = event.getSource();
         for (ItemStack piece : PrimordialArmorItem.worn(player)) {
-            int ability = PrimordialArmorItem.ability(piece);
-            if (ability == PrimordialArmorItem.AIR && source.is(DamageTypeTags.IS_PROJECTILE)) {
+            int ability = PrimordialGear.ability(piece);
+            if (ability == PrimordialGear.AIR && source.is(DamageTypeTags.IS_PROJECTILE)) {
                 event.setCanceled(true);
                 return;
             }
-            if (ability == PrimordialArmorItem.ENTROPY && source.getDirectEntity() instanceof LivingEntity attacker && player.getRandom().nextInt(4) == 0) {
+            if (ability == PrimordialGear.ENTROPY && source.getDirectEntity() instanceof LivingEntity attacker && player.getRandom().nextInt(4) == 0) {
                 attacker.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 10, 0));
                 attacker.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 10, 3));
             }
@@ -206,11 +206,11 @@ public final class PrimordialEvents {
         boolean bypass = source.is(DamageTypeTags.BYPASSES_ARMOR);
         double ratio = 0.0;
         if (!magic && fire) {
-            ratio = PrimordialArmorItem.count(entity, PrimordialArmorItem.FIRE) * 0.75 * set(entity);
+            ratio = PrimordialArmorItem.count(entity, PrimordialGear.FIRE) * 0.75 * set(entity);
         } else if (!magic && bypass) {
             for (EquipmentSlot slot : PrimordialArmorItem.SLOTS) {
                 ItemStack piece = entity.getItemBySlot(slot);
-                if (piece.getItem() instanceof PrimordialArmorItem && PrimordialArmorItem.ability(piece) == PrimordialArmorItem.EARTH) {
+                if (piece.getItem() instanceof PrimordialArmorItem && PrimordialGear.ability(piece) == PrimordialGear.EARTH) {
                     ratio += defense(slot) / 50.0 * set(entity);
                 }
             }
@@ -234,7 +234,7 @@ public final class PrimordialEvents {
             return;
         }
         DamageSource source = event.getSource();
-        if (source.is(DamageTypeTags.IS_FIRE) && PrimordialArmorItem.count(entity, PrimordialArmorItem.FIRE) > 0) {
+        if (source.is(DamageTypeTags.IS_FIRE) && PrimordialArmorItem.count(entity, PrimordialGear.FIRE) > 0) {
             entity.clearFire();
         }
         float reduction = reduction(entity, source);
@@ -266,7 +266,7 @@ public final class PrimordialEvents {
         if (REDUCING.get() || entity.level().isClientSide() || effect == null || !isWarpEffect(effect.getEffect())) {
             return;
         }
-        int ordo = PrimordialArmorItem.count(entity, PrimordialArmorItem.ORDER);
+        int ordo = PrimordialArmorItem.count(entity, PrimordialGear.ORDER);
         if (ordo <= 0) {
             return;
         }
