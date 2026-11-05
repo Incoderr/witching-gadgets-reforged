@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "witchinggadgets:item/primordialarmorrune",
+    "layer1": "witchinggadgets:item/primordialarmor3"
+  }
+}

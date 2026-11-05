@@ -1,0 +1,11 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "witchinggadgets:item/primordial_chestplate",
+    "tints": [
+      {
+        "type": "witchinggadgets:primordial_ability"
+      }
+    ]
+  }
+}

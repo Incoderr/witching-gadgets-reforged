@@ -20,6 +20,7 @@ import thaumcraft.aspect.Aspect;
 import witchinggadgets.WitchingGadgets;
 import witchinggadgets.gems.CrystalCapsuleItem;
 import witchinggadgets.gems.InfusedGemItem;
+import witchinggadgets.primordial.PrimordialArmorItem;
 
 @EventBusSubscriber(modid = WitchingGadgets.MODID, value = Dist.CLIENT)
 public final class WgItemTintSources {
@@ -30,6 +31,7 @@ public final class WgItemTintSources {
     static void register(RegisterColorHandlersEvent.ItemTintSources event) {
         event.register(WitchingGadgets.id("gem_aspect"), GemAspect.MAP_CODEC);
         event.register(WitchingGadgets.id("capsule_fluid"), CapsuleFluid.MAP_CODEC);
+        event.register(WitchingGadgets.id("primordial_ability"), PrimordialAbility.MAP_CODEC);
     }
 
     public static int fluidColor(Fluid fluid) {
@@ -70,6 +72,20 @@ public final class WgItemTintSources {
 
         @Override
         public MapCodec<CapsuleFluid> type() {
+            return MAP_CODEC;
+        }
+    }
+
+    public record PrimordialAbility() implements ItemTintSource {
+        public static final MapCodec<PrimordialAbility> MAP_CODEC = MapCodec.unit(new PrimordialAbility());
+
+        @Override
+        public int calculate(ItemStack stack, @Nullable ClientLevel level, @Nullable LivingEntity owner) {
+            return ARGB.opaque(PrimordialArmorItem.abilityAspect(stack).getColor());
+        }
+
+        @Override
+        public MapCodec<PrimordialAbility> type() {
             return MAP_CODEC;
         }
     }

@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "witchinggadgets:primordial_armor"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "witchinggadgets:primordial_armor"
+      }
+    ]
+  }
+}
