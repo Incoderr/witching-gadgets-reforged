@@ -13,7 +13,7 @@ import thaumcraft.aspect.Aspect;
 import thaumcraft.client.geom.ModelBoxGeometry;
 import thaumcraft.client.geom.QuadSink;
 import thaumcraft.client.platform.TcRenderTypes;
-import thaumcraft.client.platform.VertexQuadSink;
+import thaumcraft.client.platform.EntityQuadSink;
 import thaumcraft.client.render.ItemSlot;
 import thaumcraft.registry.ModItems;
 import witchinggadgets.WitchingGadgets;
@@ -46,7 +46,7 @@ public class CuttingTableRenderer implements BlockEntityRenderer<CuttingTableBlo
         poseStack.mulPose(Axis.YP.rotationDegrees(rotation));
         poseStack.pushPose();
         poseStack.scale(0.0625F, 0.0625F, 0.0625F);
-        QuadSink sink = new VertexQuadSink(poseStack.last(), buffers.getBuffer(TcRenderTypes.of(TcRenderTypes.Kind.ENTITY_TRANSLUCENT, TEXTURE)));
+        QuadSink sink = new EntityQuadSink(poseStack.last(), buffers.getBuffer(TcRenderTypes.of(TcRenderTypes.Kind.ENTITY_TRANSLUCENT, TEXTURE)));
         for (int index = 0; index < 3; index++) {
             ItemStack stack = entity.getItem(1 + index);
             Aspect aspect = CuttingTableBlockEntity.topAspect(stack);
