@@ -18,6 +18,8 @@ import witchinggadgets.bags.BagsFeature;
 import witchinggadgets.cloaks.CloaksFeature;
 import witchinggadgets.cloaks.MagicCloakItem;
 import witchinggadgets.materials.MaterialsFeature;
+import witchinggadgets.primordial.PrimordialArmorItem;
+import witchinggadgets.primordial.PrimordialFeature;
 import witchinggadgets.robes.RobesFeature;
 
 @EventBusSubscriber(modid = WitchingGadgets.MODID, value = Dist.CLIENT)
@@ -38,6 +40,10 @@ public final class WgItemTints {
         event.register((stack, layer) -> layer == 0 && stack.getItem() instanceof BagItem bag ? DyedItemColor.getOrDefault(stack, bag.kind().color()) | 0xFF000000 : -1,
             BagsFeature.BAG_OF_TRICKS.get(), BagsFeature.VOID_BAG.get(), BagsFeature.ENDER_BAG.get(), BagsFeature.HUNGRY_BAG.get());
         event.register((stack, layer) -> layer == 0 ? DyedItemColor.getOrDefault(stack, ROBE_DEFAULT) | 0xFF000000 : -1, RobesFeature.BEWITCHED_ROBE.get(), RobesFeature.BEWITCHED_LEGGINGS.get());
+        event.register(
+            (stack, layer) -> layer == 0 ? 0xFF000000 | PrimordialArmorItem.abilityAspect(stack).getColor() : -1,
+            PrimordialFeature.PRIMORDIAL_HELMET.get(), PrimordialFeature.PRIMORDIAL_CHESTPLATE.get(), PrimordialFeature.PRIMORDIAL_LEGGINGS.get(), PrimordialFeature.PRIMORDIAL_BOOTS.get()
+        );
         event.register((stack, layer) -> {
             Aspect aspect = InfusedGemItem.aspect(stack);
             return layer == 0 && aspect != null ? 0xFF000000 | aspect.getColor() : -1;

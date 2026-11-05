@@ -7,6 +7,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import witchinggadgets.WitchingGadgets;
 import witchinggadgets.cloaks.CloakEvents;
+import witchinggadgets.primordial.PrimordialArmorItem;
 import witchinggadgets.gear.GearAbility;
 import witchinggadgets.platform.WgNetwork;
 
@@ -19,6 +20,9 @@ public record ActivateGearPayload() implements CustomPacketPayload {
     }
 
     private static void handle(ActivateGearPayload payload, Player player) {
+        if (player.isShiftKeyDown() && PrimordialArmorItem.cycleWorn(player)) {
+            return;
+        }
         ItemStack cloak = CloakEvents.activeCloak(player);
         if (cloak.getItem() instanceof GearAbility ability && ability.canActivate(player, cloak)) {
             ability.activate(player, cloak);
