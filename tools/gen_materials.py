@@ -1,5 +1,3 @@
-import shutil
-
 TEXTURES = {
     "simple_thread": "mat_threadsimple",
     "golden_thread": "mat_threadgold",
@@ -21,10 +19,6 @@ CLOTHS = {
 
 
 def generate(ctx):
-    icon = ctx.ASSETS / "textures" / "item" / "tab_icon.png"
-    icon.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copyfile(ctx.SOURCE_TEXTURES / "gui" / "research" / "wgicon.png", icon)
-    ctx.generated_item("tab_icon", "tab_icon")
     for name, texture in TEXTURES.items():
         ctx.generated_item(name, texture)
     for name, color in CLOTHS.items():

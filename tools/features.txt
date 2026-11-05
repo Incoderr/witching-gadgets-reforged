@@ -11,4 +11,5 @@ gems
 enchantments
 primordial
 alchemy
+tab
 testing

@@ -37,7 +37,7 @@ This file describes how to develop and port the mod. Phase status, test counts, 
 - `platform/` and `client/platform/` hold everything where version APIs diverge. The addon has its own seams in the `witchinggadgets` namespace: `WgNetwork` (its own `RegisterPayloadHandlersEvent`), `client/platform/WgClientNetwork`. Gameplay code goes only through them and through the base seams. `tools/check_seams.py` fails on forbidden imports outside the seams and on client class imports outside `client/`.
 - Registration: `registry/` (`ModItems`, `ModBlocks` with `withItem`, `ModBlockEntities`, `ModMenus`, `ModEntities`, `ModEffects`, `ModSounds`, `ModCreativeTabs`), payloads in `network/ModPayloads`, client handlers in `client/ClientPayloadHandlers`, client entry point `client/WitchingGadgetsClient`.
 - `Config` is SYNCED only, keys and defaults are carried over from `WGConfig`.
-- The creative tab is the addon's own; its icon is the hidden `tab_icon` item with the WG category icon `wgicon.png` (WG used the wall mirror block, which is not ported).
+- The creative tab is the addon's own; its icon is the hidden `tab_icon` item, the WG wall mirror (`ItemRenderWallMirror`) rebuilt by `gen_tab.py` as an item model: the WG `TileRenderWallMirror.shape` gold pixels as 1x1x1 elements mapped onto a generated palette texture, and the WG glass strip as a flat plane.
 
 ## Feature layout
 
