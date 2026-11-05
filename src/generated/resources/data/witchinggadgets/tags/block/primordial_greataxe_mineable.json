@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:leaves",
+    "#minecraft:mineable/axe",
+    "#minecraft:replaceable_by_trees"
+  ]
+}

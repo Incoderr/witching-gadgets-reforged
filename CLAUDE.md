@@ -18,7 +18,7 @@ This file describes how to sync and maintain the backport. Status, test counts, 
 
 ## Syncing with main
 
-Last synced `main` commit: `6bd0899`.
+Last synced `main` commit: `c879164`.
 
 1. `git log --reverse <sha>..main`.
 2. A commit with only resources, lang or `tools/`: `git cherry-pick`, then `python3 tools/convert_assets.py` and `python3 tools/gen_resources.py` (the `mcformat.py` profile comes from `minecraft_version` in `gradle.properties`).
@@ -42,6 +42,7 @@ Last synced `main` commit: `6bd0899`.
 - A `minecraft:select` on `minecraft:component` becomes `overrides` with the predicate `witchinggadgets:<component>` (case index + 1); `client/platform/WgItemProperties` registers that property (`gem_cut`).
 - 1.21.1 has no render state modifiers: `client/enchantments/EnchantmentsClient` hides Translucency armor by emptying `Inventory.armor` in `RenderPlayerEvent.Pre` (lowest priority) and restoring it in `Post`; it writes the list directly so no equip sound plays.
 - Addon armor materials that are not dyeable go through the base `Registration.armorMaterial`, called from the feature `load()` (primordial armor): calling it first from the item constructor registers too late. Custom armor models set part visibility in `setupModelAnimations` (`PrimordialArmorModel.animateArmor`). The 1.21.1 server does not know the forward input, so primordial boots move and raise the step height only on the client; fall distance is reduced on both sides.
+- 1.21.1 has no `blocks_attacks` component: `platform/WgBlocking.halfBlock` returns the properties unchanged, `PrimordialWeaponItem` here starts using on use with the block animation and `ItemAbilities.SHIELD_BLOCK`, and `WgBlocking` turns `LivingShieldBlockEvent` into the 26.3 behaviour (any angle, half damage, no item damage). The block break event is `BlockEvent.BreakEvent` here (`BreakBlockEvent` on `main`).
 - The base 1.21.1 has no TC4 config, so `platform/BaseConfig.allowMirrors()` returns `true` here.
 - 1.21.1 block model rotations only allow 0, ±22.5 and ±45 degrees, `mcformat.py` snaps the spinning wheel's -10 and 15 degree boxes to ±22.5.
 - 1.21.1 API in ported code: `GuiGraphics` with `renderBg`/`renderLabels` and a `render` override that draws the background and tooltip, `BlockEntityType.Builder.of(...).build(null)`, `ContainerHelper.loadAllItems(input.tag(), items, input.lookup())` over the base `compat` value IO, `RecipeManager.byKey(ResourceLocation)`, `GameTestHelper.getBlockEntity(pos)`, `ItemInteractionResult` from `useItemOn`, `BucketItem.content`, `javax.annotation.Nullable` (not a type-use annotation: `@Nullable Transfer.FluidTank`). Block entity renderers keep the old `render(entity, partialTick, poseStack, buffers, light, overlay)` and draw items through the base `client/render/ItemSlot`.

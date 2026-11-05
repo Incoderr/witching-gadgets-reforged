@@ -1,4 +1,6 @@
 {
   "tc.research_page.PRIMORDIALARMOR.1": "Primordial Armor perfects your protection against foes. It will block quite a lot of damage on its own, but it is also receptive for runic enchancements, allowing you to strengthen it even further. In addition to that, it has different effects based on its primal affinity, which you can switch with the gear activation key while sneaking, or by sneaking and using a piece in hand. §o(Default Hotkey: Shift+R)§r<BR>Just like Fortress Armor, it can also be outfitted with Goggles of Revealing and the respective faceplates.",
-  "wg.chat.primordialArmor.ability": "Primal affinity: %s"
+  "wg.chat.primordialArmor.ability": "Primal affinity: %s",
+  "effect.witchinggadgets.dissolve": "Dissolving",
+  "effect.witchinggadgets.cinder_coat": "Cinder Coat"
 }
