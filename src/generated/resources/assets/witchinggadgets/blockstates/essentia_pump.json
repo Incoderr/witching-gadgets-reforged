@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "witchinggadgets:block/essentia_pump"
+    },
+    "facing=east": {
+      "model": "witchinggadgets:block/essentia_pump",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "witchinggadgets:block/essentia_pump",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "witchinggadgets:block/essentia_pump",
+      "y": 270
+    }
+  }
+}

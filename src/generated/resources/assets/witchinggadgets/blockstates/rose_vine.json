@@ -1,0 +1,274 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "age": "0",
+        "down": "true"
+      },
+      "apply": {
+        "model": "witchinggadgets:block/rose_vine_floor_0"
+      }
+    },
+    {
+      "when": {
+        "age": "0",
+        "north": "true"
+      },
+      "apply": {
+        "model": "witchinggadgets:block/rose_vine_north_0"
+      }
+    },
+    {
+      "when": {
+        "age": "0",
+        "south": "true"
+      },
+      "apply": {
+        "model": "witchinggadgets:block/rose_vine_south_0"
+      }
+    },
+    {
+      "when": {
+        "age": "0",
+        "west": "true"
+      },
+      "apply": {
+        "model": "witchinggadgets:block/rose_vine_west_0"
+      }
+    },
+    {
+      "when": {
+        "age": "0",
+        "east": "true"
+      },
+      "apply": {
+        "model": "witchinggadgets:block/rose_vine_east_0"
+      }
+    },
+    {
+      "when": {
+        "age": "1",
+        "down": "true"
+      },
+      "apply": {
+        "model": "witchinggadgets:block/rose_vine_floor_1"
+      }
+    },
+    {
+      "when": {
+        "age": "1",
+        "north": "true"
+      },
+      "apply": {
+        "model": "witchinggadgets:block/rose_vine_north_1"
+      }
+    },
+    {
+      "when": {
+        "age": "1",
+        "south": "true"
+      },
+      "apply": {
+        "model": "witchinggadgets:block/rose_vine_south_1"
+      }
+    },
+    {
+      "when": {
+        "age": "1",
+        "west": "true"
+      },
+      "apply": {
+        "model": "witchinggadgets:block/rose_vine_west_1"
+      }
+    },
+    {
+      "when": {
+        "age": "1",
+        "east": "true"
+      },
+      "apply": {
+        "model": "witchinggadgets:block/rose_vine_east_1"
+      }
+    },
+    {
+      "when": {
+        "age": "2",
+        "down": "true"
+      },
+      "apply": {
+        "model": "witchinggadgets:block/rose_vine_floor_2"
+      }
+    },
+    {
+      "when": {
+        "age": "2",
+        "north": "true"
+      },
+      "apply": {
+        "model": "witchinggadgets:block/rose_vine_north_2"
+      }
+    },
+    {
+      "when": {
+        "age": "2",
+        "south": "true"
+      },
+      "apply": {
+        "model": "witchinggadgets:block/rose_vine_south_2"
+      }
+    },
+    {
+      "when": {
+        "age": "2",
+        "west": "true"
+      },
+      "apply": {
+        "model": "witchinggadgets:block/rose_vine_west_2"
+      }
+    },
+    {
+      "when": {
+        "age": "2",
+        "east": "true"
+      },
+      "apply": {
+        "model": "witchinggadgets:block/rose_vine_east_2"
+      }
+    },
+    {
+      "when": {
+        "age": "3",
+        "down": "true"
+      },
+      "apply": {
+        "model": "witchinggadgets:block/rose_vine_floor_3"
+      }
+    },
+    {
+      "when": {
+        "age": "3",
+        "north": "true"
+      },
+      "apply": {
+        "model": "witchinggadgets:block/rose_vine_north_3"
+      }
+    },
+    {
+      "when": {
+        "age": "3",
+        "south": "true"
+      },
+      "apply": {
+        "model": "witchinggadgets:block/rose_vine_south_3"
+      }
+    },
+    {
+      "when": {
+        "age": "3",
+        "west": "true"
+      },
+      "apply": {
+        "model": "witchinggadgets:block/rose_vine_west_3"
+      }
+    },
+    {
+      "when": {
+        "age": "3",
+        "east": "true"
+      },
+      "apply": {
+        "model": "witchinggadgets:block/rose_vine_east_3"
+      }
+    },
+    {
+      "when": {
+        "age": "4",
+        "down": "true"
+      },
+      "apply": {
+        "model": "witchinggadgets:block/rose_vine_floor_4"
+      }
+    },
+    {
+      "when": {
+        "age": "4",
+        "north": "true"
+      },
+      "apply": {
+        "model": "witchinggadgets:block/rose_vine_north_4"
+      }
+    },
+    {
+      "when": {
+        "age": "4",
+        "south": "true"
+      },
+      "apply": {
+        "model": "witchinggadgets:block/rose_vine_south_4"
+      }
+    },
+    {
+      "when": {
+        "age": "4",
+        "west": "true"
+      },
+      "apply": {
+        "model": "witchinggadgets:block/rose_vine_west_4"
+      }
+    },
+    {
+      "when": {
+        "age": "4",
+        "east": "true"
+      },
+      "apply": {
+        "model": "witchinggadgets:block/rose_vine_east_4"
+      }
+    },
+    {
+      "when": {
+        "age": "5",
+        "down": "true"
+      },
+      "apply": {
+        "model": "witchinggadgets:block/rose_vine_floor_5"
+      }
+    },
+    {
+      "when": {
+        "age": "5",
+        "north": "true"
+      },
+      "apply": {
+        "model": "witchinggadgets:block/rose_vine_north_5"
+      }
+    },
+    {
+      "when": {
+        "age": "5",
+        "south": "true"
+      },
+      "apply": {
+        "model": "witchinggadgets:block/rose_vine_south_5"
+      }
+    },
+    {
+      "when": {
+        "age": "5",
+        "west": "true"
+      },
+      "apply": {
+        "model": "witchinggadgets:block/rose_vine_west_5"
+      }
+    },
+    {
+      "when": {
+        "age": "5",
+        "east": "true"
+      },
+      "apply": {
+        "model": "witchinggadgets:block/rose_vine_east_5"
+      }
+    }
+  ]
+}

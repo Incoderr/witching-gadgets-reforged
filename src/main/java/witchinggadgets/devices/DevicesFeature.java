@@ -13,6 +13,7 @@ import thaumcraft.crafting.TcStack;
 import thaumcraft.platform.Menus;
 import thaumcraft.platform.Transfer;
 import witchinggadgets.crafting.WgRecipes;
+import witchinggadgets.platform.BaseConfig;
 import witchinggadgets.registry.ModBlockEntities;
 import witchinggadgets.registry.ModBlocks;
 import witchinggadgets.registry.ModMenus;
@@ -30,11 +31,21 @@ public final class DevicesFeature {
         properties -> properties.mapColor(MapColor.WOOD).strength(2.5F, 10.0F).sound(SoundType.WOOD)
     ));
 
+    public static final DeferredBlock<EssentiaPumpBlock> ESSENTIA_PUMP = ModBlocks.withItem(ModBlocks.BLOCKS.registerBlock(
+        "essentia_pump",
+        EssentiaPumpBlock::new,
+        properties -> properties.mapColor(MapColor.METAL).strength(3.0F, 10.0F).sound(SoundType.METAL)
+    ));
+
     public static final Supplier<BlockEntityType<SaunaStoveBlockEntity>> SAUNA_STOVE_ENTITY = ModBlockEntities.BLOCK_ENTITIES.register(
         "sauna_stove", () -> new BlockEntityType<>(SaunaStoveBlockEntity::new, SAUNA_STOVE.get())
     );
     public static final Supplier<BlockEntityType<LabelLibraryBlockEntity>> LABEL_LIBRARY_ENTITY = ModBlockEntities.BLOCK_ENTITIES.register(
         "label_library", () -> new BlockEntityType<>(LabelLibraryBlockEntity::new, LABEL_LIBRARY.get())
+    );
+
+    public static final Supplier<BlockEntityType<EssentiaPumpBlockEntity>> ESSENTIA_PUMP_ENTITY = ModBlockEntities.BLOCK_ENTITIES.register(
+        "essentia_pump", () -> new BlockEntityType<>(EssentiaPumpBlockEntity::new, ESSENTIA_PUMP.get())
     );
 
     public static final Supplier<MenuType<LabelLibraryMenu>> LABEL_LIBRARY_MENU = ModMenus.MENUS.register(
@@ -68,6 +79,15 @@ public final class DevicesFeature {
             'W', TcIngredient.item("thaumcraft:scribing_tools"),
             'T', TcIngredient.item("thaumcraft:table")
         );
+        WgRecipes.arcane(
+            "MIRRORPUMP", "MIRRORPUMP", TcStack.of("witchinggadgets:essentia_pump"),
+            new AspectList().add(Aspect.AIR, 10).add(Aspect.WATER, 10).add(Aspect.ORDER, 10),
+            new String[] {" B ", "HCT", " B "},
+            'T', TcIngredient.item("thaumcraft:essentia_tube"),
+            'B', TcIngredient.item("thaumcraft:arcane_bellows"),
+            'C', TcIngredient.item("thaumcraft:alchemical_construct"),
+            'H', TcIngredient.item("minecraft:hopper")
+        );
     }
 
     public static void research() {
@@ -81,6 +101,11 @@ public final class DevicesFeature {
             .setParents("WGFAKEJARLABEL")
             .setPages(WgResearch.text("1"), WgResearch.arcane("LABELLIB"))
             .setSecondary()
+            .registerResearchItem();
+        WgResearch.item("MIRRORPUMP", new AspectList().add(Aspect.TOOL, 1).add(Aspect.WATER, 1).add(Aspect.TRAVEL, 1).add(Aspect.SLIME, 1), 2, -8, 2, TcStack.of("witchinggadgets:essentia_pump"))
+            .when(BaseConfig::allowMirrors)
+            .setPages(WgResearch.text("1"), WgResearch.arcane("MIRRORPUMP"))
+            .setParents("WGFAKEMIRRORESSENTIA")
             .registerResearchItem();
     }
 }
