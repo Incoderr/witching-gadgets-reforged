@@ -1,0 +1,25 @@
+{
+  "anvil_cost": 8,
+  "description": {
+    "translate": "enchantment.witchinggadgets.backstab"
+  },
+  "effects": {},
+  "max_cost": {
+    "base": 25,
+    "per_level_above_first": 11
+  },
+  "max_level": 3,
+  "min_cost": {
+    "base": 5,
+    "per_level_above_first": 11
+  },
+  "slots": [
+    "mainhand"
+  ],
+  "supported_items": "#witchinggadgets:enchantable/backstab",
+  "weight": 1,
+  "exclusive_set": [
+    "minecraft:smite",
+    "minecraft:bane_of_arthropods"
+  ]
+}

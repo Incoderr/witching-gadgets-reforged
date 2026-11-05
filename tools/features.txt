@@ -8,4 +8,5 @@ arcanestone
 devices
 gadgets
 gems
+enchantments
 testing
