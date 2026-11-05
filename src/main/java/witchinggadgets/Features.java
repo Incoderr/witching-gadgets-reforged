@@ -2,6 +2,7 @@ package witchinggadgets;
 
 import net.neoforged.bus.api.IEventBus;
 import thaumcraft.aspect.AspectRegistry;
+import witchinggadgets.alchemy.AlchemyFeature;
 import witchinggadgets.arcanestone.ArcaneStoneFeature;
 import witchinggadgets.bags.BagsFeature;
 import witchinggadgets.baubles.BaublesFeature;
@@ -22,6 +23,7 @@ import witchinggadgets.test.DevicesGameTests;
 import witchinggadgets.test.EnchantmentsGameTests;
 import witchinggadgets.test.GadgetsGameTests;
 import witchinggadgets.test.GemsGameTests;
+import witchinggadgets.test.AlchemyGameTests;
 import witchinggadgets.test.MaterialsGameTests;
 import witchinggadgets.test.PrimordialGameTests;
 import witchinggadgets.test.SpinningGameTests;
@@ -44,6 +46,7 @@ public final class Features {
         EnchantmentsFeature.load();
         PrimordialFeature.load();
         EffectsFeature.load();
+        AlchemyFeature.load();
     }
 
     public static void research() {
@@ -59,6 +62,7 @@ public final class Features {
         EnchantmentsFeature.research();
         PrimordialFeature.research();
         EffectsFeature.research();
+        AlchemyFeature.research();
     }
 
     public static void recipes() {
@@ -73,10 +77,12 @@ public final class Features {
         GemsFeature.recipes();
         EnchantmentsFeature.recipes();
         PrimordialFeature.recipes();
+        AlchemyFeature.recipes();
     }
 
     public static void aspects(AspectRegistry registry) {
         MaterialsFeature.aspects(registry);
+        AlchemyFeature.aspects(registry);
     }
 
     public static void tests(IEventBus modEventBus) {
@@ -90,5 +96,6 @@ public final class Features {
         GemsGameTests.register(modEventBus);
         EnchantmentsGameTests.register(modEventBus);
         PrimordialGameTests.register(modEventBus);
+        AlchemyGameTests.register(modEventBus);
     }
 }

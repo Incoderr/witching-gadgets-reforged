@@ -10,4 +10,5 @@ gadgets
 gems
 enchantments
 primordial
+alchemy
 testing

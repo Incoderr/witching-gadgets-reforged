@@ -65,6 +65,8 @@ def generate(ctx):
         for facing, angle in FACINGS.items()
     }})
     ctx.block_item("cutting_table")
+    ctx.block_model("glimmer_of_light", {"textures": {"particle": "minecraft:block/glowstone"}})
+    ctx.simple_state("glimmer_of_light")
     ctx.self_drop("cutting_table")
     ctx.mineable("axe", "cutting_table")
 
