@@ -7,6 +7,7 @@ import witchinggadgets.bags.BagsFeature;
 import witchinggadgets.baubles.BaublesFeature;
 import witchinggadgets.cloaks.CloaksFeature;
 import witchinggadgets.devices.DevicesFeature;
+import witchinggadgets.enchantments.EnchantmentsFeature;
 import witchinggadgets.gadgets.GadgetsFeature;
 import witchinggadgets.gems.GemsFeature;
 import witchinggadgets.materials.MaterialsFeature;
@@ -16,6 +17,7 @@ import witchinggadgets.test.ArcaneStoneGameTests;
 import witchinggadgets.test.ClothingGameTests;
 import witchinggadgets.test.CloaksGameTests;
 import witchinggadgets.test.DevicesGameTests;
+import witchinggadgets.test.EnchantmentsGameTests;
 import witchinggadgets.test.GadgetsGameTests;
 import witchinggadgets.test.GemsGameTests;
 import witchinggadgets.test.MaterialsGameTests;
@@ -36,6 +38,7 @@ public final class Features {
         DevicesFeature.load();
         GadgetsFeature.load();
         GemsFeature.load();
+        EnchantmentsFeature.load();
     }
 
     public static void research() {
@@ -48,6 +51,7 @@ public final class Features {
         DevicesFeature.research();
         GadgetsFeature.research();
         GemsFeature.research();
+        EnchantmentsFeature.research();
     }
 
     public static void recipes() {
@@ -60,6 +64,7 @@ public final class Features {
         DevicesFeature.recipes();
         GadgetsFeature.recipes();
         GemsFeature.recipes();
+        EnchantmentsFeature.recipes();
     }
 
     public static void aspects(AspectRegistry registry) {
@@ -75,5 +80,6 @@ public final class Features {
         DevicesGameTests.register(modEventBus);
         GadgetsGameTests.register(modEventBus);
         GemsGameTests.register(modEventBus);
+        EnchantmentsGameTests.register(modEventBus);
     }
 }
