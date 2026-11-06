@@ -1,6 +1,7 @@
 package witchinggadgets.client.primordial;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.serialization.MapCodec;
 import java.util.function.Consumer;
 import net.minecraft.client.Minecraft;
@@ -63,6 +64,67 @@ public class GauntletItemRenderer implements SpecialModelRenderer<ItemStack> {
         poseStack.translate(0.5F, 0.1F, 0.5F);
         submitGlove(stack, poseStack, collector, lightCoords);
         poseStack.popPose();
+    }
+
+    public static void submitArm(Identifier skin, PoseStack poseStack, SubmitNodeCollector collector, int light) {
+        ObjModel obj = ObjModel.get(MODEL);
+        collector.submitCustomGeometry(poseStack, TcRenderTypes.entityCutoutNoCull(skin), (pose, buffer) -> obj.renderPart("Arm_00", pose, new LegacySkinUv(buffer), 0xFFFFFFFF, light));
+    }
+
+    private record LegacySkinUv(VertexConsumer delegate) implements VertexConsumer {
+        @Override
+        public VertexConsumer addVertex(float x, float y, float z) {
+            delegate.addVertex(x, y, z);
+            return this;
+        }
+
+        @Override
+        public VertexConsumer setColor(int r, int g, int b, int a) {
+            delegate.setColor(r, g, b, a);
+            return this;
+        }
+
+        @Override
+        public VertexConsumer setColor(int color) {
+            delegate.setColor(color);
+            return this;
+        }
+
+        @Override
+        public VertexConsumer setUv(float u, float v) {
+            delegate.setUv(u, v * 0.5F);
+            return this;
+        }
+
+        @Override
+        public VertexConsumer setUv1(int u, int v) {
+            delegate.setUv1(u, v);
+            return this;
+        }
+
+        @Override
+        public VertexConsumer setUv2(int u, int v) {
+            delegate.setUv2(u, v);
+            return this;
+        }
+
+        @Override
+        public VertexConsumer setUv3(float u, float v) {
+            delegate.setUv3(u, v);
+            return this;
+        }
+
+        @Override
+        public VertexConsumer setNormal(float x, float y, float z) {
+            delegate.setNormal(x, y, z);
+            return this;
+        }
+
+        @Override
+        public VertexConsumer setLineWidth(float width) {
+            delegate.setLineWidth(width);
+            return this;
+        }
     }
 
     public static void submitGlove(@Nullable ItemStack stack, PoseStack poseStack, SubmitNodeCollector collector, int lightCoords) {

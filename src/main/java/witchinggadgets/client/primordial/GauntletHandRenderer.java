@@ -4,7 +4,6 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.player.AvatarRenderer;
 import net.minecraft.client.renderer.entity.state.AvatarRenderState;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
@@ -44,9 +43,15 @@ public final class GauntletHandRenderer {
         PoseStack poseStack = event.getPoseStack();
         SubmitNodeCollector collector = event.getSubmitNodeCollector();
         int light = event.getPackedLight();
+        float swing = event.getSwingProgress();
+        float swingRoot = Mth.sqrt(swing);
         poseStack.pushPose();
-        poseStack.translate(side * 0.56F, -0.52F, -0.72F);
+        poseStack.translate(side * -0.4F * Mth.sin(swingRoot * Mth.PI), 0.2F * Mth.sin(swingRoot * Mth.PI * 2.0F), -0.2F * Mth.sin(swing * Mth.PI));
+        poseStack.translate(side * 0.56F, -0.52F - event.getEquipProgress() * 0.6F, -0.72F);
         poseStack.rotateDegrees(Axis.YP, side * 45.0F);
+        poseStack.rotateDegrees(Axis.YP, side * -20.0F * Mth.sin(swing * swing * Mth.PI));
+        poseStack.rotateDegrees(Axis.ZP, side * -20.0F * Mth.sin(swingRoot * Mth.PI));
+        poseStack.rotateDegrees(Axis.XP, -80.0F * Mth.sin(swingRoot * Mth.PI));
         poseStack.scale(0.4F, 0.4F, 0.4F);
         poseStack.translate(side * -0.5F, -0.5F, -0.5F);
         poseStack.rotateDegrees(Axis.ZP, side * 280.0F);
@@ -54,24 +59,14 @@ public final class GauntletHandRenderer {
         poseStack.rotateDegrees(Axis.YP, side * -75.0F);
         poseStack.scale(2.0F, 2.0F, -2.0F);
         poseStack.translate(0.0F, -0.85F, -0.51F);
-        poseStack.scale(-side, 1.0F, 1.0F);
         AvatarRenderState avatar = event.getPlayerState().avatarRenderState;
         if (avatar != null && !minecraft.player.isInvisible()) {
             poseStack.pushPose();
-            poseStack.rotateDegrees(Axis.YP, -90.0F);
-            poseStack.translate(1.0F / 16.0F, 2.0F / 16.0F, 0.0F);
-            poseStack.rotate(Axis.ZP, -0.1F);
-            poseStack.translate(5.0F / 16.0F, -2.0F / 16.0F, 0.0F);
-            AvatarRenderer<?> renderer = (AvatarRenderer<?>) minecraft.getEntityRenderDispatcher().getRenderer(avatar);
-            Identifier skin = avatar.skin.body().texturePath();
-            if (side > 0.0F) {
-                renderer.renderRightHand(poseStack, collector, light, skin, avatar.showRightSleeve);
-            } else {
-                poseStack.scale(-1.0F, 1.0F, 1.0F);
-                renderer.renderLeftHand(poseStack, collector, light, skin, avatar.showLeftSleeve);
-            }
+            poseStack.scale(side, 1.0F, 1.0F);
+            GauntletItemRenderer.submitArm(avatar.skin.body().texturePath(), poseStack, collector, light);
             poseStack.popPose();
         }
+        poseStack.scale(-side, 1.0F, 1.0F);
         GauntletItemRenderer.submitGlove(stack, poseStack, collector, light);
         poseStack.translate(0.1F, 0.675F, 0.0F);
         submitSelectedGem(stack, poseStack, collector);
