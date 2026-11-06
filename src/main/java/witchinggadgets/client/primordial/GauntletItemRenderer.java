@@ -48,9 +48,14 @@ public class GauntletItemRenderer extends BlockEntityWithoutLevelRenderer {
 
     @Override
     public void renderByItem(ItemStack stack, ItemDisplayContext context, PoseStack poseStack, MultiBufferSource buffers, int light, int overlay) {
-        int ticks = Minecraft.getInstance().player == null ? 0 : Minecraft.getInstance().player.tickCount;
         poseStack.pushPose();
         poseStack.translate(0.5F, 0.1F, 0.5F);
+        renderGlove(stack, poseStack, buffers, light);
+        poseStack.popPose();
+    }
+
+    public static void renderGlove(ItemStack stack, PoseStack poseStack, MultiBufferSource buffers, int light) {
+        int ticks = Minecraft.getInstance().player == null ? 0 : Minecraft.getInstance().player.tickCount;
         int grey = rgb(204, 204, 204);
         part(buffers, poseStack, BRACELET, "Guard_Arm_04", grey, light);
         part(buffers, poseStack, BRACELET, "Guard_Hand_05", grey, light);
@@ -76,7 +81,6 @@ public class GauntletItemRenderer extends BlockEntityWithoutLevelRenderer {
             int divisor = gem.isDamaged() ? 2 : 1;
             part(buffers, poseStack, WHITE, "Gem0" + g + "_0" + g, rgb((color >> 16 & 255) / divisor, (color >> 8 & 255) / divisor, (color & 255) / divisor), light);
         }
-        poseStack.popPose();
     }
 
     @SubscribeEvent
