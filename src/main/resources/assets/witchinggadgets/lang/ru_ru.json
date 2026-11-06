@@ -289,6 +289,8 @@
   "wg.desc.gemcut.OVAL": "Овальная огранка",
   "wg.desc.gemcut.POINT": "Точечная огранка",
   "wg.desc.scanCompleted": "Изучено",
+  "wg.gui.shiftForAspectList": "§7Зажмите §aShift§7, чтобы увидеть аспекты§r",
+  "wg.gui.visSize": "Вместимость Vis",
   "wg.title.crimsonCultist": "Багровый культист",
   "wg.title.crimsonKnight": "Багровый рыцарь",
   "wg.title.crimsonPraetor": "Багровый претор"
