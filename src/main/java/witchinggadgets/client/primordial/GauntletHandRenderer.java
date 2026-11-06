@@ -5,6 +5,7 @@ import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.HumanoidArm;
@@ -55,6 +56,21 @@ public final class GauntletHandRenderer {
         poseStack.scale(2.0F, 2.0F, -2.0F);
         poseStack.translate(0.0F, -0.85F, -0.51F);
         poseStack.scale(-side, 1.0F, 1.0F);
+        if (!player.isInvisible()) {
+            poseStack.pushPose();
+            poseStack.mulPose(Axis.YP.rotationDegrees(-90.0F));
+            poseStack.translate(1.0F / 16.0F, 2.0F / 16.0F, 0.0F);
+            poseStack.mulPose(Axis.ZP.rotation(-0.1F));
+            poseStack.translate(5.0F / 16.0F, -2.0F / 16.0F, 0.0F);
+            PlayerRenderer renderer = (PlayerRenderer) minecraft.getEntityRenderDispatcher().getRenderer(player);
+            if (side > 0.0F) {
+                renderer.renderRightHand(poseStack, buffers, light, player);
+            } else {
+                poseStack.scale(-1.0F, 1.0F, 1.0F);
+                renderer.renderLeftHand(poseStack, buffers, light, player);
+            }
+            poseStack.popPose();
+        }
         GauntletItemRenderer.renderGlove(stack, poseStack, buffers, light);
         poseStack.popPose();
     }

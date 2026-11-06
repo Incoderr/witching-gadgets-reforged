@@ -27,6 +27,7 @@ public class GauntletItemRenderer extends BlockEntityWithoutLevelRenderer {
     private static final ResourceLocation BRACELET = WitchingGadgets.id("textures/models/primordialbracelet.png");
     private static final ResourceLocation RUNES = WitchingGadgets.id("textures/gui/bracelet.png");
     private static final ResourceLocation WHITE = WitchingGadgets.id("textures/models/white.png");
+    private static final float OVERLAY_SCALE = 1.004F;
     private static final String[] FINGERS = {"Thumb", "Index", "Middle", "Ring", "Pinky"};
     private static final int[][] OVERLAY = {
         {93, 25, 79}, {103, 39, 90}, {113, 52, 100}, {123, 67, 111}, {132, 80, 122}, {141, 94, 132}, {152, 108, 142}, {161, 122, 153},
@@ -40,6 +41,13 @@ public class GauntletItemRenderer extends BlockEntityWithoutLevelRenderer {
 
     private static void part(MultiBufferSource buffers, PoseStack poseStack, ResourceLocation texture, String name, int color, int light) {
         ObjModel.get(MODEL).renderPart(name, poseStack.last(), buffers.getBuffer(TcRenderTypes.entityCutoutNoCull(texture)), color, light);
+    }
+
+    private static void overlay(MultiBufferSource buffers, PoseStack poseStack, ResourceLocation texture, String name, int color, int light) {
+        poseStack.pushPose();
+        poseStack.scale(OVERLAY_SCALE, OVERLAY_SCALE, OVERLAY_SCALE);
+        part(buffers, poseStack, texture, name, color, light);
+        poseStack.popPose();
     }
 
     private static int rgb(int r, int g, int b) {
@@ -62,14 +70,14 @@ public class GauntletItemRenderer extends BlockEntityWithoutLevelRenderer {
         int[] tint = OVERLAY[ticks % 32 / 2];
         for (int f = 0; f < FINGERS.length; f++) {
             part(buffers, poseStack, BRACELET, "Finger_" + FINGERS[f] + "_f" + f, 0xFFFFFFFF, light);
-            part(buffers, poseStack, BRACELET, "Finger_" + FINGERS[f] + "_Overlay_f" + f + "_1", rgb(tint[0], tint[1], tint[2]), light);
+            overlay(buffers, poseStack, BRACELET, "Finger_" + FINGERS[f] + "_Overlay_f" + f + "_1", rgb(tint[0], tint[1], tint[2]), light);
         }
         float rune = ticks % 32 + 1;
         if (rune > 15) {
             rune = 16 - (rune - 16);
         }
         int runeLevel = Math.max(0, Math.min(255, (int) (rune * 0.2F * 255)));
-        part(buffers, poseStack, RUNES, "Runes_06", rgb(runeLevel, runeLevel, runeLevel), light);
+        overlay(buffers, poseStack, RUNES, "Runes_06", rgb(runeLevel, runeLevel, runeLevel), light);
         NonNullList<ItemStack> gems = PrimordialGauntletItem.gems(stack);
         for (int g = 1; g <= 3; g++) {
             ItemStack gem = gems.get(g);
