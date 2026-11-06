@@ -12,5 +12,6 @@ enchantments
 primordial
 alchemy
 furnace
+terraform
 tab
 testing

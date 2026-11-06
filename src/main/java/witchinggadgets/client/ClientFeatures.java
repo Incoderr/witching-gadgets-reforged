@@ -12,10 +12,13 @@ import witchinggadgets.client.devices.LabelLibraryScreen;
 import witchinggadgets.client.gems.CuttingTableRenderer;
 import witchinggadgets.client.gems.CuttingTableScreen;
 import witchinggadgets.client.spinning.SpinningWheelScreen;
+import witchinggadgets.client.terraform.TerraformFocusRenderer;
+import witchinggadgets.client.terraform.TerraformerRenderer;
 import witchinggadgets.cloaks.CloaksFeature;
 import witchinggadgets.devices.DevicesFeature;
 import witchinggadgets.gems.GemsFeature;
 import witchinggadgets.spinning.SpinningFeature;
+import witchinggadgets.terraform.TerraformFeature;
 
 public final class ClientFeatures {
     private ClientFeatures() {
@@ -34,5 +37,7 @@ public final class ClientFeatures {
         event.registerBlockEntityRenderer(DevicesFeature.LABEL_LIBRARY_ENTITY.get(), LabelLibraryRenderer::new);
         event.registerBlockEntityRenderer(GemsFeature.CUTTING_TABLE_ENTITY.get(), CuttingTableRenderer::new);
         event.registerBlockEntityRenderer(DevicesFeature.ESSENTIA_PUMP_ENTITY.get(), EssentiaPumpRenderer::new);
+        event.registerBlockEntityRenderer(TerraformFeature.TERRAFORMER_ENTITY.get(), TerraformerRenderer::new);
+        event.registerBlockEntityRenderer(TerraformFeature.FOCUS_ENTITY.get(), TerraformFocusRenderer::new);
     }
 }

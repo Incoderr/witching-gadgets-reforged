@@ -18,6 +18,38 @@
       "required": false
     },
     {
+      "id": "witchinggadgets:terraform_focus_cold_taiga",
+      "required": false
+    },
+    {
+      "id": "witchinggadgets:terraform_focus_desert",
+      "required": false
+    },
+    {
+      "id": "witchinggadgets:terraform_focus_hell",
+      "required": false
+    },
+    {
+      "id": "witchinggadgets:terraform_focus_jungle",
+      "required": false
+    },
+    {
+      "id": "witchinggadgets:terraform_focus_mushroom",
+      "required": false
+    },
+    {
+      "id": "witchinggadgets:terraform_focus_plains",
+      "required": false
+    },
+    {
+      "id": "witchinggadgets:terraform_focus_taint",
+      "required": false
+    },
+    {
+      "id": "witchinggadgets:terraformer",
+      "required": false
+    },
+    {
       "id": "witchinggadgets:void_metal_block",
       "required": false
     }
