@@ -13,6 +13,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RenderHandEvent;
 import witchinggadgets.WitchingGadgets;
+import witchinggadgets.client.WgClientConfig;
 import witchinggadgets.primordial.PrimordialFeature;
 
 @EventBusSubscriber(modid = WitchingGadgets.MODID, value = Dist.CLIENT)
@@ -38,11 +39,12 @@ public final class GauntletHandRenderer {
 
         poseStack.pushPose();
         poseStack.translate(side * -Mth.sin(swingSqrt * Mth.PI) * 0.4F, Mth.sin(swingSqrt * Mth.PI * 2.0F) * 0.2F, -Mth.sin(swing * Mth.PI) * 0.2F);
-        poseStack.translate(side * 0.58F, -0.476F - event.getEquipProgress() * 0.6F, -0.658F);
-        poseStack.rotateDegrees(Axis.XP, 8.53F - Mth.sin(swingSqrt * Mth.PI) * 30.0F);
-        poseStack.rotateDegrees(Axis.YP, side * -23.04F);
-        poseStack.rotateDegrees(Axis.ZP, side * 82.74F);
-        poseStack.scale(side, 1.0F, 1.0F);
+        poseStack.translate(side * WgClientConfig.gauntlet(WgClientConfig.GAUNTLET_X), WgClientConfig.gauntlet(WgClientConfig.GAUNTLET_Y) - event.getEquipProgress() * 0.6F, WgClientConfig.gauntlet(WgClientConfig.GAUNTLET_Z));
+        poseStack.rotateDegrees(Axis.XP, WgClientConfig.gauntlet(WgClientConfig.GAUNTLET_ROT_X) - Mth.sin(swingSqrt * Mth.PI) * 30.0F);
+        poseStack.rotateDegrees(Axis.YP, side * WgClientConfig.gauntlet(WgClientConfig.GAUNTLET_ROT_Y));
+        poseStack.rotateDegrees(Axis.ZP, side * WgClientConfig.gauntlet(WgClientConfig.GAUNTLET_ROT_Z));
+        float scale = WgClientConfig.gauntlet(WgClientConfig.GAUNTLET_SCALE);
+        poseStack.scale(side * scale, scale, scale);
         GauntletItemRenderer.submitGlove(stack, poseStack, collector, light);
         poseStack.popPose();
     }
