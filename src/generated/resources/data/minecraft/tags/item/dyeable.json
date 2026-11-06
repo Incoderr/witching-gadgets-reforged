@@ -30,6 +30,10 @@
       "required": false
     },
     {
+      "id": "witchinggadgets:traveller_cloak",
+      "required": false
+    },
+    {
       "id": "witchinggadgets:void_bag",
       "required": false
     }

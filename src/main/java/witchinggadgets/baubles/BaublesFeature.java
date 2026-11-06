@@ -30,9 +30,6 @@ public final class BaublesFeature {
 
     public static final WgStackKey<String> TITLE = WgStackKey.register("title", Codec.STRING, ByteBufCodecs.STRING_UTF8);
 
-    public static final DeferredItem<WearableItem> PAULDRON = wearable("pauldron", GearSlot.PAULDRON);
-    public static final DeferredItem<WearableItem> VAMBRACE = wearable("vambrace", GearSlot.VAMBRACE);
-
     public static final DeferredItem<WearableItem> DOUBLE_JUMP_SHOULDERS = wearable("double_jump_shoulders", GearSlot.PAULDRON);
     public static final DeferredItem<WearableItem> KNOCKBACK_SHOULDERS = wearable("knockback_shoulders", GearSlot.PAULDRON);
     public static final DeferredItem<WearableItem> STRENGTH_VAMBRACES = wearable("strength_vambraces", GearSlot.VAMBRACE);
@@ -49,7 +46,7 @@ public final class BaublesFeature {
     }
 
     private static <T extends Item> DeferredItem<T> register(String name, Function<Item.Properties, T> factory) {
-        return ModItems.ITEMS.registerItem(name, factory, properties -> name.equals("pauldron") || name.equals("vambrace") ? properties : properties.rarity(Rarity.RARE));
+        return ModItems.ITEMS.registerItem(name, factory, properties -> properties.rarity(Rarity.RARE));
     }
 
     public static void load() {

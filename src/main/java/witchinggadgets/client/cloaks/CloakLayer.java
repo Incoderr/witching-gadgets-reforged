@@ -20,8 +20,13 @@ import witchinggadgets.client.geom.CloakGeometry;
 import witchinggadgets.cloaks.CloakEvents;
 import witchinggadgets.cloaks.KamaItem;
 import witchinggadgets.cloaks.MagicCloakItem;
+import witchinggadgets.gear.GearSlot;
+import witchinggadgets.platform.Gear;
+import witchinggadgets.travellersgear.TravellersGearFeature;
+import net.minecraft.world.item.component.DyedItemColor;
 
 public class CloakLayer extends RenderLayer<AvatarRenderState, PlayerModel> {
+    private static final Identifier TRAVELLER_CLOAK = WitchingGadgets.id("textures/models/travellersgear/cloak.png");
     private static final Identifier BELT = WitchingGadgets.id("textures/models/magicalbaubles.png");
     private static final int INVISIBLE = 0x1AFFFFFF;
     private static final int WHITE = 0xFFFFFFFF;
@@ -40,17 +45,26 @@ public class CloakLayer extends RenderLayer<AvatarRenderState, PlayerModel> {
             return;
         }
         ItemStack stack = CloakEvents.activeCloak(player);
-        if (!(stack.getItem() instanceof MagicCloakItem cloak)) {
-            return;
+        Identifier texture;
+        int color;
+        if (stack.getItem() instanceof MagicCloakItem cloak) {
+            texture = WitchingGadgets.id("textures/models/" + cloak.variant().texture() + ".png");
+            color = cloak.color(stack);
+        } else {
+            stack = Gear.get(player, GearSlot.CLOAK);
+            if (!stack.is(TravellersGearFeature.TRAVELLER_CLOAK.get())) {
+                return;
+            }
+            texture = TRAVELLER_CLOAK;
+            color = DyedItemColor.getOrDefault(stack, 0xFFFFFF);
         }
         boolean invisible = player.hasEffect(MobEffects.INVISIBILITY);
         if (state.isInvisible && !invisible) {
             return;
         }
-        int argb = invisible ? INVISIBLE : 0xFF000000 | cloak.color(stack);
+        int argb = invisible ? INVISIBLE : 0xFF000000 | color;
         float leftLeg = (float) Math.toDegrees(getParentModel().leftLeg.xRot);
         float rightLeg = (float) Math.toDegrees(getParentModel().rightLeg.xRot);
-        Identifier texture = WitchingGadgets.id("textures/models/" + cloak.variant().texture() + ".png");
         poseStack.pushPose();
         getParentModel().body.translateAndRotate(poseStack);
         if (stack.getItem() instanceof KamaItem) {

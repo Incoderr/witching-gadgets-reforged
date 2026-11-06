@@ -27,6 +27,7 @@ public final class CloakClientEvents {
             if (renderer != null) {
                 renderer.addLayer(new CloakLayer(renderer));
                 renderer.addLayer(new BaubleLayer(renderer));
+                renderer.addLayer(new witchinggadgets.client.travellersgear.ToolDisplayLayer(renderer));
             }
         }
     }

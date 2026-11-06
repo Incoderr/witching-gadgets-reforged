@@ -8,8 +8,10 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.input.InputWithModifiers;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
 
 public class GearButton extends AbstractButton {
+    private static final Identifier TEXTURE = Identifier.fromNamespaceAndPath("thaumcraft", "textures/gui/baubles/expanded_inventory.png");
     private final AbstractContainerScreen<?> screen;
     private final Runnable action;
     private final int offsetY;
@@ -30,10 +32,10 @@ public class GearButton extends AbstractButton {
     protected void extractContents(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTick) {
         setPosition(screen.getLeftPos() + 66, screen.getTopPos() + offsetY);
         if (isHovered()) {
-            graphics.blit(RenderPipelines.GUI_TEXTURED, GearScreen.TEXTURE, getX(), getY(), 210.0F, 48.0F, 10, 10, 256, 256);
+            graphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, getX(), getY(), 210.0F, 48.0F, 10, 10, 256, 256);
             graphics.centeredText(Minecraft.getInstance().font, getMessage(), getX() + 5, getY() + getHeight(), -1);
         } else {
-            graphics.blit(RenderPipelines.GUI_TEXTURED, GearScreen.TEXTURE, getX(), getY(), 200.0F, 48.0F, 10, 10, 256, 256);
+            graphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, getX(), getY(), 200.0F, 48.0F, 10, 10, 256, 256);
         }
     }
 

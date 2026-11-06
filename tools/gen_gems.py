@@ -1,3 +1,8 @@
+BLACKSMITH_TARGETS = [
+    "minecraft:chests/village/village_weaponsmith",
+    "minecraft:chests/village/village_toolsmith",
+    "minecraft:chests/village/village_armorer",
+]
 import boxmodel
 import pngtools
 
@@ -96,3 +101,4 @@ def generate(ctx):
     enchantment(ctx, "gemstone_potency", 4, 10, 11)
     enchantment(ctx, "gemstone_brittle", 1, 10, 11)
     effect_icon(ctx)
+    ctx.inject_loot("gemcutting_tools_village_blacksmith", BLACKSMITH_TARGETS, (3, 9), 94, [{"type": "minecraft:item", "name": f"{ctx.NS}:gemcutting_tools", "weight": 8}])

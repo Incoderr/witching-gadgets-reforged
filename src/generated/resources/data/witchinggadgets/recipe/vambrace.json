@@ -8,12 +8,13 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "L": "minecraft:leather",
-    "I": "minecraft:iron_ingot"
+    "l": "minecraft:leather",
+    "i": "#c:nuggets/iron"
   },
   "pattern": [
-    " L ",
-    "LIL"
+    " l ",
+    "lil",
+    " l "
   ],
   "result": {
     "id": "witchinggadgets:vambrace"

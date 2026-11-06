@@ -107,6 +107,18 @@ def write_loot(name, pools):
     }))
 
 
+def inject_loot(name, targets, rolls, vanilla_weight, entries):
+    pool_rolls = rolls[0] if rolls[0] == rolls[1] else {"type": "minecraft:uniform", "min": rolls[0], "max": rolls[1]}
+    write(DATA / NS / profile.loot_folder / "inject" / f"{name}.json", profile.loot_table({
+        "type": "minecraft:chest",
+        "pools": [{"rolls": pool_rolls, "entries": entries + [{"type": "minecraft:empty", "weight": vanilla_weight}]}],
+        "random_sequence": f"{NS}:inject/{name}",
+    }))
+    for index, target in enumerate(targets):
+        modifier = name if len(targets) == 1 else f"{name}_{index}"
+        write(DATA / NS / "loot_modifiers" / f"{modifier}.json", profile.loot_modifier(modifier, target, f"{NS}:inject/{name}"))
+
+
 def self_drop(name):
     write_loot(name, [{
         "rolls": 1,

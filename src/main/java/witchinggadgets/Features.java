@@ -19,6 +19,7 @@ import witchinggadgets.primordial.PrimordialFeature;
 import witchinggadgets.robes.RobesFeature;
 import witchinggadgets.spinning.SpinningFeature;
 import witchinggadgets.terraform.TerraformFeature;
+import witchinggadgets.travellersgear.TravellersGearFeature;
 import witchinggadgets.test.ArcaneStoneGameTests;
 import witchinggadgets.test.ClothingGameTests;
 import witchinggadgets.test.CloaksGameTests;
@@ -56,6 +57,7 @@ public final class Features {
         FurnaceFeature.load();
         TerraformFeature.load();
         FoodFeature.load();
+        TravellersGearFeature.load();
     }
 
     public static void research() {

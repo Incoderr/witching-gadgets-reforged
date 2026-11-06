@@ -9,6 +9,7 @@ import net.minecraft.world.item.ItemStack;
 import thaumcraft.platform.baubles.BaubleAttachments;
 import witchinggadgets.gear.GearSlot;
 import witchinggadgets.platform.gear.GearAttachments;
+import witchinggadgets.travellersgear.ToolDisplay;
 
 public final class Gear {
     private Gear() {
@@ -44,5 +45,13 @@ public final class Gear {
             }
         }
         return ItemStack.EMPTY;
+    }
+
+    public static List<ToolDisplay> toolDisplay(Player player) {
+        return player.getData(GearAttachments.TOOL_DISPLAY);
+    }
+
+    public static void setToolDisplay(Player player, List<ToolDisplay> displays) {
+        player.setData(GearAttachments.TOOL_DISPLAY, List.copyOf(displays));
     }
 }

@@ -23,17 +23,24 @@ import net.minecraft.world.item.ItemStack;
 import thaumcraft.client.platform.TcRenderTypes;
 import witchinggadgets.WitchingGadgets;
 import witchinggadgets.baubles.BaublesFeature;
+import witchinggadgets.travellersgear.TravellersGearFeature;
+import thaumcraft.platform.Baubles;
+import net.minecraft.world.entity.EquipmentSlot;
 import witchinggadgets.gear.GearSlot;
 import witchinggadgets.platform.Gear;
 
 public class BaubleLayer extends RenderLayer<AvatarRenderState, PlayerModel> {
     private static final Identifier TEXTURE = WitchingGadgets.id("textures/models/magicalbaubles.png");
 
+    private static final Identifier TG_TEXTURE = WitchingGadgets.id("textures/models/travellersgear/tgtextures.png");
+
     private final ModelPart root;
+    private final ModelPart travellersGear;
 
     public BaubleLayer(RenderLayerParent<AvatarRenderState, PlayerModel> renderer) {
         super(renderer);
         this.root = createLayer().bakeRoot();
+        this.travellersGear = createTravellersGearLayer().bakeRoot();
     }
 
     private static LayerDefinition createLayer() {
@@ -42,6 +49,15 @@ public class BaubleLayer extends RenderLayer<AvatarRenderState, PlayerModel> {
         piece(mesh, "knockback", 40, 16, 0, 1.125F);
         piece(mesh, "strength", 40, 24, 7, 0.125F);
         piece(mesh, "haste", 24, 24, 7, 0.125F);
+        return LayerDefinition.create(mesh, 64, 32);
+    }
+
+    private static LayerDefinition createTravellersGearLayer() {
+        MeshDefinition mesh = new MeshDefinition();
+        piece(mesh, "pauldron", 40, 16, 0, 0.5F);
+        piece(mesh, "pauldron_armored", 40, 16, 0, 1.125F);
+        piece(mesh, "vambrace", 40, 24, 7, 0.125F);
+        mesh.getRoot().addOrReplaceChild("belt", CubeListBuilder.create().texOffs(0, 24).addBox(-4.0F, 8.5F, -2.0F, 8, 4, 4, new CubeDeformation(0.125F)), PartPose.ZERO);
         return LayerDefinition.create(mesh, 64, 32);
     }
 
@@ -75,15 +91,30 @@ public class BaubleLayer extends RenderLayer<AvatarRenderState, PlayerModel> {
             if (name == null) {
                 continue;
             }
-            arm(poseStack, collector, lightCoords, getParentModel().rightArm, root.getChild(name + "_right"));
-            arm(poseStack, collector, lightCoords, getParentModel().leftArm, root.getChild(name + "_left"));
+            arm(poseStack, collector, lightCoords, getParentModel().rightArm, root.getChild(name + "_right"), TEXTURE);
+            arm(poseStack, collector, lightCoords, getParentModel().leftArm, root.getChild(name + "_left"), TEXTURE);
+        }
+        String travellersGearName = null;
+        if (Gear.get(player, GearSlot.PAULDRON).is(TravellersGearFeature.PAULDRON.get())) {
+            travellersGearName = player.getItemBySlot(EquipmentSlot.CHEST).isEmpty() ? "pauldron" : "pauldron_armored";
+        }
+        if (travellersGearName != null) {
+            arm(poseStack, collector, lightCoords, getParentModel().rightArm, travellersGear.getChild(travellersGearName + "_right"), TG_TEXTURE);
+            arm(poseStack, collector, lightCoords, getParentModel().leftArm, travellersGear.getChild(travellersGearName + "_left"), TG_TEXTURE);
+        }
+        if (Gear.get(player, GearSlot.VAMBRACE).is(TravellersGearFeature.VAMBRACE.get())) {
+            arm(poseStack, collector, lightCoords, getParentModel().rightArm, travellersGear.getChild("vambrace_right"), TG_TEXTURE);
+            arm(poseStack, collector, lightCoords, getParentModel().leftArm, travellersGear.getChild("vambrace_left"), TG_TEXTURE);
+        }
+        if (Baubles.isEquipped(player, TravellersGearFeature.BELT.get())) {
+            arm(poseStack, collector, lightCoords, getParentModel().body, travellersGear.getChild("belt"), TG_TEXTURE);
         }
     }
 
-    private static void arm(PoseStack poseStack, SubmitNodeCollector collector, int light, ModelPart arm, ModelPart piece) {
+    private static void arm(PoseStack poseStack, SubmitNodeCollector collector, int light, ModelPart arm, ModelPart piece, Identifier texture) {
         poseStack.pushPose();
         arm.translateAndRotate(poseStack);
-        collector.submitModelPart(piece, poseStack, TcRenderTypes.entityCutout(TEXTURE), light, OverlayTexture.NO_OVERLAY, null);
+        collector.submitModelPart(piece, poseStack, TcRenderTypes.entityCutout(texture), light, OverlayTexture.NO_OVERLAY, null);
         poseStack.popPose();
     }
 }

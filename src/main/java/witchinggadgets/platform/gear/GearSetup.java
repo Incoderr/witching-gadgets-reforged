@@ -11,7 +11,9 @@ public final class GearSetup {
         GearAttachments.register(bus);
         GearMenus.register(bus);
         OpenGearPayload.register();
-        ActivateGearPayload.register();
+        ActivateAbilityPayload.register();
+        ShowItemPayload.register();
+        SetToolDisplayPayload.register();
         DoubleJumpPayload.register();
     }
 }

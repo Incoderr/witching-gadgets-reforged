@@ -11,7 +11,7 @@ import witchinggadgets.WitchingGadgets;
 public final class GearMenus {
     private static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(Registries.MENU, WitchingGadgets.MODID);
 
-    public static final DeferredHolder<MenuType<?>, MenuType<GearMenu>> EXPANDED = MENUS.register("gear", () -> IMenuTypeExtension.create((containerId, inventory, buffer) -> new GearMenu(containerId, inventory)));
+    public static final DeferredHolder<MenuType<?>, MenuType<GearMenu>> EXPANDED = MENUS.register("gear", () -> IMenuTypeExtension.create((containerId, inventory, buffer) -> new GearMenu(containerId, inventory, buffer.readVarLong())));
 
     private GearMenus() {
     }

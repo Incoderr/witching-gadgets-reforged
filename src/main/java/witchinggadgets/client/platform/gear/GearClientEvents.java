@@ -18,6 +18,8 @@ import net.neoforged.neoforge.client.event.ScreenEvent;
 import witchinggadgets.WitchingGadgets;
 import witchinggadgets.client.platform.WgClientNetwork;
 import witchinggadgets.platform.gear.GearMenus;
+import witchinggadgets.client.travellersgear.TgLayout;
+import witchinggadgets.client.travellersgear.TravellersInventoryScreen;
 import witchinggadgets.platform.gear.OpenGearPayload;
 
 @EventBusSubscriber(modid = WitchingGadgets.MODID, value = Dist.CLIENT)
@@ -29,7 +31,8 @@ public final class GearClientEvents {
 
     @SubscribeEvent
     static void registerScreens(RegisterMenuScreensEvent event) {
-        event.register(GearMenus.EXPANDED.get(), GearScreen::new);
+        TgLayout.install();
+        event.register(GearMenus.EXPANDED.get(), TravellersInventoryScreen::new);
     }
 
     @SubscribeEvent
@@ -42,7 +45,7 @@ public final class GearClientEvents {
         Minecraft minecraft = Minecraft.getInstance();
         while (OPEN_KEY.consumeClick()) {
             if (minecraft.player != null && minecraft.gui.screen() == null) {
-                WgClientNetwork.sendToServer(new OpenGearPayload());
+                WgClientNetwork.sendToServer(new OpenGearPayload(TgLayout.hiddenMask()));
             }
         }
     }
@@ -51,14 +54,7 @@ public final class GearClientEvents {
     static void onScreenInit(ScreenEvent.Init.Post event) {
         if (event.getScreen() instanceof InventoryScreen || event.getScreen() instanceof BaublesScreen) {
             AbstractContainerScreen<?> screen = (AbstractContainerScreen<?>) event.getScreen();
-            event.addListener(new GearButton(screen, 20, Component.translatable("button.witchinggadgets.gear"), () -> WgClientNetwork.sendToServer(new OpenGearPayload())));
-        } else if (event.getScreen() instanceof GearScreen screen) {
-            event.addListener(new GearButton(screen, 9, Component.translatable("button.witchinggadgets.normal"), () -> {
-                Minecraft minecraft = Minecraft.getInstance();
-                minecraft.player.connection.send(new ServerboundContainerClosePacket(screen.getMenu().containerId));
-                minecraft.player.containerMenu = minecraft.player.inventoryMenu;
-                minecraft.gui.setScreen(new InventoryScreen(minecraft.player));
-            }));
+            event.addListener(new GearButton(screen, 20, Component.translatable("button.witchinggadgets.gear"), () -> WgClientNetwork.sendToServer(new OpenGearPayload(TgLayout.hiddenMask()))));
         }
     }
 }

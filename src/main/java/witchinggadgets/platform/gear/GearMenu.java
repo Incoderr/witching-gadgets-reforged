@@ -22,6 +22,11 @@ import net.minecraft.world.item.crafting.CraftingInput;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeType;
+import thaumcraft.platform.Bauble;
+import thaumcraft.platform.Baubles;
+import thaumcraft.platform.baubles.BaubleAttachments;
+import thaumcraft.platform.baubles.BaubleInventory;
+import thaumcraft.platform.baubles.BaubleSlot;
 import witchinggadgets.gear.GearItem;
 import witchinggadgets.gear.GearSlot;
 
@@ -33,10 +38,30 @@ public class GearMenu extends AbstractCraftingMenu {
     public static final int ARMOR_END = 9;
     public static final int GEAR_START = 9;
     public static final int GEAR_END = 13;
-    public static final int INVENTORY_START = 13;
-    public static final int INVENTORY_END = 40;
-    public static final int HOTBAR_START = 40;
-    public static final int HOTBAR_END = 49;
+    public static final int BAUBLE_START = 13;
+    public static final int BAUBLE_END = 17;
+    public static final int INVENTORY_START = 17;
+    public static final int INVENTORY_END = 44;
+    public static final int HOTBAR_START = 44;
+    public static final int HOTBAR_END = 53;
+
+    public interface Layout {
+        int x(int slot);
+
+        int y(int slot);
+    }
+
+    public static Layout layout = new Layout() {
+        @Override
+        public int x(int slot) {
+            return 0;
+        }
+
+        @Override
+        public int y(int slot) {
+            return 0;
+        }
+    };
 
     private static final Map<EquipmentSlot, Identifier> EMPTY_ARMOR_ICONS = Map.of(
         EquipmentSlot.FEET, InventoryMenu.EMPTY_ARMOR_SLOT_BOOTS,
@@ -48,27 +73,81 @@ public class GearMenu extends AbstractCraftingMenu {
 
     private final Player owner;
     private final GearInventory gear;
+    private final long hidden;
 
     public GearMenu(int containerId, Inventory inventory) {
+        this(containerId, inventory, 0L);
+    }
+
+    public GearMenu(int containerId, Inventory inventory, long hidden) {
         super(GearMenus.EXPANDED.get(), containerId, 2, 2);
         this.owner = inventory.player;
         this.gear = GearAttachments.inventory(owner);
-        addResultSlot(owner, 144, 36);
-        addCraftingGridSlots(106, 26);
+        this.hidden = hidden;
+        addResultSlot(owner, layout.x(RESULT_SLOT), layout.y(RESULT_SLOT));
+        for (int row = 0; row < 2; row++) {
+            for (int column = 0; column < 2; column++) {
+                int index = column + row * 2;
+                place(new Slot(craftSlots, index, layout.x(CRAFT_START + index), layout.y(CRAFT_START + index)), craftSlots, index);
+            }
+        }
         for (int index = 0; index < ARMOR_SLOTS.length; index++) {
             EquipmentSlot equipmentSlot = ARMOR_SLOTS[index];
-            addSlot(new ArmorSlot(inventory, owner, equipmentSlot, 39 - index, 8, 8 + index * 18, EMPTY_ARMOR_ICONS.get(equipmentSlot)));
+            int slot = ARMOR_START + index;
+            place(new ArmorSlot(inventory, owner, equipmentSlot, 39 - index, layout.x(slot), layout.y(slot), EMPTY_ARMOR_ICONS.get(equipmentSlot)), inventory, 39 - index);
         }
-        for (GearSlot slot : GearSlot.values()) {
-            addSlot(new GearSlotView(gear, slot, slot.ordinal(), 80, 8 + slot.ordinal() * 18));
+        for (GearSlot type : GearSlot.values()) {
+            int slot = GEAR_START + type.ordinal();
+            place(new GearSlotView(gear, type, type.ordinal(), layout.x(slot), layout.y(slot)), gear, type.ordinal());
+        }
+        BaubleInventory baubles = BaubleAttachments.inventory(owner);
+        for (int index = 0; index < BAUBLE_END - BAUBLE_START; index++) {
+            int slot = BAUBLE_START + index;
+            place(new BaubleSlot(baubles, Baubles.slotType(index), index, layout.x(slot), layout.y(slot)), baubles, index);
         }
         for (int row = 0; row < 3; row++) {
             for (int column = 0; column < 9; column++) {
-                addSlot(new Slot(inventory, column + (row + 1) * 9, 8 + column * 18, 84 + row * 18));
+                int index = column + (row + 1) * 9;
+                int slot = INVENTORY_START + column + row * 9;
+                place(new Slot(inventory, index, layout.x(slot), layout.y(slot)), inventory, index);
             }
         }
         for (int column = 0; column < 9; column++) {
-            addSlot(new Slot(inventory, column, 8 + column * 18, 142));
+            int slot = HOTBAR_START + column;
+            place(new Slot(inventory, column, layout.x(slot), layout.y(slot)), inventory, column);
+        }
+    }
+
+    public static long hiddenBit(int slot) {
+        return 1L << slot;
+    }
+
+    public boolean isHidden(int slot) {
+        return (hidden & hiddenBit(slot)) != 0L;
+    }
+
+    private void place(Slot slot, Container container, int index) {
+        addSlot(isHidden(slots.size()) ? new HiddenSlot(container, index) : slot);
+    }
+
+    private static final class HiddenSlot extends Slot {
+        HiddenSlot(Container container, int index) {
+            super(container, index, -10000, -10000);
+        }
+
+        @Override
+        public boolean isActive() {
+            return false;
+        }
+
+        @Override
+        public boolean mayPlace(ItemStack stack) {
+            return false;
+        }
+
+        @Override
+        public boolean mayPickup(Player player) {
+            return false;
         }
     }
 
@@ -133,6 +212,19 @@ public class GearMenu extends AbstractCraftingMenu {
         return false;
     }
 
+    private int freeBaubleSlot(ItemStack original) {
+        if (!(original.getItem() instanceof Bauble)) {
+            return -1;
+        }
+        for (int slotIndex = BAUBLE_START; slotIndex < BAUBLE_END; slotIndex++) {
+            Slot target = slots.get(slotIndex);
+            if (!target.hasItem() && target.mayPlace(original)) {
+                return slotIndex;
+            }
+        }
+        return -1;
+    }
+
     @Override
     public ItemStack quickMoveStack(Player player, int slotIndex) {
         ItemStack clicked = ItemStack.EMPTY;
@@ -146,7 +238,7 @@ public class GearMenu extends AbstractCraftingMenu {
                     return ItemStack.EMPTY;
                 }
                 slot.onQuickCraft(stack, clicked);
-            } else if (slotIndex < GEAR_END) {
+            } else if (slotIndex < BAUBLE_END) {
                 if (!moveItemStackTo(stack, INVENTORY_START, HOTBAR_END, false)) {
                     return ItemStack.EMPTY;
                 }
@@ -157,6 +249,11 @@ public class GearMenu extends AbstractCraftingMenu {
                 }
             } else if (canMoveToFreeGearSlot(clicked)) {
                 if (!moveToFreeGearSlot(stack, clicked)) {
+                    return ItemStack.EMPTY;
+                }
+            } else if (freeBaubleSlot(clicked) >= 0) {
+                int target = freeBaubleSlot(clicked);
+                if (!moveItemStackTo(stack, target, target + 1, false)) {
                     return ItemStack.EMPTY;
                 }
             } else if (slotIndex < INVENTORY_END) {

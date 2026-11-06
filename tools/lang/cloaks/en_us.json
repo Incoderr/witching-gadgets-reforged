@@ -1,5 +1,4 @@
 {
-  "key.witchinggadgets.cloak": "Activate Cloak",
   "tc.research_page.CLOAK.1": "After noticing the excellent \"swishing\"-properties of Enchanted Fabric, you have quickly drawn out some schematics to create a cloak from it. While this standard cloak lacks any special abilities, its magical fabric should provide an excellent base for more advanced spellwoven mantles.<BR>§oCloaks are worn in the Cloak slot of the gear inventory, opened with 'G' by default. Certain abilities of the advanced cloaks can be activated with the 'Activate Cloak' key, 'R' by default.§r",
   "tc.research_page.CLOAKKAMA.1": "Cloaks and their advanced deriatives have proven to be both fashionable and useful, but also quite big and unwieldly. Shortening them and attaching them to a belt transforms them into a Kama, a sort of half-skirt covering the back of the legs. They still perform the same tasks, they are just located at a different part of your body now.<BR>§oA Kama is worn in the belt slot. Colouring and items stored in the cloak are not carried over to the Kama.§r"
 }

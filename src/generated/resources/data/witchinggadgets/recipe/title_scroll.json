@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "witchinggadgets:title_scroll"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "l": "#c:gems/lapis",
+    "p": "minecraft:paper",
+    "b": "minecraft:enchanted_book"
+  },
+  "pattern": [
+    " l ",
+    "pbp",
+    " l "
+  ],
+  "result": {
+    "id": "witchinggadgets:title_scroll"
+  }
+}

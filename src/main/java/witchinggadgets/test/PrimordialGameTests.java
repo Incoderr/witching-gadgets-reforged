@@ -29,6 +29,7 @@ import thaumcraft.crafting.TcRecipes;
 import thaumcraft.registry.ModEffects;
 import witchinggadgets.materials.MaterialsFeature;
 import witchinggadgets.primordial.PrimordialArmorItem;
+import witchinggadgets.gear.AbilitySlots;
 import witchinggadgets.primordial.PrimordialGear;
 import witchinggadgets.primordial.PrimordialEvents;
 import witchinggadgets.primordial.PrimordialFeature;
@@ -91,10 +92,9 @@ public final class PrimordialGameTests {
         PrimordialGear.cycle(helmet);
         helper.assertValueEqual(PrimordialGear.ability(helmet), PrimordialGear.EARTH, "cycled ability");
         Player player = armored(helper, PrimordialGear.ENTROPY);
-        helper.assertTrue(PrimordialArmorItem.cycleWorn(player), "worn armor did not cycle");
-        for (ItemStack piece : PrimordialArmorItem.worn(player)) {
-            helper.assertValueEqual(PrimordialGear.ability(piece), PrimordialGear.AIR, "worn ability wraps to Aer");
-        }
+        AbilitySlots.activate(player, 11);
+        helper.assertValueEqual(PrimordialGear.ability(player.getItemBySlot(EquipmentSlot.CHEST)), PrimordialGear.AIR, "worn chestplate wraps to Aer through the ability menu");
+        helper.assertValueEqual(PrimordialGear.ability(player.getItemBySlot(EquipmentSlot.HEAD)), PrimordialGear.ENTROPY, "other pieces keep their ability");
         helper.succeed();
     }
 

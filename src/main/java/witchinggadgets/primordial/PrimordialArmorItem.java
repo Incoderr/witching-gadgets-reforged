@@ -8,11 +8,12 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import witchinggadgets.gear.GearAbility;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import thaumcraft.item.armor.FortressArmorItem;
 
-public class PrimordialArmorItem extends FortressArmorItem implements PrimordialGear {
+public class PrimordialArmorItem extends FortressArmorItem implements PrimordialGear, GearAbility {
     public static final EquipmentSlot[] SLOTS = {EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET};
 
     public PrimordialArmorItem(Properties properties) {
@@ -40,19 +41,6 @@ public class PrimordialArmorItem extends FortressArmorItem implements Primordial
         return count;
     }
 
-    public static boolean cycleWorn(Player player) {
-        List<ItemStack> pieces = worn(player);
-        if (pieces.isEmpty()) {
-            return false;
-        }
-        int next = (PrimordialGear.ability(pieces.getFirst()) + 1) % ABILITIES.length;
-        for (ItemStack piece : pieces) {
-            PrimordialGear.setAbility(piece, next);
-        }
-        player.sendOverlayMessage(PrimordialGear.announcement(ABILITIES[next]));
-        return true;
-    }
-
     @Override
     public int returnedPearls() {
         return 3;
@@ -64,14 +52,14 @@ public class PrimordialArmorItem extends FortressArmorItem implements Primordial
     }
 
     @Override
-    public InteractionResult use(Level level, Player player, InteractionHand hand) {
-        if (player.isShiftKeyDown()) {
-            ItemStack stack = player.getItemInHand(hand);
-            if (!level.isClientSide()) {
-                PrimordialGear.cycleAndAnnounce(player, stack);
-            }
-            return InteractionResult.SUCCESS;
+    public boolean canActivate(Player player, ItemStack stack, boolean inHand) {
+        return true;
+    }
+
+    @Override
+    public void activate(Player player, ItemStack stack) {
+        if (!player.level().isClientSide()) {
+            PrimordialGear.cycleAndAnnounce(player, stack);
         }
-        return super.use(level, player, hand);
     }
 }

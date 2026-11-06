@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "witchinggadgets:gold_ring"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "g": "#c:nuggets/gold"
+  },
+  "pattern": [
+    "gg ",
+    "g g",
+    " gg"
+  ],
+  "result": {
+    "id": "witchinggadgets:gold_ring"
+  }
+}

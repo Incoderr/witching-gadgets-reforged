@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "witchinggadgets:silver_ring"
+    },
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:nuggets/silver"
+      }
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "s": "#c:nuggets/silver"
+  },
+  "pattern": [
+    "ss ",
+    "s s",
+    " ss"
+  ],
+  "result": {
+    "id": "witchinggadgets:silver_ring"
+  }
+}

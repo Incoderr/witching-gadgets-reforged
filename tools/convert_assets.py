@@ -10,6 +10,19 @@ codecs.register_error("cp1252_fallback", lambda error: (error.object[error.start
 BOM = b"\xef\xbb\xbf"
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / "reference" / "wg-src" / "src" / "main" / "resources" / "assets" / "witchinggadgets"
+TG_SOURCE = ROOT / "reference" / "tg-src" / "src" / "main" / "resources" / "assets" / "travellersgear"
+TG_DIR = "travellersgear"
+TG_ITEMS = {
+    "item.TravellersGear.simpleGear.cloak.name": "item.witchinggadgets.traveller_cloak",
+    "item.TravellersGear.simpleGear.belt.name": "item.witchinggadgets.belt",
+    "item.TravellersGear.simpleGear.ringGold.name": "item.witchinggadgets.gold_ring",
+    "item.TravellersGear.simpleGear.ringSilver.name": "item.witchinggadgets.silver_ring",
+    "item.TravellersGear.simpleGear.pauldrons.name": "item.witchinggadgets.pauldron",
+    "item.TravellersGear.simpleGear.vambraces.name": "item.witchinggadgets.vambrace",
+    "item.TravellersGear.simpleGear.title.name": "item.witchinggadgets.title_scroll",
+    "tile.TravellersGear.armorstand.name": "block.witchinggadgets.armor_stand",
+}
+TG_SKIPPED = re.compile(r"^(itemGroup\.travellersgear$|TG\.guitext\.(showMari|renderMari))")
 NS = "witchinggadgets"
 RESOURCES = ROOT / "src" / "main" / "resources"
 ASSETS = RESOURCES / "assets" / NS
@@ -66,7 +79,7 @@ def write_json(path, data):
 
 
 def clean_targets():
-    for name in ("textures", "lang", "obj"):
+    for name in ("textures", "lang", "obj", TG_DIR):
         remove(ASSETS / name)
 
 
@@ -106,6 +119,102 @@ def convert_textures():
     for path in sorted((SOURCE / "textures").glob("*.*")):
         warn(f"texture outside a known folder skipped: {path.name}")
     return counts
+
+
+def convert_tg_textures():
+    count = 0
+    for old_dir, new_dir in TEXTURE_DIRS.items():
+        source_root = TG_SOURCE / "textures" / old_dir
+        if not source_root.exists():
+            continue
+        for path in sorted(source_root.glob("*.png")):
+            destination = ASSETS / "textures" / new_dir / TG_DIR / clean_name(path.name)
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(path, destination)
+            count += 1
+    return count
+
+
+TG_LAYOUT_SOURCE = ROOT / "reference" / "tg-src" / "src" / "main" / "java" / "travellersgear" / "client" / "handlers" / "CustomizeableGuiHandler.java"
+TG_ELEMENT = re.compile(r'addElement(?:WithConfig)?\(\w+, invConfig, [^,]+, (\d+), ?(\d+), ?("[^"]*"(?:\+[^,]+)?), (?:true|false), ([^;]+?)\)(\.hideElement=true)?;')
+TG_TERNARY = re.compile(r"\(([^()]*\?[^()]*)\)")
+TG_TEXTURES = ["book", "digital", "epic"]
+
+
+def tg_ternary(value):
+    if "?" not in value:
+        return value
+    condition, rest = value.split("?", 1)
+    first, second = rest.split(":", 1)
+    return f"(({first}) if ({condition}) else ({tg_ternary(second)}))"
+
+
+def tg_expression(value, variables):
+    value = value.strip()
+    while TG_TERNARY.search(value):
+        value = TG_TERNARY.sub(lambda match: tg_ternary(match.group(0)[1:-1]), value)
+    value = value.replace("i/3", "i//3")
+    return int(eval(value, {"__builtins__": {}}, variables))
+
+
+def tg_elements(lines):
+    elements = []
+    loops = []
+    for line in lines:
+        stripped = line.strip()
+        if stripped.startswith("//"):
+            continue
+        loop = re.match(r"for \(int (\w) = 0; \w < (\d+); \+\+\w\)", stripped)
+        if loop:
+            loops.append((loop.group(1), int(loop.group(2))))
+            continue
+        match = TG_ELEMENT.search(stripped)
+        if match is None:
+            continue
+        width, height, name, coords, hidden = match.groups()
+        current = loops
+        loops = []
+        if "Mariculture" in name or "Tinkers" in name:
+            continue
+        x_expr, y_expr = coords.rsplit(",", 1)
+        ranges = [[]]
+        for variable, count in current:
+            ranges = [previous + [(variable, value)] for previous in ranges for value in range(count)]
+        for binding in ranges:
+            variables = dict(binding)
+            label = name
+            if "+" in name:
+                head, tail = name.split("+", 1)
+                label = head.strip('"') + str(tg_expression(tail, variables))
+            else:
+                label = name.strip('"')
+            elements.append({"name": label, "size": [int(width), int(height)], "pos": [tg_expression(x_expr, variables), tg_expression(y_expr, variables)], "hidden": hidden is not None})
+    return elements
+
+
+def convert_tg_layouts():
+    text = TG_LAYOUT_SOURCE.read_text(encoding="utf-8")
+    body = text.split("void createPresets()")
+    default = tg_elements(body[0].split("public void init()")[1].splitlines())
+    presets = {}
+    chunks = re.split(r'presets\.put\("([^"]+)", new InvPreset\(invTextures\[(\d)\],presetList\)\);', body[1])
+    for index in range(1, len(chunks), 3):
+        presets[chunks[index]] = {"texture": TG_TEXTURES[int(chunks[index + 1])], "elements": tg_elements(chunks[index - 1].splitlines())}
+    write_json(ASSETS / TG_DIR / "layouts.json", {"default": {"texture": "book", "elements": default}, "presets": presets})
+    return len(default), {name: len(preset["elements"]) for name, preset in presets.items()}
+
+
+def tg_lang(language):
+    names = {path.stem.lower(): path for path in sorted((TG_SOURCE / "lang").glob("*.lang"))}
+    if language not in names:
+        return {}
+    result = {}
+    for key, value in read_lang(names[language]).items():
+        if key in TG_ITEMS:
+            result[TG_ITEMS[key]] = value
+        elif key.startswith("TG.") and not TG_SKIPPED.match(key):
+            result[key] = value
+    return result
 
 
 def convert_obj_models():
@@ -272,6 +381,8 @@ def convert_lang(id_map):
             result[UNMAPPED_PREFIX + key] = value
             unmapped[language][key.split(".")[0]] += 1
             unmapped_keys[language].append(key)
+        for key, value in tg_lang(language).items():
+            result[key] = escape_format(value, escape_stats)
         extra_paths = [LANG_EXTRA / f"{language}.json", *sorted(LANG_EXTRA.glob(f"*/{language}.json"))]
         for extra_path in extra_paths:
             if extra_path.exists():
@@ -307,6 +418,10 @@ def main():
         raise SystemExit("reference/wg-src is missing, run tools/fetch_wg.py first")
     clean_targets()
     texture_counts = convert_textures()
+    if not TG_SOURCE.exists():
+        raise SystemExit("reference/tg-src is missing, run tools/fetch_tg.py first")
+    texture_counts["travellersgear/png"] = convert_tg_textures()
+    print("travellersgear layouts:", convert_tg_layouts())
     obj_count = convert_obj_models()
     id_map = load_id_map(Path(arguments.id_map))
     results, mapped, unmapped, unmapped_keys, uncovered, escape_stats = convert_lang(id_map)

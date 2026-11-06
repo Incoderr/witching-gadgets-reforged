@@ -6,13 +6,14 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import witchinggadgets.gear.GearAbility;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import witchinggadgets.WitchingGadgets;
 
-public class PrimordialWeaponItem extends Item implements PrimordialGear {
+public class PrimordialWeaponItem extends Item implements PrimordialGear, GearAbility {
     public static final TagKey<Block> HAMMER_MINEABLE = BlockTags.create(WitchingGadgets.id("primordial_hammer_mineable"));
     public static final TagKey<Block> GREATAXE_MINEABLE = BlockTags.create(WitchingGadgets.id("primordial_greataxe_mineable"));
 
@@ -48,13 +49,14 @@ public class PrimordialWeaponItem extends Item implements PrimordialGear {
     }
 
     @Override
-    public InteractionResult use(Level level, Player player, InteractionHand hand) {
-        if (player.isShiftKeyDown()) {
-            if (!level.isClientSide()) {
-                PrimordialGear.cycleAndAnnounce(player, player.getItemInHand(hand));
-            }
-            return InteractionResult.SUCCESS;
+    public boolean canActivate(Player player, ItemStack stack, boolean inHand) {
+        return true;
+    }
+
+    @Override
+    public void activate(Player player, ItemStack stack) {
+        if (!player.level().isClientSide()) {
+            PrimordialGear.cycleAndAnnounce(player, stack);
         }
-        return super.use(level, player, hand);
     }
 }

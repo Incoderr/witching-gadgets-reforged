@@ -9,7 +9,9 @@ import net.neoforged.neoforge.attachment.IAttachmentHolder;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
+import java.util.List;
 import org.jspecify.annotations.Nullable;
+import witchinggadgets.travellersgear.ToolDisplay;
 import witchinggadgets.WitchingGadgets;
 
 public final class GearAttachments {
@@ -31,6 +33,13 @@ public final class GearAttachments {
                 return inventory;
             }
         })
+        .build());
+
+    public static final DeferredHolder<AttachmentType<?>, AttachmentType<List<ToolDisplay>>> TOOL_DISPLAY = ATTACHMENTS.register("tool_display", () -> AttachmentType
+        .<List<ToolDisplay>>builder(() -> List.of())
+        .serialize(ToolDisplay.LIST_CODEC.fieldOf("value"))
+        .copyOnDeath()
+        .sync(ToolDisplay.LIST_STREAM_CODEC)
         .build());
 
     private GearAttachments() {

@@ -27,4 +27,8 @@ public final class WgGuiBlit {
     public static void tinted(GuiGraphicsExtractor graphics, Identifier texture, int x, int y, int width, int height, int u, int v, int regionWidth, int regionHeight, int textureWidth, int textureHeight, int argb) {
         graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x, y, (float) u, (float) v, width, height, regionWidth, regionHeight, textureWidth, textureHeight, argb);
     }
+
+    public static void sprite(GuiGraphicsExtractor graphics, Identifier sprite, int x, int y, int width, int height) {
+        graphics.blitSprite(RenderPipelines.GUI_TEXTURED, sprite, x, y, width, height);
+    }
 }

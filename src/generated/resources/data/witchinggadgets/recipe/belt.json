@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "witchinggadgets:belt"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "l": "minecraft:leather",
+    "i": "#c:ingots/iron"
+  },
+  "pattern": [
+    " l ",
+    "l l",
+    " i "
+  ],
+  "result": {
+    "id": "witchinggadgets:belt"
+  }
+}

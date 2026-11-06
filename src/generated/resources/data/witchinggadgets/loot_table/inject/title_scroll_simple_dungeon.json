@@ -1,0 +1,158 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 8,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "witchinggadgets:title_scroll",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "witchinggadgets:title": "TG.personaltitle.treepuncher"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "witchinggadgets:title_scroll",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "witchinggadgets:title": "TG.personaltitle.titan"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "witchinggadgets:title_scroll",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "witchinggadgets:title": "TG.personaltitle.librarian"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "witchinggadgets:title_scroll",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "witchinggadgets:title": "TG.personaltitle.bursar"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "witchinggadgets:title_scroll",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "witchinggadgets:title": "TG.personaltitle.archchancellor"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "witchinggadgets:title_scroll",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "witchinggadgets:title": "TG.personaltitle.justicar"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "witchinggadgets:title_scroll",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "witchinggadgets:title": "TG.personaltitle.explorer"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "witchinggadgets:title_scroll",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "witchinggadgets:title": "TG.personaltitle.defender"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "witchinggadgets:title_scroll",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "witchinggadgets:title": "TG.personaltitle.seeker"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "witchinggadgets:title_scroll",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "witchinggadgets:title": "TG.personaltitle.boxFox"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "witchinggadgets:title_scroll",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "witchinggadgets:title": "TG.personaltitle.freshPrince"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 1320
+        }
+      ]
+    }
+  ],
+  "random_sequence": "witchinggadgets:inject/title_scroll_simple_dungeon"
+}
