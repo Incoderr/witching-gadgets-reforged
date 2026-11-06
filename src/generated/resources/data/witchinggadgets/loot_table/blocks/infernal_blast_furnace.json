@@ -1,0 +1,242 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:nether_bricks",
+          "conditions": [
+            {
+              "condition": "minecraft:any_of",
+              "terms": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "witchinggadgets:infernal_blast_furnace",
+                  "properties": {
+                    "position": "0"
+                  }
+                },
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "witchinggadgets:infernal_blast_furnace",
+                  "properties": {
+                    "position": "1"
+                  }
+                },
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "witchinggadgets:infernal_blast_furnace",
+                  "properties": {
+                    "position": "2"
+                  }
+                },
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "witchinggadgets:infernal_blast_furnace",
+                  "properties": {
+                    "position": "3"
+                  }
+                },
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "witchinggadgets:infernal_blast_furnace",
+                  "properties": {
+                    "position": "5"
+                  }
+                },
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "witchinggadgets:infernal_blast_furnace",
+                  "properties": {
+                    "position": "6"
+                  }
+                },
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "witchinggadgets:infernal_blast_furnace",
+                  "properties": {
+                    "position": "7"
+                  }
+                },
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "witchinggadgets:infernal_blast_furnace",
+                  "properties": {
+                    "position": "8"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:obsidian",
+          "conditions": [
+            {
+              "condition": "minecraft:any_of",
+              "terms": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "witchinggadgets:infernal_blast_furnace",
+                  "properties": {
+                    "position": "4"
+                  }
+                },
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "witchinggadgets:infernal_blast_furnace",
+                  "properties": {
+                    "position": "9"
+                  }
+                },
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "witchinggadgets:infernal_blast_furnace",
+                  "properties": {
+                    "position": "11"
+                  }
+                },
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "witchinggadgets:infernal_blast_furnace",
+                  "properties": {
+                    "position": "15"
+                  }
+                },
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "witchinggadgets:infernal_blast_furnace",
+                  "properties": {
+                    "position": "17"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:soul_sand",
+          "conditions": [
+            {
+              "condition": "minecraft:any_of",
+              "terms": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "witchinggadgets:infernal_blast_furnace",
+                  "properties": {
+                    "position": "10"
+                  }
+                },
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "witchinggadgets:infernal_blast_furnace",
+                  "properties": {
+                    "position": "12"
+                  }
+                },
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "witchinggadgets:infernal_blast_furnace",
+                  "properties": {
+                    "position": "13"
+                  }
+                },
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "witchinggadgets:infernal_blast_furnace",
+                  "properties": {
+                    "position": "14"
+                  }
+                },
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "witchinggadgets:infernal_blast_furnace",
+                  "properties": {
+                    "position": "16"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:nether_brick_stairs",
+          "conditions": [
+            {
+              "condition": "minecraft:any_of",
+              "terms": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "witchinggadgets:infernal_blast_furnace",
+                  "properties": {
+                    "position": "18"
+                  }
+                },
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "witchinggadgets:infernal_blast_furnace",
+                  "properties": {
+                    "position": "19"
+                  }
+                },
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "witchinggadgets:infernal_blast_furnace",
+                  "properties": {
+                    "position": "20"
+                  }
+                },
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "witchinggadgets:infernal_blast_furnace",
+                  "properties": {
+                    "position": "21"
+                  }
+                },
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "witchinggadgets:infernal_blast_furnace",
+                  "properties": {
+                    "position": "23"
+                  }
+                },
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "witchinggadgets:infernal_blast_furnace",
+                  "properties": {
+                    "position": "24"
+                  }
+                },
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "witchinggadgets:infernal_blast_furnace",
+                  "properties": {
+                    "position": "25"
+                  }
+                },
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "witchinggadgets:infernal_blast_furnace",
+                  "properties": {
+                    "position": "26"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "witchinggadgets:blocks/infernal_blast_furnace"
+}

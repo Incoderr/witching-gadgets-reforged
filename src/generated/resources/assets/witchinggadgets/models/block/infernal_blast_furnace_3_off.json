@@ -1,0 +1,46 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "down": "witchinggadgets:block/blastfurnace_bottoml",
+    "up": "witchinggadgets:block/blastfurnace",
+    "north": "witchinggadgets:block/blastfurnace",
+    "south": "witchinggadgets:block/blastfurnace",
+    "west": "witchinggadgets:block/blastfurnace_sidebottom_off",
+    "east": "witchinggadgets:block/blastfurnace",
+    "particle": "witchinggadgets:block/blastfurnace"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "down": {
+          "texture": "#down"
+        },
+        "up": {
+          "texture": "#up"
+        },
+        "north": {
+          "texture": "#north"
+        },
+        "south": {
+          "texture": "#south"
+        },
+        "west": {
+          "texture": "#west"
+        },
+        "east": {
+          "texture": "#east"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "down": "witchinggadgets:block/blastfurnace_lava",
+    "up": "witchinggadgets:block/blastfurnace_lava",
+    "north": "witchinggadgets:block/blastfurnace_lava",
+    "south": "witchinggadgets:block/blastfurnace_lava",
+    "west": "witchinggadgets:block/blastfurnace_lava",
+    "east": "witchinggadgets:block/blastfurnace_lava",
+    "particle": "witchinggadgets:block/blastfurnace"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        14,
+        16
+      ],
+      "faces": {
+        "down": {
+          "texture": "#down"
+        },
+        "up": {
+          "texture": "#up"
+        },
+        "north": {
+          "texture": "#north"
+        },
+        "south": {
+          "texture": "#south"
+        },
+        "west": {
+          "texture": "#west"
+        },
+        "east": {
+          "texture": "#east"
+        }
+      }
+    }
+  ]
+}
