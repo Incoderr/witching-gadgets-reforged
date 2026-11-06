@@ -38,13 +38,23 @@ public final class GauntletHandRenderer {
         float swing = event.getSwingProgress();
         float swingSqrt = Mth.sqrt(swing);
 
+        float swingSqrtSin = Mth.sin(swingSqrt * Mth.PI);
+
         poseStack.pushPose();
-        poseStack.translate(side * -Mth.sin(swingSqrt * Mth.PI) * 0.4F, Mth.sin(swingSqrt * Mth.PI * 2.0F) * 0.2F, -Mth.sin(swing * Mth.PI) * 0.2F);
-        poseStack.translate(side * 0.58F, -0.476F - event.getEquipProgress() * 0.6F, -0.658F);
-        poseStack.mulPose(Axis.XP.rotationDegrees(8.53F - Mth.sin(swingSqrt * Mth.PI) * 30.0F));
-        poseStack.mulPose(Axis.YP.rotationDegrees(side * -23.04F));
-        poseStack.mulPose(Axis.ZP.rotationDegrees(side * 82.74F));
-        poseStack.scale(side, 1.0F, 1.0F);
+        poseStack.translate(side * -swingSqrtSin * 0.4F, Mth.sin(swingSqrt * Mth.PI * 2.0F) * 0.2F, -Mth.sin(swing * Mth.PI) * 0.2F);
+        poseStack.translate(side * 0.56F, -0.52F - event.getEquipProgress() * 0.6F, -0.72F);
+        poseStack.mulPose(Axis.YP.rotationDegrees(side * 45.0F));
+        poseStack.mulPose(Axis.YP.rotationDegrees(side * -Mth.sin(swing * swing * Mth.PI) * 20.0F));
+        poseStack.mulPose(Axis.ZP.rotationDegrees(side * -swingSqrtSin * 20.0F));
+        poseStack.mulPose(Axis.XP.rotationDegrees(-swingSqrtSin * 80.0F));
+        poseStack.scale(0.4F, 0.4F, 0.4F);
+        poseStack.translate(side * -0.5F, -0.5F, -0.5F);
+        poseStack.mulPose(Axis.ZP.rotationDegrees(side * 280.0F));
+        poseStack.mulPose(Axis.XP.rotationDegrees(-60.0F));
+        poseStack.mulPose(Axis.YP.rotationDegrees(side * -75.0F));
+        poseStack.scale(2.0F, 2.0F, -2.0F);
+        poseStack.translate(0.0F, -0.85F, -0.51F);
+        poseStack.scale(-side, 1.0F, 1.0F);
         GauntletItemRenderer.renderGlove(stack, poseStack, buffers, light);
         poseStack.popPose();
     }
