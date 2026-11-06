@@ -15,6 +15,6 @@ public class EssentiaPumpItemRenderer extends BlockEntityWithoutLevelRenderer {
 
     @Override
     public void renderByItem(ItemStack stack, ItemDisplayContext context, PoseStack poseStack, MultiBufferSource buffers, int packedLight, int packedOverlay) {
-        EssentiaPumpRenderer.render(poseStack, buffers, packedLight, Direction.NORTH);
+        EssentiaPumpRenderer.render(poseStack, buffers, packedLight, Direction.NORTH, 0.65F);
     }
 }

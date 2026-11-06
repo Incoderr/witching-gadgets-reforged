@@ -24,14 +24,19 @@ public class EssentiaPumpRenderer implements BlockEntityRenderer<EssentiaPumpBlo
 
     @Override
     public void render(EssentiaPumpBlockEntity entity, float partialTick, PoseStack poseStack, MultiBufferSource buffers, int packedLight, int packedOverlay) {
-        render(poseStack, buffers, packedLight, entity.getBlockState().getValue(EssentiaPumpBlock.FACING));
+        render(poseStack, buffers, packedLight, entity.getBlockState().getValue(EssentiaPumpBlock.FACING), entity.getLevel() == null ? 0.65F : inflation(entity.getLevel().getGameTime() + partialTick));
     }
 
     private static QuadSink sink(PoseStack.Pose pose, VertexConsumer buffer) {
         return (x, y, z, u, v, argb, light) -> buffer.addVertex(pose, x, y, z).setColor(argb).setUv(u, v).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(pose, 0.0F, 1.0F, 0.0F);
     }
 
-    public static void render(PoseStack poseStack, MultiBufferSource buffers, int light, Direction facing) {
+    public static float inflation(float ticks) {
+        float t = ticks % 16.0F;
+        return t < 4.0F ? 0.65F - 0.075F * t : 0.35F + 0.025F * (t - 4.0F);
+    }
+
+    public static void render(PoseStack poseStack, MultiBufferSource buffers, int light, Direction facing, float inflation) {
         poseStack.pushPose();
         switch (facing) {
             case SOUTH -> {
@@ -58,26 +63,26 @@ public class EssentiaPumpRenderer implements BlockEntityRenderer<EssentiaPumpBlo
         poseStack.mulPose(Axis.YP.rotationDegrees(-90.0F));
 
         poseStack.translate(0.0F, 0.0F, -1.0625F);
-        bellows(poseStack, buffers, light);
+        bellows(poseStack, buffers, light, inflation);
         poseStack.translate(0.0F, 0.0F, 1.0625F);
 
         poseStack.mulPose(Axis.XP.rotationDegrees(-90.0F));
         poseStack.translate(0.0F, 0.9375F, 0.875F);
-        bellows(poseStack, buffers, light);
+        bellows(poseStack, buffers, light, inflation);
         poseStack.translate(0.0F, -0.9375F, -0.875F);
 
         poseStack.mulPose(Axis.XP.rotationDegrees(-90.0F));
         poseStack.translate(0.0F, -1.0F, 1.8125F);
-        bellows(poseStack, buffers, light);
+        bellows(poseStack, buffers, light, inflation);
         poseStack.translate(0.0F, 1.0F, -1.8125F);
 
         poseStack.mulPose(Axis.XP.rotationDegrees(-90.0F));
         poseStack.translate(0.0F, -1.9375F, -0.125F);
-        bellows(poseStack, buffers, light);
+        bellows(poseStack, buffers, light, inflation);
         poseStack.popPose();
     }
 
-    private static void bellows(PoseStack poseStack, MultiBufferSource buffers, int light) {
-        AlchemyRendering.bellows(buffers, poseStack, light, Direction.DOWN, 0.65F);
+    private static void bellows(PoseStack poseStack, MultiBufferSource buffers, int light, float inflation) {
+        AlchemyRendering.bellows(buffers, poseStack, light, Direction.DOWN, inflation);
     }
 }
