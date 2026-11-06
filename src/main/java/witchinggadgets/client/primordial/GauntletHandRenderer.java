@@ -13,7 +13,6 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RenderHandEvent;
 import witchinggadgets.WitchingGadgets;
-import witchinggadgets.client.WgClientConfig;
 import witchinggadgets.primordial.PrimordialFeature;
 
 @EventBusSubscriber(modid = WitchingGadgets.MODID, value = Dist.CLIENT)
@@ -37,14 +36,23 @@ public final class GauntletHandRenderer {
         float swing = event.getSwingProgress();
         float swingSqrt = Mth.sqrt(swing);
 
+        float swingSqrtSin = Mth.sin(swingSqrt * Mth.PI);
+
         poseStack.pushPose();
-        poseStack.translate(side * -Mth.sin(swingSqrt * Mth.PI) * 0.4F, Mth.sin(swingSqrt * Mth.PI * 2.0F) * 0.2F, -Mth.sin(swing * Mth.PI) * 0.2F);
-        poseStack.translate(side * WgClientConfig.gauntlet(WgClientConfig.GAUNTLET_X), WgClientConfig.gauntlet(WgClientConfig.GAUNTLET_Y) - event.getEquipProgress() * 0.6F, WgClientConfig.gauntlet(WgClientConfig.GAUNTLET_Z));
-        poseStack.rotateDegrees(Axis.XP, WgClientConfig.gauntlet(WgClientConfig.GAUNTLET_ROT_X) - Mth.sin(swingSqrt * Mth.PI) * 30.0F);
-        poseStack.rotateDegrees(Axis.YP, side * WgClientConfig.gauntlet(WgClientConfig.GAUNTLET_ROT_Y));
-        poseStack.rotateDegrees(Axis.ZP, side * WgClientConfig.gauntlet(WgClientConfig.GAUNTLET_ROT_Z));
-        float scale = WgClientConfig.gauntlet(WgClientConfig.GAUNTLET_SCALE);
-        poseStack.scale(side * scale, scale, scale);
+        poseStack.translate(side * -swingSqrtSin * 0.4F, Mth.sin(swingSqrt * Mth.PI * 2.0F) * 0.2F, -Mth.sin(swing * Mth.PI) * 0.2F);
+        poseStack.translate(side * 0.56F, -0.52F - event.getEquipProgress() * 0.6F, -0.72F);
+        poseStack.rotateDegrees(Axis.YP, side * 45.0F);
+        poseStack.rotateDegrees(Axis.YP, side * -Mth.sin(swing * swing * Mth.PI) * 20.0F);
+        poseStack.rotateDegrees(Axis.ZP, side * -swingSqrtSin * 20.0F);
+        poseStack.rotateDegrees(Axis.XP, -swingSqrtSin * 80.0F);
+        poseStack.scale(0.4F, 0.4F, 0.4F);
+        poseStack.translate(side * -0.5F, -0.5F, -0.5F);
+        poseStack.rotateDegrees(Axis.ZP, side * 280.0F);
+        poseStack.rotateDegrees(Axis.XP, -60.0F);
+        poseStack.rotateDegrees(Axis.YP, side * -75.0F);
+        poseStack.scale(2.0F, 2.0F, -2.0F);
+        poseStack.translate(0.0F, -0.85F, -0.51F);
+        poseStack.scale(-side, 1.0F, 1.0F);
         GauntletItemRenderer.submitGlove(stack, poseStack, collector, light);
         poseStack.popPose();
     }
