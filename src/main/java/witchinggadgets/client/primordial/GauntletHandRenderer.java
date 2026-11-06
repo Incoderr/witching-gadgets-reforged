@@ -5,7 +5,6 @@ import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.HumanoidArm;
@@ -40,25 +39,11 @@ public final class GauntletHandRenderer {
         float swingSqrt = Mth.sqrt(swing);
 
         poseStack.pushPose();
-        poseStack.translate(side * (-0.3F * Mth.sin(swingSqrt * Mth.PI) + 0.64F), 0.4F * Mth.sin(swingSqrt * Mth.PI * 2.0F) - 0.6F - event.getEquipProgress() * 0.6F, -0.4F * Mth.sin(swing * Mth.PI) - 0.72F);
-        poseStack.mulPose(Axis.YP.rotationDegrees(side * 45.0F));
-        poseStack.mulPose(Axis.YP.rotationDegrees(side * Mth.sin(swingSqrt * Mth.PI) * 70.0F));
-        poseStack.mulPose(Axis.ZP.rotationDegrees(side * Mth.sin(swing * swing * Mth.PI) * -20.0F));
-        poseStack.translate(side * -1.0F, 3.6F, 3.5F);
-        poseStack.mulPose(Axis.ZP.rotationDegrees(side * 120.0F));
-        poseStack.mulPose(Axis.XP.rotationDegrees(200.0F));
-        poseStack.mulPose(Axis.YP.rotationDegrees(side * -135.0F));
-        poseStack.translate(side * 5.6F, 0.0F, 0.0F);
-        PlayerRenderer renderer = (PlayerRenderer) minecraft.getEntityRenderDispatcher().getRenderer(player);
-        if (arm == HumanoidArm.RIGHT) {
-            renderer.renderRightHand(poseStack, buffers, light, player);
-        } else {
-            renderer.renderLeftHand(poseStack, buffers, light, player);
-        }
-        poseStack.translate(side * -5.0F / 16.0F, 2.0F / 16.0F, 0.0F);
-        poseStack.mulPose(Axis.ZP.rotation(side * 0.1F));
-        poseStack.translate(side * -1.0F / 16.0F, -2.0F / 16.0F, 0.0F);
-        poseStack.mulPose(Axis.YP.rotationDegrees(side * 90.0F));
+        poseStack.translate(side * -Mth.sin(swingSqrt * Mth.PI) * 0.4F, Mth.sin(swingSqrt * Mth.PI * 2.0F) * 0.2F, -Mth.sin(swing * Mth.PI) * 0.2F);
+        poseStack.translate(side * 0.58F, -0.476F - event.getEquipProgress() * 0.6F, -0.658F);
+        poseStack.mulPose(Axis.XP.rotationDegrees(8.53F - Mth.sin(swingSqrt * Mth.PI) * 30.0F));
+        poseStack.mulPose(Axis.YP.rotationDegrees(side * -23.04F));
+        poseStack.mulPose(Axis.ZP.rotationDegrees(side * 82.74F));
         poseStack.scale(side, 1.0F, 1.0F);
         GauntletItemRenderer.renderGlove(stack, poseStack, buffers, light);
         poseStack.popPose();
