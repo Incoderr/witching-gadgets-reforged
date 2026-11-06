@@ -89,7 +89,7 @@ def generate(ctx):
         "textures": {"frame": ctx.ref("mirror_frame", "item"), "glass": ctx.ref("mirror_glass", "item"), "particle": ctx.ref("mirror_frame", "item")},
         "elements": elements,
         "display": {
-            "gui": {"rotation": [15, -60, 0], "translation": [0, 0, 0], "scale": [0.5, 0.5, 0.5]},
+            "gui": {"rotation": [0, 90, 0], "translation": [0, 0, 0], "scale": [0.45, 0.45, 0.45]},
             "ground": {"rotation": [0, 0, 0], "translation": [0, 2, 0], "scale": [0.3, 0.3, 0.3]},
             "fixed": {"rotation": [0, 90, 0], "translation": [0, 0, 0], "scale": [0.5, 0.5, 0.5]},
             "thirdperson_righthand": {"rotation": [0, 90, 0], "translation": [0, 2, 1], "scale": [0.3, 0.3, 0.3]},

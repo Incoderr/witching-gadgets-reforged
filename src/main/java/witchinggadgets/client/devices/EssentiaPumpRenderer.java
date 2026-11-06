@@ -78,6 +78,6 @@ public class EssentiaPumpRenderer implements BlockEntityRenderer<EssentiaPumpBlo
     }
 
     private static void bellows(PoseStack poseStack, MultiBufferSource buffers, int light) {
-        AlchemyRendering.bellows(buffers, poseStack, light, Direction.DOWN, 1.0F);
+        AlchemyRendering.bellows(buffers, poseStack, light, Direction.DOWN, 0.65F);
     }
 }
