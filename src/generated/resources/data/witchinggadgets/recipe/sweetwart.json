@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "witchinggadgets:sweetwart"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:nether_wart",
+    "minecraft:sugar"
+  ],
+  "result": {
+    "id": "witchinggadgets:sweetwart"
+  }
+}

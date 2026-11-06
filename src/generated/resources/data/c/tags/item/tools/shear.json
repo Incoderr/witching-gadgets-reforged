@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "witchinggadgets:thaumium_shears",
+      "required": false
+    }
+  ]
+}

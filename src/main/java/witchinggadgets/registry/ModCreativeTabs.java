@@ -22,7 +22,7 @@ public final class ModCreativeTabs {
         .icon(() -> new ItemStack(TAB_ICON.get()))
         .displayItems((parameters, output) -> {
             for (DeferredHolder<Item, ? extends Item> holder : ModItems.ITEMS.getEntries()) {
-                if (holder == TAB_ICON) {
+                if (holder == TAB_ICON || holder.getId().getPath().equals("brain_jerky")) {
                     continue;
                 }
                 if (holder.get() instanceof CreativeVariants variants) {
