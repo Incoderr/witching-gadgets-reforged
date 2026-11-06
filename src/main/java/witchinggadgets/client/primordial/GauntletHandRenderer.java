@@ -4,6 +4,9 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.SubmitNodeCollector;
+import net.minecraft.client.renderer.entity.player.AvatarRenderer;
+import net.minecraft.client.renderer.entity.state.AvatarRenderState;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.HumanoidArm;
@@ -53,6 +56,23 @@ public final class GauntletHandRenderer {
         poseStack.scale(2.0F, 2.0F, -2.0F);
         poseStack.translate(0.0F, -0.85F, -0.51F);
         poseStack.scale(-side, 1.0F, 1.0F);
+        AvatarRenderState avatar = event.getPlayerState().avatarRenderState;
+        if (avatar != null && !minecraft.player.isInvisible()) {
+            poseStack.pushPose();
+            poseStack.rotateDegrees(Axis.YP, -90.0F);
+            poseStack.translate(1.0F / 16.0F, 2.0F / 16.0F, 0.0F);
+            poseStack.rotate(Axis.ZP, -0.1F);
+            poseStack.translate(5.0F / 16.0F, -2.0F / 16.0F, 0.0F);
+            AvatarRenderer<?> renderer = (AvatarRenderer<?>) minecraft.getEntityRenderDispatcher().getRenderer(avatar);
+            Identifier skin = avatar.skin.body().texturePath();
+            if (side > 0.0F) {
+                renderer.renderRightHand(poseStack, collector, light, skin, avatar.showRightSleeve);
+            } else {
+                poseStack.scale(-1.0F, 1.0F, 1.0F);
+                renderer.renderLeftHand(poseStack, collector, light, skin, avatar.showLeftSleeve);
+            }
+            poseStack.popPose();
+        }
         GauntletItemRenderer.submitGlove(stack, poseStack, collector, light);
         poseStack.popPose();
     }
