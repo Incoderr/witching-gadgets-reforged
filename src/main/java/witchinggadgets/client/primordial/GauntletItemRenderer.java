@@ -51,9 +51,14 @@ public class GauntletItemRenderer implements SpecialModelRenderer<ItemStack> {
 
     @Override
     public void submit(@Nullable ItemStack stack, PoseStack poseStack, SubmitNodeCollector collector, int lightCoords, int overlayCoords, boolean hasFoil, int outlineColor) {
-        int ticks = Minecraft.getInstance().player == null ? 0 : Minecraft.getInstance().player.tickCount;
         poseStack.pushPose();
         poseStack.translate(0.5F, 0.1F, 0.5F);
+        submitGlove(stack, poseStack, collector, lightCoords);
+        poseStack.popPose();
+    }
+
+    public static void submitGlove(@Nullable ItemStack stack, PoseStack poseStack, SubmitNodeCollector collector, int lightCoords) {
+        int ticks = Minecraft.getInstance().player == null ? 0 : Minecraft.getInstance().player.tickCount;
         int grey = rgb(204, 204, 204);
         part(collector, poseStack, BRACELET, "Guard_Arm_04", grey, lightCoords);
         part(collector, poseStack, BRACELET, "Guard_Hand_05", grey, lightCoords);
@@ -81,7 +86,6 @@ public class GauntletItemRenderer implements SpecialModelRenderer<ItemStack> {
                 part(collector, poseStack, WHITE, "Gem0" + g + "_0" + g, rgb((color >> 16 & 255) / divisor, (color >> 8 & 255) / divisor, (color & 255) / divisor), lightCoords);
             }
         }
-        poseStack.popPose();
     }
 
     @Override
