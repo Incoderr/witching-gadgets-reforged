@@ -32,6 +32,10 @@ import witchinggadgets.primordial.PrimordialArmorItem;
 import witchinggadgets.primordial.PrimordialGear;
 import witchinggadgets.primordial.PrimordialEvents;
 import witchinggadgets.primordial.PrimordialFeature;
+import witchinggadgets.gems.GemCut;
+import witchinggadgets.gems.InfusedGemItem;
+import witchinggadgets.primordial.PrimordialGauntletItem;
+import witchinggadgets.primordial.StoredNode;
 
 public final class PrimordialGameTests {
     private static final WgGameTestSuite SUITE = new WgGameTestSuite("primordial")
@@ -48,7 +52,8 @@ public final class PrimordialGameTests {
         .add("claymore_takes_heads", PrimordialGameTests::heads)
         .add("hammer_breaks_three_by_three", PrimordialGameTests::area)
         .add("dissolve_and_cinder_coat", PrimordialGameTests::effects)
-        .add("weapons_block_attacks", PrimordialGameTests::blocking);
+        .add("weapons_block_attacks", PrimordialGameTests::blocking)
+        .add("gauntlet_channels_and_recharges_gems", PrimordialGameTests::gauntlet);
 
     private PrimordialGameTests() {
     }
@@ -255,6 +260,29 @@ public final class PrimordialGameTests {
             ItemStack stack = new ItemStack(item);
             helper.assertTrue(stack.getUseAnimation() == UseAnim.BLOCK, "use animation of " + item);
         }
+        helper.succeed();
+    }
+
+    private static void gauntlet(GameTestHelper helper) {
+        helper.assertTrue(TcRecipes.get("PRIMORDIALGLOVE") != null, "gauntlet recipe is missing");
+        Player player = helper.makeMockPlayer(GameType.SURVIVAL);
+        player.setPos(helper.absoluteVec(new Vec3(3.5, 2.0, 3.5)));
+        player.setHealth(4.0F);
+        ItemStack gauntlet = new ItemStack(PrimordialFeature.PRIMORDIAL_GAUNTLET.get());
+        net.minecraft.core.NonNullList<ItemStack> gems = PrimordialGauntletItem.gems(gauntlet);
+        gems.set(0, InfusedGemItem.create(thaumcraft.aspect.Aspect.ORDER, GemCut.POINT));
+        PrimordialGauntletItem.setGems(gauntlet, gems);
+        helper.assertTrue(PrimordialGauntletItem.useGem(gauntlet, player), "gem effect failed");
+        ItemStack used = PrimordialGauntletItem.gems(gauntlet).get(0);
+        helper.assertTrue(!used.isEmpty() && used.isDamaged(), "gem was not charged or was consumed");
+        int damage = used.getDamageValue();
+        thaumcraft.aspect.AspectList aspects = new thaumcraft.aspect.AspectList().add(thaumcraft.aspect.Aspect.ORDER, 1);
+        PrimordialFeature.GAUNTLET_NODE.set(gauntlet, new StoredNode(0, -1, aspects));
+        player.tickCount = 10;
+        PrimordialGauntletItem.tick(player, gauntlet);
+        helper.assertValueEqual(PrimordialGauntletItem.gems(gauntlet).get(0).getDamageValue(), Math.max(0, damage - 1), "node recharge");
+        PrimordialGauntletItem.select(gauntlet, 3);
+        helper.assertValueEqual(PrimordialGauntletItem.selected(gauntlet), 3, "selected socket");
         helper.succeed();
     }
 }
