@@ -24,6 +24,7 @@ public class EssentiaPumpRenderer implements BlockEntityRenderer<EssentiaPumpBlo
 
     public static class State extends BlockEntityRenderState {
         Direction facing = Direction.NORTH;
+        float inflation = 0.65F;
     }
 
     public EssentiaPumpRenderer(BlockEntityRendererProvider.Context context) {
@@ -38,14 +39,20 @@ public class EssentiaPumpRenderer implements BlockEntityRenderer<EssentiaPumpBlo
     public void extractRenderState(EssentiaPumpBlockEntity entity, State state, float partialTicks, Vec3 cameraPosition, ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress) {
         BlockEntityRenderer.super.extractRenderState(entity, state, partialTicks, cameraPosition, breakProgress);
         state.facing = entity.getBlockState().getValue(EssentiaPumpBlock.FACING);
+        state.inflation = entity.getLevel() == null ? 0.65F : inflation(entity.getLevel().getGameTime() + partialTicks);
     }
 
     @Override
     public void submit(State state, PoseStack poseStack, SubmitNodeCollector collector, CameraRenderState camera) {
-        render(poseStack, collector, state.lightCoords, state.facing);
+        render(poseStack, collector, state.lightCoords, state.facing, state.inflation);
     }
 
-    public static void render(PoseStack poseStack, SubmitNodeCollector collector, int light, Direction facing) {
+    public static float inflation(float ticks) {
+        float t = ticks % 16.0F;
+        return t < 4.0F ? 0.65F - 0.075F * t : 0.35F + 0.025F * (t - 4.0F);
+    }
+
+    public static void render(PoseStack poseStack, SubmitNodeCollector collector, int light, Direction facing, float inflation) {
         poseStack.pushPose();
         switch (facing) {
             case SOUTH -> {
@@ -72,26 +79,26 @@ public class EssentiaPumpRenderer implements BlockEntityRenderer<EssentiaPumpBlo
         poseStack.rotateDegrees(Axis.YP, -90.0F);
 
         poseStack.translate(0.0F, 0.0F, -1.0625F);
-        bellows(poseStack, collector, light);
+        bellows(poseStack, collector, light, inflation);
         poseStack.translate(0.0F, 0.0F, 1.0625F);
 
         poseStack.rotateDegrees(Axis.XP, -90.0F);
         poseStack.translate(0.0F, 0.9375F, 0.875F);
-        bellows(poseStack, collector, light);
+        bellows(poseStack, collector, light, inflation);
         poseStack.translate(0.0F, -0.9375F, -0.875F);
 
         poseStack.rotateDegrees(Axis.XP, -90.0F);
         poseStack.translate(0.0F, -1.0F, 1.8125F);
-        bellows(poseStack, collector, light);
+        bellows(poseStack, collector, light, inflation);
         poseStack.translate(0.0F, 1.0F, -1.8125F);
 
         poseStack.rotateDegrees(Axis.XP, -90.0F);
         poseStack.translate(0.0F, -1.9375F, -0.125F);
-        bellows(poseStack, collector, light);
+        bellows(poseStack, collector, light, inflation);
         poseStack.popPose();
     }
 
-    private static void bellows(PoseStack poseStack, SubmitNodeCollector collector, int light) {
-        AlchemyRendering.bellows(collector, poseStack, light, Direction.DOWN, 0.65F);
+    private static void bellows(PoseStack poseStack, SubmitNodeCollector collector, int light, float inflation) {
+        AlchemyRendering.bellows(collector, poseStack, light, Direction.DOWN, inflation);
     }
 }

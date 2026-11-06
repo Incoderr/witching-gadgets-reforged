@@ -12,7 +12,7 @@ import org.joml.Vector3fc;
 public record EssentiaPumpItemRenderer() implements NoDataSpecialModelRenderer {
     @Override
     public void submit(PoseStack poseStack, SubmitNodeCollector collector, int lightCoords, int overlayCoords, boolean hasFoil, int outlineColor) {
-        EssentiaPumpRenderer.render(poseStack, collector, lightCoords, Direction.NORTH);
+        EssentiaPumpRenderer.render(poseStack, collector, lightCoords, Direction.NORTH, 0.65F);
     }
 
     @Override
