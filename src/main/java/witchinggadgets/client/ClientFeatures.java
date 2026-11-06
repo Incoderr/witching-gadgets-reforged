@@ -11,12 +11,14 @@ import witchinggadgets.client.devices.LabelLibraryRenderer;
 import witchinggadgets.client.devices.LabelLibraryScreen;
 import witchinggadgets.client.gems.CuttingTableRenderer;
 import witchinggadgets.client.gems.CuttingTableScreen;
+import witchinggadgets.client.primordial.GauntletScreen;
 import witchinggadgets.client.spinning.SpinningWheelScreen;
 import witchinggadgets.client.terraform.TerraformFocusRenderer;
 import witchinggadgets.client.terraform.TerraformerRenderer;
 import witchinggadgets.cloaks.CloaksFeature;
 import witchinggadgets.devices.DevicesFeature;
 import witchinggadgets.gems.GemsFeature;
+import witchinggadgets.primordial.PrimordialFeature;
 import witchinggadgets.spinning.SpinningFeature;
 import witchinggadgets.terraform.TerraformFeature;
 
@@ -31,6 +33,7 @@ public final class ClientFeatures {
         event.register(BagsFeature.VOID_BAG_MENU.get(), VoidBagScreen::new);
         event.register(DevicesFeature.LABEL_LIBRARY_MENU.get(), LabelLibraryScreen::new);
         event.register(GemsFeature.CUTTING_TABLE_MENU.get(), CuttingTableScreen::new);
+        event.register(PrimordialFeature.GAUNTLET_MENU.get(), GauntletScreen::new);
     }
 
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {

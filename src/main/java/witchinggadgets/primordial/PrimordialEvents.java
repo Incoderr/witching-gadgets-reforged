@@ -80,6 +80,9 @@ public final class PrimordialEvents {
         Inventory inventory = player.getInventory();
         for (int slot = 0; slot < inventory.getContainerSize(); slot++) {
             ItemStack stack = inventory.getItem(slot);
+            if (stack.getItem() instanceof PrimordialGauntletItem) {
+                PrimordialGauntletItem.tick(player, stack);
+            }
             if (stack.getItem() instanceof PrimordialGear gear) {
                 if (player.tickCount % 40 == 0 && !pieces.contains(stack)) {
                     repair(stack);

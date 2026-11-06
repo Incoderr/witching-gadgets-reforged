@@ -1,0 +1,9 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "witchinggadgets:item/primordial_gauntlet",
+    "model": {
+      "type": "witchinggadgets:primordial_gauntlet"
+    }
+  }
+}

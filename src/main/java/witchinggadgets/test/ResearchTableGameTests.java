@@ -24,7 +24,6 @@ import thaumcraft.crafting.TcRecipes;
 import thaumcraft.research.ResearchCategories;
 import thaumcraft.research.ResearchItem;
 import thaumcraft.research.ResearchPage;
-import witchinggadgets.WitchingGadgets;
 import witchinggadgets.research.WgFakeResearchItem;
 import witchinggadgets.research.WgResearch;
 
@@ -65,8 +64,8 @@ public final class ResearchTableGameTests {
                 problems.add(research.key() + ": registered but absent from the WG table");
             }
         }
-        if (!missing.isEmpty()) {
-            WitchingGadgets.LOGGER.info("{} of {} WG research entries are not ported yet: {}", missing.size(), table.size(), String.join(", ", missing));
+        for (String key : missing) {
+            problems.add(key + ": WG research is not registered");
         }
         helper.assertTrue(problems.isEmpty(), problems.size() + " research mismatches: " + String.join("; ", problems));
         helper.succeed();

@@ -1,6 +1,16 @@
 package witchinggadgets.primordial;
 
 import com.mojang.serialization.Codec;
+import java.util.function.Supplier;
+import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.component.ItemContainerContents;
+import thaumcraft.platform.Menus;
+import witchinggadgets.registry.ModMenus;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.BlockTags;
@@ -30,6 +40,10 @@ public final class PrimordialFeature {
     public static final WgStackKey<Integer> ABILITY = WgStackKey.register("primordial_ability", Codec.INT, ByteBufCodecs.VAR_INT);
     public static final WgStackKey<Boolean> PEARLS_PENDING = WgStackKey.register("primordial_pearls", Codec.BOOL, ByteBufCodecs.BOOL);
 
+    public static final WgStackKey<ItemContainerContents> GAUNTLET_GEMS = WgStackKey.register("gauntlet_gems", ItemContainerContents.CODEC, ItemContainerContents.STREAM_CODEC);
+    public static final WgStackKey<Integer> GAUNTLET_SELECTED = WgStackKey.register("gauntlet_selected", Codec.INT, ByteBufCodecs.VAR_INT);
+    public static final WgStackKey<StoredNode> GAUNTLET_NODE = WgStackKey.register("gauntlet_node", StoredNode.CODEC, StoredNode.STREAM_CODEC);
+
     public static final TcArmorMaterial PRIMORDIAL_ARMOR = new TcArmorMaterial(
         40, 3, 7, 6, 3, 30, SoundEvents.ARMOR_EQUIP_GENERIC, 0.0F, 0.0F, TcMaterials.REPAIRS_VOID_METAL, WitchingGadgets.id("primordial_armor")
     );
@@ -54,6 +68,14 @@ public final class PrimordialFeature {
         properties -> WgBlocking.halfBlock(Registration.axe(properties.rarity(Rarity.EPIC), PRIMORDIAL_TOOL, 3.0F, -3.0F))
     );
 
+    public static final DeferredItem<PrimordialGauntletItem> PRIMORDIAL_GAUNTLET = ModItems.ITEMS.registerItem(
+        "primordial_gauntlet", PrimordialGauntletItem::new,
+        properties -> properties.stacksTo(1).rarity(Rarity.EPIC).attributes(ItemAttributeModifiers.builder()
+            .add(Attributes.ATTACK_DAMAGE, new AttributeModifier(Item.BASE_ATTACK_DAMAGE_ID, 8.0, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
+            .build())
+    );
+    public static final Supplier<MenuType<GauntletMenu>> GAUNTLET_MENU = ModMenus.MENUS.register("primordial_gauntlet", () -> Menus.simple(GauntletMenu::new));
+
     private PrimordialFeature() {
     }
 
@@ -73,6 +95,14 @@ public final class PrimordialFeature {
             TcIngredient.item("witchinggadgets:powerless_pearl"),
             TcIngredient.item("thaumcraft:air_shard"), TcIngredient.item("thaumcraft:fire_shard"), TcIngredient.item("thaumcraft:water_shard"),
             TcIngredient.item("thaumcraft:earth_shard"), TcIngredient.item("thaumcraft:order_shard"), TcIngredient.item("thaumcraft:entropy_shard")
+        );
+        WgRecipes.infusion(
+            "PRIMORDIALGLOVE", "PRIMORDIALGLOVE", TcStack.withData("witchinggadgets:primordial_gauntlet", 1, Map.of(PEARLS_DATA, "true")), 6,
+            new AspectList().add(Aspect.MAGIC, 32).add(Aspect.CRYSTAL, 16).add(Aspect.TOOL, 8).add(Aspect.AIR, 8).add(Aspect.FIRE, 8)
+                .add(Aspect.WATER, 8).add(Aspect.EARTH, 8).add(Aspect.ORDER, 8).add(Aspect.ENTROPY, 8),
+            TcIngredient.item("thaumcraft:node_transducer"),
+            TcIngredient.item("witchinggadgets:bewitched_cloth"), TcIngredient.item("thaumcraft:void_seed"), TcIngredient.item("thaumcraft:void_metal_ingot"),
+            TcIngredient.item("thaumcraft:primordial_pearl"), TcIngredient.item("thaumcraft:void_metal_ingot"), TcIngredient.item("thaumcraft:void_seed")
         );
         armorRecipe("_HELMET", "witchinggadgets:primordial_helmet", "thaumcraft:fortress_helmet");
         armorRecipe("_CUIRASS", "witchinggadgets:primordial_chestplate", "thaumcraft:fortress_chestplate");
@@ -124,6 +154,11 @@ public final class PrimordialFeature {
             .setItemTriggers("witchinggadgets:powerless_pearl")
             .setHidden()
             .setPages(WgResearch.text("1"), WgResearch.infusion("EMPOWERPEARL"))
+            .registerResearchItem();
+        WgResearch.item("PRIMORDIALGLOVE", primals(new AspectList().add(Aspect.CRYSTAL, 1).add(Aspect.MAGIC, 1).add(Aspect.TOOL, 1)), 2, 0, 2, TcStack.of("witchinggadgets:primordial_gauntlet"))
+            .setParents("VOIDMETAL", "PRIMORDIALGEARSET", "WGFAKEPRIMPEARL")
+            .setConcealed()
+            .setPages(WgResearch.text("1"), WgResearch.infusion("PRIMORDIALGLOVE"), WgResearch.text("2"))
             .registerResearchItem();
         WgResearch.item("PRIMORDIALWEAPONRY", new AspectList().add(Aspect.ENTROPY, 1).add(Aspect.WEAPON, 1).add(Aspect.TOOL, 1).add(Aspect.AIR, 1).add(Aspect.FIRE, 1).add(Aspect.WATER, 1).add(Aspect.MAGIC, 2).add(Aspect.EARTH, 1).add(Aspect.ORDER, 1), -4, 2, 3, WitchingGadgets.id("textures/gui/research/icon_primordialweaponry.png"))
             .setParents("PRIMORDIALGEARSET")
