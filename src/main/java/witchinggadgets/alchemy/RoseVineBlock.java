@@ -35,12 +35,6 @@ public class RoseVineBlock extends Block implements WandInteractable {
     public static final BooleanProperty WEST = BlockStateProperties.WEST;
     public static final BooleanProperty EAST = BlockStateProperties.EAST;
 
-    private static final VoxelShape FLOOR = Block.box(0, 0, 0, 16, 6, 16);
-    private static final VoxelShape NORTH_WALL = Block.box(0, 0, 0, 16, 16, 3);
-    private static final VoxelShape SOUTH_WALL = Block.box(0, 0, 13, 16, 16, 16);
-    private static final VoxelShape WEST_WALL = Block.box(0, 0, 0, 3, 16, 16);
-    private static final VoxelShape EAST_WALL = Block.box(13, 0, 0, 16, 16, 16);
-
     public RoseVineBlock(Properties properties) {
         super(properties);
         registerDefaultState(stateDefinition.any().setValue(AGE, 0).setValue(DOWN, false).setValue(NORTH, false).setValue(SOUTH, false).setValue(WEST, false).setValue(EAST, false));
@@ -83,27 +77,6 @@ public class RoseVineBlock extends Block implements WandInteractable {
     @Override
     protected BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess ticks, BlockPos pos, Direction direction, BlockPos neighbourPos, BlockState neighbourState, RandomSource random) {
         return supported(state, level, pos);
-    }
-
-    @Override
-    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        VoxelShape shape = Shapes.empty();
-        if (state.getValue(DOWN)) {
-            shape = Shapes.or(shape, FLOOR);
-        }
-        if (state.getValue(NORTH)) {
-            shape = Shapes.or(shape, NORTH_WALL);
-        }
-        if (state.getValue(SOUTH)) {
-            shape = Shapes.or(shape, SOUTH_WALL);
-        }
-        if (state.getValue(WEST)) {
-            shape = Shapes.or(shape, WEST_WALL);
-        }
-        if (state.getValue(EAST)) {
-            shape = Shapes.or(shape, EAST_WALL);
-        }
-        return shape.isEmpty() ? Shapes.block() : shape;
     }
 
     @Override
