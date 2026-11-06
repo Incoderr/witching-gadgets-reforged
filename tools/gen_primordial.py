@@ -48,13 +48,13 @@ def generate(ctx):
         "parent": "minecraft:item/generated",
         "textures": {"particle": "witchinggadgets:item/primordialarmorrune"},
         "display": {
-            "gui": {"rotation": [20, -35, 0], "translation": [0, -1, 0], "scale": [1.1, 1.1, 1.1]},
-            "ground": {"rotation": [0, 0, 0], "translation": [0, 2, 0], "scale": [0.6, 0.6, 0.6]},
-            "fixed": {"rotation": [0, 180, 0], "translation": [0, 0, 0], "scale": [1.0, 1.0, 1.0]},
-            "thirdperson_righthand": {"rotation": [0, 90, -15], "translation": [0, -2, 1], "scale": [0.9, 0.9, 0.9]},
-            "thirdperson_lefthand": {"rotation": [0, -90, 15], "translation": [0, -2, 1], "scale": [0.9, 0.9, 0.9]},
-            "firstperson_righthand": {"rotation": [-20, 70, 20], "translation": [2, -2, 0], "scale": [1.0, 1.0, 1.0]},
-            "firstperson_lefthand": {"rotation": [-20, -110, -20], "translation": [2, -2, 0], "scale": [1.0, 1.0, 1.0]},
+            "gui": {"rotation": [-161.94, -34.26, -38.54], "translation": [11.16, 13.07, 7.72], "scale": [1.875, 2.1875, 1.875]},
+            "ground": {"rotation": [0, 0, 0], "translation": [0, 0, 0], "scale": [0.375, 0.4375, 0.375]},
+            "fixed": {"rotation": [-161.94, -34.26, -38.54], "translation": [11.16, 13.07, 7.72], "scale": [1.875, 2.1875, 1.875]},
+            "thirdperson_righthand": {"rotation": [0, -45, 160], "translation": [6.55, 4.97, 6.51], "scale": [1.0, 1.0, 1.0]},
+            "thirdperson_lefthand": {"rotation": [0, 45, -160], "translation": [-6.55, 4.97, 6.51], "scale": [1.0, 1.0, 1.0]},
+            "firstperson_righthand": {"rotation": [-82.55, 3.04, -29.54], "translation": [-2.49, 5.96, 5.83], "scale": [0.8, 0.8, -0.8]},
+            "firstperson_lefthand": {"rotation": [-82.55, -3.04, 29.54], "translation": [2.49, 5.96, 5.83], "scale": [0.8, 0.8, -0.8]},
         },
     })
     ctx.write(ctx.ASSETS / "items" / "primordial_gauntlet.json", {"model": {
