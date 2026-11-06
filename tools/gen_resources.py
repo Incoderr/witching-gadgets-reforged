@@ -32,7 +32,10 @@ def legacy_item(path, definition):
     kind = definition["type"]
     overrides = []
     if kind == "minecraft:special":
-        content = {"parent": "builtin/entity", "textures": {"particle": "minecraft:block/oak_log"}, "display": mcformat.CHEST_DISPLAY}
+        display = mcformat.CHEST_DISPLAY
+        if target.exists():
+            display = json.loads(target.read_text(encoding="utf-8")).get("display", display)
+        content = {"parent": "builtin/entity", "textures": {"particle": "minecraft:block/oak_log"}, "display": display}
     else:
         if kind == "minecraft:model":
             model = definition["model"]
