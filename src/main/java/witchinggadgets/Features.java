@@ -17,6 +17,7 @@ import witchinggadgets.materials.MaterialsFeature;
 import witchinggadgets.primordial.PrimordialFeature;
 import witchinggadgets.robes.RobesFeature;
 import witchinggadgets.spinning.SpinningFeature;
+import witchinggadgets.terraform.TerraformFeature;
 import witchinggadgets.test.ArcaneStoneGameTests;
 import witchinggadgets.test.ClothingGameTests;
 import witchinggadgets.test.CloaksGameTests;
@@ -29,6 +30,7 @@ import witchinggadgets.test.AlchemyGameTests;
 import witchinggadgets.test.MaterialsGameTests;
 import witchinggadgets.test.PrimordialGameTests;
 import witchinggadgets.test.SpinningGameTests;
+import witchinggadgets.test.TerraformGameTests;
 
 public final class Features {
     private Features() {
@@ -50,6 +52,7 @@ public final class Features {
         EffectsFeature.load();
         AlchemyFeature.load();
         FurnaceFeature.load();
+        TerraformFeature.load();
     }
 
     public static void research() {
@@ -67,6 +70,7 @@ public final class Features {
         EffectsFeature.research();
         AlchemyFeature.research();
         FurnaceFeature.research();
+        TerraformFeature.research();
     }
 
     public static void recipes() {
@@ -83,6 +87,7 @@ public final class Features {
         PrimordialFeature.recipes();
         AlchemyFeature.recipes();
         FurnaceFeature.recipes();
+        TerraformFeature.recipes();
     }
 
     public static void aspects(AspectRegistry registry) {
@@ -103,5 +108,6 @@ public final class Features {
         PrimordialGameTests.register(modEventBus);
         AlchemyGameTests.register(modEventBus);
         FurnaceGameTests.register(modEventBus);
+        TerraformGameTests.register(modEventBus);
     }
 }

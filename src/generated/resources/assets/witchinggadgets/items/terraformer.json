@@ -1,0 +1,9 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "witchinggadgets:item/terraformer",
+    "model": {
+      "type": "witchinggadgets:terraform"
+    }
+  }
+}

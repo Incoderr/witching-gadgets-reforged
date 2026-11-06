@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "witchinggadgets:block/terraform_focus_cold_taiga"
+    }
+  }
+}

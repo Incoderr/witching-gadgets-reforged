@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "witchinggadgets:item/terraform_focus_mushroom",
+    "model": {
+      "type": "witchinggadgets:terraform",
+      "focus": "mushroom"
+    }
+  }
+}
