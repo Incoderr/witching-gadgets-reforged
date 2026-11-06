@@ -14,6 +14,10 @@
       "required": false
     },
     {
+      "id": "witchinggadgets:infernal_blast_furnace",
+      "required": false
+    },
+    {
       "id": "witchinggadgets:void_metal_block",
       "required": false
     }

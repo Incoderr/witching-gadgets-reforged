@@ -86,7 +86,8 @@
    "lang": "tile.WG_StoneDevice.blastFurnace.name",
    "id": "infernal_blast_furnace",
    "state": {},
-   "skip": null
+   "skip": null,
+   "no_item": true
   },
   {
    "old": "WG_WoodenDevice",

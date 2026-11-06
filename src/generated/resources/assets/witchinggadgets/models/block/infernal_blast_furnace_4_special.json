@@ -1,0 +1,47 @@
+{
+  "render_type": "minecraft:cutout",
+  "parent": "minecraft:block/block",
+  "textures": {
+    "down": "witchinggadgets:block/blastfurnace_bottom",
+    "up": "witchinggadgets:block/blastfurnace_bottom",
+    "north": "witchinggadgets:block/blastfurnace_bottom",
+    "south": "witchinggadgets:block/blastfurnace_bottom",
+    "west": "witchinggadgets:block/blastfurnace_bottom",
+    "east": "witchinggadgets:block/blastfurnace_bottom",
+    "particle": "witchinggadgets:block/blastfurnace"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "down": {
+          "texture": "#down"
+        },
+        "up": {
+          "texture": "#up"
+        },
+        "north": {
+          "texture": "#north"
+        },
+        "south": {
+          "texture": "#south"
+        },
+        "west": {
+          "texture": "#west"
+        },
+        "east": {
+          "texture": "#east"
+        }
+      }
+    }
+  ]
+}

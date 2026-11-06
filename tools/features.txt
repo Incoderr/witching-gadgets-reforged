@@ -11,5 +11,6 @@ gems
 enchantments
 primordial
 alchemy
+furnace
 tab
 testing
