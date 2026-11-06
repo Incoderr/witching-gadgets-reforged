@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "witchinggadgets:thaumium_shears"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "t": {
+      "item": "thaumcraft:thaumium_ingot"
+    }
+  },
+  "pattern": [
+    " t",
+    "t "
+  ],
+  "result": {
+    "id": "witchinggadgets:thaumium_shears"
+  }
+}

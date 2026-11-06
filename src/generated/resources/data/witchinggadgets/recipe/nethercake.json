@@ -1,0 +1,29 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "witchinggadgets:nethercake"
+    },
+    {
+      "type": "neoforge:item_exists",
+      "item": "witchinggadgets:sweetwart"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "n": {
+      "item": "witchinggadgets:sweetwart"
+    },
+    "w": {
+      "item": "minecraft:wheat"
+    }
+  },
+  "pattern": [
+    "nnn",
+    "www"
+  ],
+  "result": {
+    "id": "witchinggadgets:nethercake"
+  }
+}
