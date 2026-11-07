@@ -430,8 +430,6 @@
   "tc.research_text.WGPOTIONS": "[WG] Milk is not always an option! ",
   "wg.chat.baglocked": "§7The bag was locked, no one but you can open it.§r",
   "wg.chat.bagunlocked": "§7The bag was unlocked, others can now open it.§r",
-  "wg.chat.gauntlet.empty": "empty",
-  "wg.chat.gauntlet.selected": "Gem socket %s: %s",
   "wg.chat.gem.shatter": "Your Infused Gem shattered!",
   "wg.chat.infusionInfo.essentiaMod": "This Infusion Enchantment will consume %1$s times the amount of essentia displayed in the Thaumonomicon:",
   "wg.chat.infusionInfo.essentiaRunicMod": "The essentia costs for this Runic Augmentation are to the power of %1$s:",

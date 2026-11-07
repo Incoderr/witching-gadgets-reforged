@@ -319,8 +319,6 @@
   "tc.research_text.WGPOTIONS": "[WG] Молоко помогает не всегда!",
   "wg.chat.baglocked": "§7Сумка заперта, открыть её можете только вы.§r",
   "wg.chat.bagunlocked": "§7Сумка отперта, теперь её могут открывать другие.§r",
-  "wg.chat.gauntlet.empty": "пусто",
-  "wg.chat.gauntlet.selected": "Гнездо %s: %s",
   "wg.chat.gem.shatter": "Ваш заряженный камень раскололся!",
   "wg.chat.infusionInfo.essentiaMod": "Это зачарование наполнением потребует в %1$s раз больше эссенции, чем указано в Таумономиконе:",
   "wg.chat.infusionInfo.essentiaRunicMod": "Стоимость эссенции для этого рунического усиления возводится в степень %1$s:",

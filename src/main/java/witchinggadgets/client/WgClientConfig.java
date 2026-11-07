@@ -18,6 +18,10 @@ public final class WgClientConfig {
         .comment("Thaumonomicon Search to currently active category")
         .define("limitBookSearch", false);
 
+    public static final ModConfigSpec.DoubleValue GEM_RADIAL_SPEED = BUILDER
+        .comment("The speed at which the gem-selection for the primordial glove opens. 15% is the minimum.")
+        .defineInRange("gemRadialSpeed", 0.15, 0.15, 1.0);
+
     public static final ModConfigSpec SPEC = BUILDER.build();
 
     private WgClientConfig() {
@@ -29,6 +33,10 @@ public final class WgClientConfig {
 
     public static float abilityRadialSpeed() {
         return (float) (SPEC.isLoaded() ? ABILITY_RADIAL_SPEED.getAsDouble() : ABILITY_RADIAL_SPEED.getDefault());
+    }
+
+    public static float gemRadialSpeed() {
+        return (float) (SPEC.isLoaded() ? GEM_RADIAL_SPEED.getAsDouble() : GEM_RADIAL_SPEED.getDefault());
     }
 
     public static boolean limitBookSearch() {
