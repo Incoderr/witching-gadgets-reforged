@@ -142,6 +142,7 @@ public class ArmorStandRenderer implements BlockEntityRenderer<ArmorStandBlockEn
                 mannequin.lightCoords = state.lightCoords;
                 mannequin.outlineColor = 0;
                 if (mannequin instanceof LivingEntityRenderState living) {
+                    living.isInvisibleToPlayer = true;
                     living.bodyRot = 0.0F;
                     living.yRot = 0.0F;
                     living.xRot = 0.0F;

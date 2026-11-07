@@ -53,6 +53,12 @@ public class ArmorStandBlock extends Block implements EntityBlock {
     }
 
     @Override
+    protected VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        VoxelShape shape = getShape(state, level, pos, context);
+        return Shapes.join(shape, Block.box(0.0, 0.0, 0.0, 16.0, 24.0, 16.0), net.minecraft.world.phys.shapes.BooleanOp.AND);
+    }
+
+    @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
         if (player.isShiftKeyDown()) {
             return InteractionResult.PASS;
