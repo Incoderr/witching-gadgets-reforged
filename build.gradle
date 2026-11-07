@@ -32,6 +32,15 @@ repositories {
             includeGroup "net.mezzdev.config"
         }
     }
+    maven {
+        name = "Shedaniel's maven"
+        url = "https://maven.shedaniel.me/"
+        content {
+            includeGroup "me.shedaniel"
+            includeGroup "me.shedaniel.cloth"
+            includeGroup "dev.architectury"
+        }
+    }
 }
 
 base {
@@ -93,7 +102,11 @@ dependencies {
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
     compileOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}:api"
     localRuntime "top.theillusivec4.curios:curios-neoforge:${curios_version}"
-    if (!providers.gradleProperty("withoutJei").isPresent()) {
+    compileOnly "me.shedaniel:RoughlyEnoughItems-api-neoforge:${rei_version}"
+    if (project.findProperty("recipe_viewer") == "rei") {
+        localRuntime "me.shedaniel:RoughlyEnoughItems-neoforge:${rei_version}"
+        localRuntime "dev.architectury:architectury-neoforge:${architectury_version}"
+    } else if (!providers.gradleProperty("withoutJei").isPresent()) {
         localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
     }
 }
