@@ -31,4 +31,8 @@ public final class WgGuiBlit {
         graphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.disableBlend();
     }
+
+    public static void sprite(GuiGraphics graphics, ResourceLocation sprite, int x, int y, int width, int height) {
+        graphics.blitSprite(sprite, x, y, width, height);
+    }
 }

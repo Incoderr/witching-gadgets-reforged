@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "witchinggadgets:item/vambrace"
+    "layer0": "witchinggadgets:item/travellersgear/simplegear_vambraces"
   }
 }

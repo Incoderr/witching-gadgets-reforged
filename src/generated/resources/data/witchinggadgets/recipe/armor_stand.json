@@ -1,0 +1,29 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "witchinggadgets:armor_stand"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "s": {
+      "tag": "c:rods/wooden"
+    },
+    "f": {
+      "item": "minecraft:oak_fence"
+    },
+    "p": {
+      "tag": "minecraft:wooden_slabs"
+    }
+  },
+  "pattern": [
+    "sfs",
+    " f ",
+    "ppp"
+  ],
+  "result": {
+    "id": "witchinggadgets:armor_stand"
+  }
+}

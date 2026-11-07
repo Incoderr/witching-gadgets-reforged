@@ -65,7 +65,7 @@ public final class CloaksFeature {
     }
 
     public static void recipes() {
-        TcIngredient cloak = TcIngredient.item("witchinggadgets:cloak");
+        TcIngredient cloak = TcIngredient.item("witchinggadgets:traveller_cloak");
         WgRecipes.arcane(
             "CLOAK", "CLOAK", TcStack.of("witchinggadgets:cloak"),
             new AspectList().add(Aspect.AIR, 7),
@@ -101,7 +101,7 @@ public final class CloaksFeature {
                 "CLOAKKAMA_" + index, "CLOAKKAMA", TcStack.of("witchinggadgets:" + KAMAS[index]),
                 new AspectList().add(Aspect.AIR, 5).add(Aspect.ORDER, 5),
                 new String[] {"B", "C"},
-                'B', TcIngredient.item("thaumcraft:mundane_belt"),
+                'B', TcIngredient.anyOf(TcIngredient.item("witchinggadgets:belt"), TcIngredient.item("thaumcraft:mundane_belt")),
                 'C', TcIngredient.item("witchinggadgets:" + CLOAKS[index])
             );
         }

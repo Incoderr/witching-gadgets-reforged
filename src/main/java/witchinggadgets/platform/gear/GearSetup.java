@@ -8,7 +8,12 @@ public final class GearSetup {
     }
 
     public static void register(IEventBus bus) {
-        ActivateGearPayload.register();
+        GearAttachments.register(bus);
+        GearMenus.register(bus);
+        OpenGearPayload.register();
+        ActivateAbilityPayload.register();
+        ShowItemPayload.register();
+        SetToolDisplayPayload.register();
         DoubleJumpPayload.register();
     }
 }

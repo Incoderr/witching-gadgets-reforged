@@ -23,6 +23,7 @@ block_tags = defaultdict(set)
 item_tags = defaultdict(set)
 BLOCK_MODELS = {}
 TEXTURE_REFERENCES = set()
+INJECTIONS = []
 
 
 def legacy_item(path, definition):
@@ -155,6 +156,19 @@ def write_loot(name, pools):
         "pools": pools,
         "random_sequence": f"{NS}:blocks/{name}",
     }))
+
+
+def inject_loot(name, targets, rolls, vanilla_weight, entries):
+    pool_rolls = rolls[0] if rolls[0] == rolls[1] else {"type": "minecraft:uniform", "min": rolls[0], "max": rolls[1]}
+    write(DATA / NS / profile.loot_folder / "inject" / f"{name}.json", profile.loot_table({
+        "type": "minecraft:chest",
+        "pools": [{"rolls": pool_rolls, "entries": entries + [{"type": "minecraft:empty", "weight": vanilla_weight}]}],
+        "random_sequence": f"{NS}:inject/{name}",
+    }))
+    for index, target in enumerate(targets):
+        modifier = name if len(targets) == 1 else f"{name}_{index}"
+        write(DATA / NS / "loot_modifiers" / f"{modifier}.json", profile.loot_modifier(modifier, target, f"{NS}:inject/{name}"))
+        INJECTIONS.append(f"{NS}:{modifier}")
 
 
 def self_drop(name):
@@ -426,6 +440,8 @@ def main():
         importlib.import_module(f"gen_{feature}").generate(ctx)
     gen_curios.generate(ctx)
     write_tags()
+    if INJECTIONS and not profile.modern:
+        write(DATA / profile.loot_modifier_namespace / "loot_modifiers" / "global_loot_modifiers.json", {"replace": False, "entries": INJECTIONS})
     if profile.pack_mcmeta:
         write(OUT / "pack.mcmeta", profile.pack_mcmeta)
     validate_textures()

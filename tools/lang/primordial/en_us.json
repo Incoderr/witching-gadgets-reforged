@@ -4,7 +4,5 @@
   "effect.witchinggadgets.dissolve": "Dissolving",
   "effect.witchinggadgets.cinder_coat": "Cinder Coat",
   "key.witchinggadgets.gauntlet": "Gauntlet: Select Gem",
-  "wg.chat.gauntlet.selected": "Gem socket %s: %s",
-  "wg.chat.gauntlet.empty": "empty",
   "tc.research_page.PRIMORDIALGLOVE.2": "It should be noted that the sockets will stabilize the gems inside them, so they will never break upon use, but simply recharge.<BR>To select the active gem, press the gauntlet key (default V). Sneak while pressing that key or use the gauntlet while sneaking to open the inventory in order to add or remove gems.<BR>The pearl is not consumed during the crafting process."
 }

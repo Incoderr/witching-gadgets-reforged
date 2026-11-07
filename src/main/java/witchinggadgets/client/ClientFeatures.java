@@ -21,6 +21,9 @@ import witchinggadgets.gems.GemsFeature;
 import witchinggadgets.primordial.PrimordialFeature;
 import witchinggadgets.spinning.SpinningFeature;
 import witchinggadgets.terraform.TerraformFeature;
+import witchinggadgets.client.travellersgear.ArmorStandRenderer;
+import witchinggadgets.client.travellersgear.ArmorStandScreen;
+import witchinggadgets.travellersgear.TravellersGearFeature;
 
 public final class ClientFeatures {
     private ClientFeatures() {
@@ -34,6 +37,7 @@ public final class ClientFeatures {
         event.register(DevicesFeature.LABEL_LIBRARY_MENU.get(), LabelLibraryScreen::new);
         event.register(GemsFeature.CUTTING_TABLE_MENU.get(), CuttingTableScreen::new);
         event.register(PrimordialFeature.GAUNTLET_MENU.get(), GauntletScreen::new);
+        event.register(TravellersGearFeature.ARMOR_STAND_MENU.get(), ArmorStandScreen::new);
     }
 
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
@@ -42,5 +46,6 @@ public final class ClientFeatures {
         event.registerBlockEntityRenderer(DevicesFeature.ESSENTIA_PUMP_ENTITY.get(), EssentiaPumpRenderer::new);
         event.registerBlockEntityRenderer(TerraformFeature.TERRAFORMER_ENTITY.get(), TerraformerRenderer::new);
         event.registerBlockEntityRenderer(TerraformFeature.FOCUS_ENTITY.get(), TerraformFocusRenderer::new);
+        event.registerBlockEntityRenderer(TravellersGearFeature.ARMOR_STAND_ENTITY.get(), ArmorStandRenderer::new);
     }
 }

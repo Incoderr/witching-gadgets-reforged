@@ -10,6 +10,8 @@ import net.minecraft.world.item.ItemStack;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 import witchinggadgets.gear.GearSlot;
+import witchinggadgets.platform.gear.GearAttachments;
+import witchinggadgets.travellersgear.ToolDisplay;
 
 public final class Gear {
     private Gear() {
@@ -59,5 +61,13 @@ public final class Gear {
             }
         }
         return ItemStack.EMPTY;
+    }
+
+    public static List<ToolDisplay> toolDisplay(Player player) {
+        return player.getData(GearAttachments.TOOL_DISPLAY);
+    }
+
+    public static void setToolDisplay(Player player, List<ToolDisplay> displays) {
+        player.setData(GearAttachments.TOOL_DISPLAY, List.copyOf(displays));
     }
 }

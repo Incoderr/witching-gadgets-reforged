@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "witchinggadgets:block/armor_stand"
+    },
+    "facing=south": {
+      "model": "witchinggadgets:block/armor_stand"
+    },
+    "facing=west": {
+      "model": "witchinggadgets:block/armor_stand"
+    },
+    "facing=east": {
+      "model": "witchinggadgets:block/armor_stand"
+    }
+  }
+}

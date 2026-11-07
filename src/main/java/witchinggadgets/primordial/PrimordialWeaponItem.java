@@ -10,13 +10,14 @@ import net.minecraft.world.item.UseAnim;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
 import net.minecraft.world.entity.player.Player;
+import witchinggadgets.gear.GearAbility;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import witchinggadgets.WitchingGadgets;
 
-public class PrimordialWeaponItem extends Item implements PrimordialGear {
+public class PrimordialWeaponItem extends Item implements PrimordialGear, GearAbility {
     public static final TagKey<Block> HAMMER_MINEABLE = BlockTags.create(WitchingGadgets.id("primordial_hammer_mineable"));
     public static final TagKey<Block> GREATAXE_MINEABLE = BlockTags.create(WitchingGadgets.id("primordial_greataxe_mineable"));
 
@@ -54,12 +55,6 @@ public class PrimordialWeaponItem extends Item implements PrimordialGear {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
-        if (player.isShiftKeyDown()) {
-            if (!level.isClientSide()) {
-                PrimordialGear.cycleAndAnnounce(player, stack);
-            }
-            return InteractionResultHolder.success(stack);
-        }
         player.startUsingItem(hand);
         return InteractionResultHolder.consume(stack);
     }
@@ -77,5 +72,17 @@ public class PrimordialWeaponItem extends Item implements PrimordialGear {
     @Override
     public boolean canPerformAction(ItemStack stack, ItemAbility ability) {
         return ability == ItemAbilities.SHIELD_BLOCK || super.canPerformAction(stack, ability);
+    }
+
+    @Override
+    public boolean canActivate(Player player, ItemStack stack, boolean inHand) {
+        return true;
+    }
+
+    @Override
+    public void activate(Player player, ItemStack stack) {
+        if (!player.level().isClientSide()) {
+            PrimordialGear.cycleAndAnnounce(player, stack);
+        }
     }
 }

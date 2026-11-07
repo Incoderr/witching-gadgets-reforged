@@ -19,12 +19,14 @@ import witchinggadgets.primordial.PrimordialFeature;
 import witchinggadgets.robes.RobesFeature;
 import witchinggadgets.spinning.SpinningFeature;
 import witchinggadgets.terraform.TerraformFeature;
+import witchinggadgets.travellersgear.TravellersGearFeature;
 import witchinggadgets.test.ArcaneStoneGameTests;
 import witchinggadgets.test.ClothingGameTests;
 import witchinggadgets.test.CloaksGameTests;
 import witchinggadgets.test.DevicesGameTests;
 import witchinggadgets.test.EnchantmentsGameTests;
 import witchinggadgets.test.FoodGameTests;
+import witchinggadgets.test.TravellersGearGameTests;
 import witchinggadgets.test.FurnaceGameTests;
 import witchinggadgets.test.GadgetsGameTests;
 import witchinggadgets.test.GemsGameTests;
@@ -56,6 +58,7 @@ public final class Features {
         FurnaceFeature.load();
         TerraformFeature.load();
         FoodFeature.load();
+        TravellersGearFeature.load();
     }
 
     public static void research() {
@@ -114,5 +117,6 @@ public final class Features {
         FurnaceGameTests.register(modEventBus);
         TerraformGameTests.register(modEventBus);
         FoodGameTests.register(modEventBus);
+        TravellersGearGameTests.register(modEventBus);
     }
 }

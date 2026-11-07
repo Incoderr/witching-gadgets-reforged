@@ -1,0 +1,29 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "witchinggadgets:traveller_cloak"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "s": {
+      "item": "minecraft:string"
+    },
+    "w": {
+      "item": "minecraft:brown_wool"
+    }
+  },
+  "pattern": [
+    " s ",
+    "www",
+    "www"
+  ],
+  "result": {
+    "id": "witchinggadgets:traveller_cloak",
+    "components": {
+      "minecraft:dyed_color": 6704179
+    }
+  }
+}

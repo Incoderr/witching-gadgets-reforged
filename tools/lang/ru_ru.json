@@ -79,5 +79,6 @@
   "item.witchinggadgets.wolf_kama": "Волчья кама",
   "item.witchinggadgets.wolf_pelt": "Волчья шкура",
   "itemGroup.witchinggadgets": "Witching Gadgets",
-  "tc.research_category.WITCHGADG": "Witching Gadgets"
+  "tc.research_category.WITCHGADG": "Witching Gadgets",
+  "wg.gui.search": "Поиск"
 }

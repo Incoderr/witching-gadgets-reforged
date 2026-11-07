@@ -52,7 +52,7 @@ public final class CloaksGameTests {
     private static void activate(ServerPlayer player) {
         ItemStack cloak = CloakEvents.activeCloak(player);
         MagicCloakItem item = (MagicCloakItem) cloak.getItem();
-        if (item.canActivate(player, cloak)) {
+        if (item.canActivate(player, cloak, false)) {
             item.activate(player, cloak);
         }
     }

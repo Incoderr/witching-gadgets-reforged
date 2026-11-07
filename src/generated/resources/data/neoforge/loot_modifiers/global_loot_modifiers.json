@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "entries": [
+    "witchinggadgets:gemcutting_tools_village_blacksmith_0",
+    "witchinggadgets:gemcutting_tools_village_blacksmith_1",
+    "witchinggadgets:gemcutting_tools_village_blacksmith_2",
+    "witchinggadgets:title_scroll_simple_dungeon",
+    "witchinggadgets:title_scroll_abandoned_mineshaft",
+    "witchinggadgets:title_scroll_desert_pyramid",
+    "witchinggadgets:title_scroll_jungle_temple",
+    "witchinggadgets:title_scroll_stronghold_library"
+  ]
+}

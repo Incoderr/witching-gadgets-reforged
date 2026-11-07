@@ -8,16 +8,17 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "L": {
+    "l": {
       "item": "minecraft:leather"
     },
-    "I": {
-      "item": "minecraft:iron_ingot"
+    "i": {
+      "tag": "c:nuggets/iron"
     }
   },
   "pattern": [
-    "LIL",
-    "L L"
+    "ll ",
+    "ill",
+    " i "
   ],
   "result": {
     "id": "witchinggadgets:pauldron"

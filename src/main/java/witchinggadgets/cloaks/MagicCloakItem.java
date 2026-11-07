@@ -94,8 +94,8 @@ public abstract class MagicCloakItem extends Item implements GearAbility {
     }
 
     @Override
-    public boolean canActivate(Player player, ItemStack stack) {
-        return variant == CloakVariant.SPECTRAL || variant == CloakVariant.STORAGE;
+    public boolean canActivate(Player player, ItemStack stack, boolean inHand) {
+        return !inHand && (variant == CloakVariant.SPECTRAL || variant == CloakVariant.STORAGE);
     }
 
     @Override
