@@ -1,5 +1,6 @@
 package witchinggadgets.client.travellersgear;
 
+import com.mojang.blaze3d.platform.InputConstants;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -111,12 +112,12 @@ public class TgCustomizationScreen extends Screen {
         if (super.mouseClicked(event, doubleClick)) {
             return true;
         }
-        if (event.button() == 1) {
+        if (event.button() == InputConstants.MOUSE_BUTTON_RIGHT) {
             selectStart = new int[] {(int) event.x(), (int) event.y()};
             return true;
         }
         TgLayout.Element element = at(event.x(), event.y());
-        if (event.button() != 0 || element == null) {
+        if (event.button() != InputConstants.MOUSE_BUTTON_LEFT || element == null) {
             return false;
         }
         if (hideBox(element, event.x(), event.y())) {
@@ -149,7 +150,7 @@ public class TgCustomizationScreen extends Screen {
 
     @Override
     public boolean mouseReleased(MouseButtonEvent event) {
-        if (event.button() == 1 && selectStart != null) {
+        if (event.button() == InputConstants.MOUSE_BUTTON_RIGHT && selectStart != null) {
             multiSelect.clear();
             int x0 = Math.min(selectStart[0], (int) event.x());
             int y0 = Math.min(selectStart[1], (int) event.y());

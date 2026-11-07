@@ -1,5 +1,6 @@
 package witchinggadgets.client.research;
 
+import com.mojang.blaze3d.platform.InputConstants;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -168,7 +169,7 @@ public final class ThaumonomiconSearch {
         MouseButtonEvent mouse = event.getMouseButtonEvent();
         place(screen);
         if (field.isMouseOver(mouse.x(), mouse.y())) {
-            if (mouse.button() == 1) {
+            if (mouse.button() == InputConstants.MOUSE_BUTTON_RIGHT) {
                 field.setValue("");
             }
             screen.setFocused(field);

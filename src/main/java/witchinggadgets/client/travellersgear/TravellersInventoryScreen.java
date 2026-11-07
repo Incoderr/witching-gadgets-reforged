@@ -1,5 +1,6 @@
 package witchinggadgets.client.travellersgear;
 
+import com.mojang.blaze3d.platform.InputConstants;
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.client.Minecraft;
@@ -196,7 +197,7 @@ public class TravellersInventoryScreen extends AbstractContainerScreen<GearMenu>
 
     @Override
     public boolean mouseClicked(MouseButtonEvent event, boolean doubleClick) {
-        if (event.button() == 1 && event.hasControlDown() && hoveredSlot != null && hoveredSlot.hasItem()) {
+        if (event.button() == InputConstants.MOUSE_BUTTON_RIGHT && event.hasControlDown() && hoveredSlot != null && hoveredSlot.hasItem()) {
             WgClientNetwork.sendToServer(new ShowItemPayload(hoveredSlot.index));
             return true;
         }

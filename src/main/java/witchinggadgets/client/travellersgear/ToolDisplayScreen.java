@@ -1,5 +1,6 @@
 package witchinggadgets.client.travellersgear;
 
+import com.mojang.blaze3d.platform.InputConstants;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -192,9 +193,9 @@ public class ToolDisplayScreen extends Screen {
     @Override
     public boolean mouseDragged(MouseButtonEvent event, double dx, double dy) {
         if (!sliding) {
-            if (event.button() == 0) {
+            if (event.button() == InputConstants.MOUSE_BUTTON_LEFT) {
                 rotationH -= (float) (dragX - event.x());
-            } else if (event.button() == 1) {
+            } else if (event.button() == InputConstants.MOUSE_BUTTON_RIGHT) {
                 rotationV += (float) (dragY - event.y());
             }
             dragX = event.x();
