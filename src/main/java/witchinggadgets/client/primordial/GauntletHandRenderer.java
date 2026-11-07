@@ -7,7 +7,6 @@ import net.minecraft.client.player.LocalPlayer;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.HumanoidArm;
@@ -46,9 +45,15 @@ public final class GauntletHandRenderer {
         PoseStack poseStack = event.getPoseStack();
         MultiBufferSource buffers = event.getMultiBufferSource();
         int light = event.getPackedLight();
+        float swing = event.getSwingProgress();
+        float swingRoot = Mth.sqrt(swing);
         poseStack.pushPose();
-        poseStack.translate(side * 0.56F, -0.52F, -0.72F);
+        poseStack.translate(side * -0.4F * Mth.sin(swingRoot * Mth.PI), 0.2F * Mth.sin(swingRoot * Mth.PI * 2.0F), -0.2F * Mth.sin(swing * Mth.PI));
+        poseStack.translate(side * 0.56F, -0.52F - event.getEquipProgress() * 0.6F, -0.72F);
         poseStack.mulPose(Axis.YP.rotationDegrees(side * 45.0F));
+        poseStack.mulPose(Axis.YP.rotationDegrees(side * -20.0F * Mth.sin(swing * swing * Mth.PI)));
+        poseStack.mulPose(Axis.ZP.rotationDegrees(side * -20.0F * Mth.sin(swingRoot * Mth.PI)));
+        poseStack.mulPose(Axis.XP.rotationDegrees(-80.0F * Mth.sin(swingRoot * Mth.PI)));
         poseStack.scale(0.4F, 0.4F, 0.4F);
         poseStack.translate(side * -0.5F, -0.5F, -0.5F);
         poseStack.mulPose(Axis.ZP.rotationDegrees(side * 280.0F));
@@ -56,22 +61,13 @@ public final class GauntletHandRenderer {
         poseStack.mulPose(Axis.YP.rotationDegrees(side * -75.0F));
         poseStack.scale(2.0F, 2.0F, -2.0F);
         poseStack.translate(0.0F, -0.85F, -0.51F);
-        poseStack.scale(-side, 1.0F, 1.0F);
         if (!player.isInvisible()) {
             poseStack.pushPose();
-            poseStack.mulPose(Axis.YP.rotationDegrees(-90.0F));
-            poseStack.translate(1.0F / 16.0F, 2.0F / 16.0F, 0.0F);
-            poseStack.mulPose(Axis.ZP.rotation(-0.1F));
-            poseStack.translate(5.0F / 16.0F, -2.0F / 16.0F, 0.0F);
-            PlayerRenderer renderer = (PlayerRenderer) minecraft.getEntityRenderDispatcher().getRenderer(player);
-            if (side > 0.0F) {
-                renderer.renderRightHand(poseStack, buffers, light, player);
-            } else {
-                poseStack.scale(-1.0F, 1.0F, 1.0F);
-                renderer.renderLeftHand(poseStack, buffers, light, player);
-            }
+            poseStack.scale(side, 1.0F, 1.0F);
+            GauntletItemRenderer.renderArm(player.getSkin().texture(), poseStack, buffers, light);
             poseStack.popPose();
         }
+        poseStack.scale(-side, 1.0F, 1.0F);
         GauntletItemRenderer.renderGlove(stack, poseStack, buffers, light);
         poseStack.translate(0.1F, 0.675F, 0.0F);
         submitSelectedGem(stack, poseStack, buffers);
