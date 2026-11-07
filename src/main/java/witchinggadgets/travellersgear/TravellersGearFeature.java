@@ -33,7 +33,7 @@ public final class TravellersGearFeature {
     public static final DeferredBlock<ArmorStandBlock> ARMOR_STAND = ModBlocks.withItem(ModBlocks.BLOCKS.registerBlock(
         "armor_stand",
         ArmorStandBlock::new,
-        properties -> properties.mapColor(MapColor.WOOD).strength(2.5F, 10.0F).sound(SoundType.WOOD)
+        properties -> properties.mapColor(MapColor.WOOD).strength(2.5F, 10.0F).sound(SoundType.WOOD).dynamicShape()
     ));
     public static final Supplier<BlockEntityType<ArmorStandBlockEntity>> ARMOR_STAND_ENTITY = ModBlockEntities.BLOCK_ENTITIES.register(
         "armor_stand", () -> new BlockEntityType<>(ArmorStandBlockEntity::new, ARMOR_STAND.get())

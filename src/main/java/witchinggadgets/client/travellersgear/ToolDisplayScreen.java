@@ -10,8 +10,15 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.AbstractSliderButton;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Tooltip;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.inventory.InventoryScreen;
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.state.EntityRenderState;
+import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
+import net.minecraft.world.entity.LivingEntity;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
+import org.jspecify.annotations.Nullable;
 import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
@@ -145,7 +152,7 @@ public class ToolDisplayScreen extends Screen {
         int size = 80;
         int centerX = width / 2;
         int bottom = height / 5 * 4;
-        InventoryScreen.renderEntityInInventoryFollowsAngle(graphics, centerX - 60, bottom - 180, centerX + 60, bottom, size, 0.0625F, rotationH / 20.0F, rotationV / 20.0F, player());
+        renderPlayer(graphics, centerX - 60, bottom - 180, centerX + 60, bottom, size);
         for (int index = 0; index < tools.size(); index++) {
             graphics.item(player().getInventory().getItem(tools.get(index).slot()), 2, 42 + index * 30);
         }
@@ -175,6 +182,30 @@ public class ToolDisplayScreen extends Screen {
                 value(graphics, tool.scale().get(axis), height - 68 + axis * 10);
             }
         }
+    }
+
+    private void renderPlayer(GuiGraphicsExtractor graphics, int x0, int y0, int x1, int y1, int size) {
+        Player player = player();
+        EntityRenderer<? super LivingEntity, ?> renderer = minecraft.getEntityRenderDispatcher().getRenderer((LivingEntity) player);
+        EntityRenderState state = renderer.createRenderState(player, 1.0F);
+        state.shadowPieces.clear();
+        state.outlineColor = 0;
+        if (state instanceof LivingEntityRenderState living) {
+            living.bodyRot = 180.0F;
+            living.yRot = 0.0F;
+            living.xRot = 0.0F;
+            living.boundingBoxWidth = living.boundingBoxWidth / living.scale;
+            living.boundingBoxHeight = living.boundingBoxHeight / living.scale;
+            living.scale = 1.0F;
+        }
+        Quaternionf rotation = new Quaternionf().rotateZ((float) Math.PI).rotateY((float) Math.toRadians(rotationH)).rotateX((float) Math.toRadians(rotationV));
+        Vector3f translation = new Vector3f(0.0F, state.boundingBoxHeight / 2.0F + 0.0625F, 0.0F);
+        graphics.entity(state, size, translation, rotation, new Quaternionf(), x0, y0, x1, y1);
+    }
+
+    public static @Nullable List<ToolDisplay> preview(Player player) {
+        Minecraft minecraft = Minecraft.getInstance();
+        return player == minecraft.player && minecraft.gui.screen() instanceof ToolDisplayScreen screen ? screen.tools : null;
     }
 
     private void value(GuiGraphicsExtractor graphics, float value, int y) {

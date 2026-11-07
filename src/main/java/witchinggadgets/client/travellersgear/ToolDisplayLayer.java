@@ -33,7 +33,8 @@ public class ToolDisplayLayer extends RenderLayer<AvatarRenderState, PlayerModel
             return;
         }
         int seed = 0;
-        for (ToolDisplay display : Gear.toolDisplay(player)) {
+        java.util.List<ToolDisplay> preview = ToolDisplayScreen.preview(player);
+        for (ToolDisplay display : preview != null ? preview : Gear.toolDisplay(player)) {
             ItemStack stack = player.getInventory().getItem(display.slot());
             if (stack.isEmpty() || display.hideWhenEquipped() && ItemStack.matches(stack, player.getMainHandItem())) {
                 continue;
