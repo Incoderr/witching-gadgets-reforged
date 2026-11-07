@@ -10,6 +10,7 @@ import org.jspecify.annotations.Nullable;
 
 public final class Mannequins {
     private static final GameProfile PROFILE = new GameProfile(Util.NIL_UUID, "TG_ArmorStand");
+    private static final int ID = Integer.MIN_VALUE + 7;
     private static @Nullable RemotePlayer mannequin;
 
     private Mannequins() {
@@ -18,12 +19,13 @@ public final class Mannequins {
     public static RemotePlayer of(ClientLevel level) {
         if (mannequin == null || mannequin.level() != level) {
             mannequin = new RemotePlayer(level, PROFILE);
+            mannequin.setId(ID);
         }
         return mannequin;
     }
 
     public static boolean is(int id) {
-        return mannequin != null && mannequin.getId() == id;
+        return mannequin != null && id == ID;
     }
 
     public static @Nullable Entity entity(int id) {
