@@ -17,7 +17,7 @@ The project is a scaffold for now: registries, network seams, config, game test 
 Versions match the base mod:
 
 - Mod `1.0`
-- [Thaumcraft 4: Reforged](https://github.com/notlikethiss/thaumcraft-4-reforged) `1.0`
+- [Thaumcraft 4: Reforged](https://github.com/notlikethiss/thaumcraft-4-reforged) `1.1.3`
 - Minecraft `26.3`
 - NeoForge `26.3.0.57-beta`
 - ModDevGradle `2.0.148`
@@ -88,7 +88,9 @@ The original English, German and Chinese language files are converted. The origi
 
 ## Credits
 
-- **BluSunrize** for the original Witching Gadgets
+- **BluSunrize** for the original Witching Gadgets [BluSunrize](https://github.com/BluSunrize)
+
 - **SlimeKnights**, **PatchouliHina** and the other contributors and translators of the original mod
-- **incoder** for the port
+- **incoderr** for the port
 - **Azanor** for Thaumcraft
+- **notlikethiss** for Thaumcraft 4: Reforged [notlikethiss](https://github.com/notlikethiss/thaumcraft-4-reforged)
