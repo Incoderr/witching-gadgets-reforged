@@ -26,6 +26,7 @@ import witchinggadgets.test.CloaksGameTests;
 import witchinggadgets.test.DevicesGameTests;
 import witchinggadgets.test.EnchantmentsGameTests;
 import witchinggadgets.test.FoodGameTests;
+import witchinggadgets.test.TravellersGearGameTests;
 import witchinggadgets.test.FurnaceGameTests;
 import witchinggadgets.test.GadgetsGameTests;
 import witchinggadgets.test.GemsGameTests;
@@ -116,5 +117,6 @@ public final class Features {
         FurnaceGameTests.register(modEventBus);
         TerraformGameTests.register(modEventBus);
         FoodGameTests.register(modEventBus);
+        TravellersGearGameTests.register(modEventBus);
     }
 }

@@ -1,0 +1,9 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "witchinggadgets:item/armor_stand",
+    "model": {
+      "type": "witchinggadgets:armor_stand"
+    }
+  }
+}

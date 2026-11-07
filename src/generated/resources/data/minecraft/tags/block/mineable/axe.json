@@ -2,6 +2,10 @@
   "replace": false,
   "values": [
     {
+      "id": "witchinggadgets:armor_stand",
+      "required": false
+    },
+    {
       "id": "witchinggadgets:cutting_table",
       "required": false
     },

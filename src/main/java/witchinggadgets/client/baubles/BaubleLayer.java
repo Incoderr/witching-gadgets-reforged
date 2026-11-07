@@ -78,10 +78,10 @@ public class BaubleLayer extends RenderLayer<AvatarRenderState, PlayerModel> {
 
     @Override
     public void submit(PoseStack poseStack, SubmitNodeCollector collector, int lightCoords, AvatarRenderState state, float yRot, float xRot) {
-        if (state.isInvisible || Minecraft.getInstance().level == null) {
+        if (state.isInvisible && !witchinggadgets.client.travellersgear.Mannequins.is(state.id) || Minecraft.getInstance().level == null) {
             return;
         }
-        Entity entity = Minecraft.getInstance().level.getEntity(state.id);
+        Entity entity = witchinggadgets.client.travellersgear.Mannequins.entity(state.id);
         if (!(entity instanceof Player player)) {
             return;
         }

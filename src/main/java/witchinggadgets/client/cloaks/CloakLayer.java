@@ -40,7 +40,7 @@ public class CloakLayer extends RenderLayer<AvatarRenderState, PlayerModel> {
         if (Minecraft.getInstance().level == null) {
             return;
         }
-        Entity entity = Minecraft.getInstance().level.getEntity(state.id);
+        Entity entity = witchinggadgets.client.travellersgear.Mannequins.entity(state.id);
         if (!(entity instanceof Player player)) {
             return;
         }
@@ -59,7 +59,7 @@ public class CloakLayer extends RenderLayer<AvatarRenderState, PlayerModel> {
             color = DyedItemColor.getOrDefault(stack, 0xFFFFFF);
         }
         boolean invisible = player.hasEffect(MobEffects.INVISIBILITY);
-        if (state.isInvisible && !invisible) {
+        if (state.isInvisible && !invisible && !witchinggadgets.client.travellersgear.Mannequins.is(state.id)) {
             return;
         }
         int argb = invisible ? INVISIBLE : 0xFF000000 | color;

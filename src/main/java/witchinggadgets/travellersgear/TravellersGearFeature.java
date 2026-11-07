@@ -1,9 +1,19 @@
 package witchinggadgets.travellersgear;
 
 import java.util.function.Function;
+import java.util.function.Supplier;
+import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.material.MapColor;
+import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import thaumcraft.platform.BaubleType;
+import thaumcraft.platform.Menus;
+import witchinggadgets.registry.ModBlockEntities;
+import witchinggadgets.registry.ModBlocks;
+import witchinggadgets.registry.ModMenus;
 import witchinggadgets.baubles.WearableItem;
 import witchinggadgets.gear.AbilitySlots;
 import witchinggadgets.gear.GearSlot;
@@ -19,6 +29,18 @@ public final class TravellersGearFeature {
     public static final DeferredItem<WearableItem> PAULDRON = register("pauldron", properties -> new WearableItem(GearSlot.PAULDRON, properties));
     public static final DeferredItem<WearableItem> VAMBRACE = register("vambrace", properties -> new WearableItem(GearSlot.VAMBRACE, properties));
     public static final DeferredItem<TitleScrollItem> TITLE_SCROLL = register("title_scroll", TitleScrollItem::new);
+
+    public static final DeferredBlock<ArmorStandBlock> ARMOR_STAND = ModBlocks.withItem(ModBlocks.BLOCKS.registerBlock(
+        "armor_stand",
+        ArmorStandBlock::new,
+        properties -> properties.mapColor(MapColor.WOOD).strength(2.5F, 10.0F).sound(SoundType.WOOD)
+    ));
+    public static final Supplier<BlockEntityType<ArmorStandBlockEntity>> ARMOR_STAND_ENTITY = ModBlockEntities.BLOCK_ENTITIES.register(
+        "armor_stand", () -> new BlockEntityType<>(ArmorStandBlockEntity::new, ARMOR_STAND.get())
+    );
+    public static final Supplier<MenuType<ArmorStandMenu>> ARMOR_STAND_MENU = ModMenus.MENUS.register(
+        "armor_stand", () -> Menus.withPos(ArmorStandMenu::new)
+    );
 
     private TravellersGearFeature() {
     }

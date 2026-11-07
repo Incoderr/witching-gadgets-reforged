@@ -37,6 +37,14 @@ def generate(ctx):
     ctx.shaped("pauldron", f"{ctx.NS}:pauldron", 1, ["ll ", "ill", " i "], {"l": "minecraft:leather", "i": "#c:nuggets/iron"}, "equipment")
     ctx.shaped("vambrace", f"{ctx.NS}:vambrace", 1, [" l ", "lil", " l "], {"l": "minecraft:leather", "i": "#c:nuggets/iron"}, "equipment")
     ctx.shaped("title_scroll", f"{ctx.NS}:title_scroll", 1, [" l ", "pbp", " l "], {"l": "#c:gems/lapis", "p": "minecraft:paper", "b": "minecraft:enchanted_book"}, "misc")
+    stand = "armor_stand"
+    ctx.block_model(stand, {"parent": "minecraft:block/block", "textures": {"particle": "minecraft:block/dark_oak_planks"}})
+    ctx.blockstate(stand, {"variants": {f"facing={facing}": {"model": ctx.ref(stand)} for facing in ("north", "south", "west", "east")}})
+    ctx.item_model(stand, {"parent": "minecraft:block/block", "textures": {"particle": "minecraft:block/dark_oak_planks"}})
+    ctx.write(ctx.ASSETS / "items" / f"{stand}.json", {"model": {"type": "minecraft:special", "base": ctx.ref(stand, "item"), "model": {"type": f"{ctx.NS}:armor_stand"}}})
+    ctx.self_drop(stand)
+    ctx.mineable("axe", stand)
+    ctx.shaped(stand, f"{ctx.NS}:{stand}", 1, ["sfs", " f ", "ppp"], {"s": "#c:rods/wooden", "f": "minecraft:oak_fence", "p": "#minecraft:wooden_slabs"}, "misc")
     titles = [
         {
             "type": "minecraft:item",
