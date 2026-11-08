@@ -4,8 +4,6 @@ Unofficial port of **Witching Gadgets 1.1.10** by BluSunrize from Minecraft 1.7.
 
 The goal is to recreate the original gameplay as closely as possible: the spinning wheel and weaving, cloaks, robes and other magical clothing, infused gems and primordial gear, the Thaumic blast furnace and ore clusters, essentia pumps, terraformers and the rest of the gadgets. Integrations with other mods (except JEI) are not ported. Travellers' Gear slots are not available on modern versions, so their items are moved to the base mod's bauble slots. The technical side is rebuilt on modern APIs, the original coremod (ASM transformers) is replaced by events or mixins.
 
-The project is a scaffold for now: registries, network seams, config, game test harness and the Python tooling are in place, gameplay content is ported feature by feature.
-
 > **Personal use only.** Witching Gadgets and all of its assets belong to BluSunrize. The original repository does not specify a license. This port is not intended for redistribution.
 
 ## Requirements to build
