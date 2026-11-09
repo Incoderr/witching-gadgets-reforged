@@ -91,5 +91,5 @@ The original English, German and Chinese language files are converted. The origi
 
 - **BluSunrize** for the original Witching Gadgets and Travellers' Gear
 - **SlimeKnights**, **PatchouliHina** and the other contributors and translators of the original mod
-- **incoder** for the port
+- **incoderr** for the port
 - **Azanor** for Thaumcraft
